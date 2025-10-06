@@ -10,7 +10,16 @@
         @font-face {
             font-family: "SF Pro Display";
             src: url("https://cdn.jsdelivr.net/gh/thelioncape/San-Francisco-family@master/TrueType%20versions/SF%20Pro/sf-pro-display_regular.ttf") format("truetype");
-        }
+          font-weight: 400; /* normal */
+    font-style: normal;
+            }
+
+        @font-face {
+    font-family: "SF Pro Display";
+    src: url("https://cdn.jsdelivr.net/gh/thelioncape/San-Francisco-family@master/TrueType%20versions/SF%20Pro/sf-pro-display_bold.ttf") format("truetype");
+    font-weight: 700; /* bold */
+    font-style: normal;
+}
         body { font-family: "SF Pro Display"; background: #f5f5f5; padding: 20px; }
         .category-section { background: white; margin-bottom: 30px; border-radius: 10px; 
             overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); scroll-margin-top: 20px; }
@@ -98,7 +107,7 @@
 <body class="show-all">
     <div class="container-fluid">
 <h1 class="text-center mb-4" style="color: #667eea;">📊 สรุปผลการเรียนรายวิชา - จัดกลุ่มตามหมวดสาระ</h1>
-<div class="timestamp">อัปเดตล่าสุด: 6/10/2568 20:56:02</div>
+<div class="timestamp">อัปเดตล่าสุด: 6/10/2568 21:13:19</div>
 <div class="timestamp">เวอร์ชั่น: 1.4</div>
 
 <div class="filter-controls">
@@ -12499,6 +12508,45 @@
             if (event.target === categoryModal) closeCategoryNav();
         }
 
+  function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            const gradeFilter = document.getElementById('gradeFilter').value;
+            
+            document.querySelectorAll('.subject-card tbody tr[data-stream]').forEach(row => {
+                let matchesSearch = true;
+                let matchesGrade = true;
+                
+                // Search filter
+                if (searchTerm) {
+                    const studentId = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                    const studentName = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+                    const room = row.querySelector('td:nth-child(6)').textContent.toLowerCase();
+                    const number = row.querySelector('td:nth-child(7)').textContent.toLowerCase();
+                    
+                    matchesSearch = studentId.includes(searchTerm) || 
+                                  studentName.includes(searchTerm) || 
+                                  room.includes(searchTerm) || 
+                                  number.includes(searchTerm);
+                }
+                
+                // Grade filter
+                if (gradeFilter) {
+                    const grade = row.querySelector('td:nth-child(12) strong').textContent.trim();
+                    matchesGrade = (grade === gradeFilter);
+                }
+                
+                // Apply visibility with !important to override CSS
+                if (matchesSearch && matchesGrade) {
+                    row.style.setProperty('display', 'table-row', 'important');
+                } else {
+                    row.style.setProperty('display', 'none', 'important');
+                }
+            });
+            
+            // Update rankings after filtering
+            updateRanking();
+        }
+        
     </script>
 </body>
 </html>
