@@ -273,13 +273,6 @@
       </div>
       <div class="modal-body">
 
-        <!-- Nav Tabs -->
-        <!-- <div class="nav-tabs">
-          <button type="button" class="nav-tab active" onclick="switchTab(event, 'grade4')">ม.4</button>
-          <button type="button" class="nav-tab" onclick="switchTab(event, 'grade5')">ม.5</button>
-          <button type="button" class="nav-tab" onclick="switchTab(event, 'grade6')">ม.6</button>
-        </div> -->
-
         <!-- Tab Contents -->
         <div id="grade4" class="tab-content active">
           <div class="grade-section">
@@ -292,8 +285,6 @@
             <a href="https://www.suw.ac.th/_files_school/64100250/data/64100250_1_20250421-142511.pdf" target="_blank" class="student-link">ชั้นมัธยมศึกษาปีที่ 6</a>
           </div>
         </div>
-        </div>
-
       </div>
     </div>
   </div>
@@ -306,24 +297,6 @@
 
     function closeStudentModal() {
       document.getElementById('studentModal').classList.remove('active');
-    }
-
-    function switchTab(e, tabName) {
-      e.preventDefault();
-
-      // Hide all tab contents
-      const tabContents = document.querySelectorAll('.tab-content');
-      tabContents.forEach(tab => tab.classList.remove('active'));
-
-      // Remove active class from all tabs
-      const navTabs = document.querySelectorAll('.nav-tab');
-      navTabs.forEach(tab => tab.classList.remove('active'));
-
-      // Show selected tab content
-      document.getElementById(tabName).classList.add('active');
-
-      // Add active class to clicked tab
-      e.target.classList.add('active');
     }
 
     // Close modal when clicking outside
@@ -401,7 +374,11 @@
       Swal.fire({
         icon: "question",
         title: "ยืนยันการเปิดผลการเรียน",
-        text: "ต้องการเปิดผลการเรียนในแท็บใหม่หรือไม่",
+        html: `<p>ต้องการเปิดผลการเรียนหรือไม่</p>
+               <p style="font-size: 12px; color: #94a3b8; margin-top: 1rem; word-break: break-all;">
+                 <strong>ลิ้ง:</strong><br/>
+                 <code style="background: #334155; padding: 8px; border-radius: 4px; display: block; margin-top: 0.5rem;">${url}</code>
+               </p>`,
         showCancelButton: true,
         confirmButtonText: "เปิด",
         cancelButtonText: "ยกเลิก",
