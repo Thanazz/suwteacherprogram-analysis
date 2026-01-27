@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ระบบแสดงสาขาวิชาที่สอบติด</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: #fbf3e6;
+      color: #333;
+    }
+
+    .container {
+      max-width: 420px;
+      margin: 24px auto;
+      border: 1px solid #222;
+      background: #fbf3e6;
+    }
+
+    /* Header */
+    .header {
+      background: #27467a;
+      color: #fff;
+      padding: 10px 14px;
+      font-weight: 600;
+    }
+
+    .round-bar {
+      background: #f4c04e;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .round-left {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .round-badge {
+      background: #f9e1a0;
+      padding: 4px 8px;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    /* Content */
+    .content {
+      padding: 16px 14px 20px;
+    }
+
+    .status-title {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .status-sub {
+      text-align: center;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    .countdown {
+      text-align: center;
+      color: #d9534f;
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .countdown span {
+      font-size: 12px;
+      font-weight: normal;
+      margin: 0 4px;
+    }
+
+    .hearts {
+      text-align: center;
+      color: #e25555;
+      font-size: 18px;
+      margin-bottom: 14px;
+    }
+
+    /* Program Card */
+    .program-card {
+      position: relative;
+      border: 2px solid #f4c04e;
+      border-radius: 4px;
+      background: #fff;
+      padding: 14px 12px 12px;
+      margin-bottom: 12px;
+    }
+
+    .corner-flag {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-top: 36px solid #f4c04e;
+      border-right: 36px solid transparent;
+    }
+
+    .program-card input {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    .program-logo {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-weight: bold;
+      color: #3c6e47;
+    }
+
+    .program-text {
+      font-size: 13px;
+      line-height: 1.45;
+      padding-left: 22px;
+      padding-right: 40px;
+    }
+
+    /* Action area */
+    .action-box {
+      border-top: 1px solid #e5d6b8;
+      padding-top: 12px;
+      margin-top: 12px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .btn-row {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+      font-size: 13px;
+      border: none;
+    }
+
+    .btn .heart {
+      background: #777;
+      color: #fff;
+      padding: 6px 8px;
+    }
+
+    .btn.confirm {
+      background: #6bbf59;
+      color: #fff;
+    }
+
+    .btn.confirm .heart {
+      background: #4fae44;
+    }
+
+    .btn.decline {
+      background: #eee;
+      color: #d9534f;
+      border: 1px solid #d9534f;
+    }
+
+    .btn span {
+      padding: 6px 14px;
+    }
+
+    .note {
+      margin-top: 16px;
+      font-size: 12px;
+      text-align: center;
+      color: #444;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="header">รอบการสมัคร</div>
+
+    <div class="round-bar">
+      <div class="round-left">
+        <div class="round-badge">รอบ 1</div>
+        <div>
+          <div><strong>Portfolio</strong></div>
+          <div style="font-size:12px;">ผ่านการคัดเลือก 1 สาขาวิชา</div>
+        </div>
+      </div>
+      <div>⌃</div>
+    </div>
+
+    <div class="content">
+
+      <div class="status-title">ท่านผ่านการคัดเลือก 1 สาขาวิชา</div>
+      <div class="status-sub">กรุณาเลือกสาขาวิชาที่ท่านต้องการยืนยันสิทธิ์ภายใน</div>
+
+      <div class="countdown" id="timer">
+        78 <span>ชั่วโมง</span> 36 <span>นาที</span> 25 <span>วินาที</span>
+      </div>
+
+      <div class="hearts">❤️ ❤️ ❤️<br><span style="font-size:12px;">สามารถตัดสินใจได้ 3 ครั้ง</span></div>
+
+      <div class="program-card">
+        <div class="corner-flag"></div>
+        <input type="radio" checked>
+        <div class="program-logo">KU</div>
+
+        <div class="program-text">
+          <strong>มหาวิทยาลัยมหาสารคาม</strong><br>
+          มหาสารคาม<br>
+          คณะวิศวกรรมศาสตร์<br>
+          สาขาวิชาวิศวกรรมทั่วไป<br>
+          วศ.บ. วิศวกรรมศาสตร์<br>
+          (ภาษาไทย ปกติ)<br>
+          โครงการ โควตานักเรียน (ภาคตะวันออกเฉียงเหนือ)
+        </div>
+      </div>
+
+      <div class="action-box">
+        ท่านสามารถ <span style="color:#2c8f2c;">ยืนยันสิทธิ์</span> ได้ 1 สาขาวิชา และเปลี่ยนแปลงได้อีกเพียง 2 ครั้ง
+
+        <div class="btn-row">
+          <button class="btn confirm" onclick="alert('จำลอง: ยืนยันสิทธิ์')">
+            <div class="heart">❤️ -1</div>
+            <span>ยืนยันสิทธิ์</span>
+          </button>
+
+          <button class="btn decline" onclick="alert('จำลอง: ไม่ใช้สิทธิ์')">
+            <div class="heart">❤️ -1</div>
+            <span>ไม่ใช้สิทธิ์</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="note">
+        หากผู้สมัครไม่ประสงค์จะเข้าศึกษา<br>
+        ในทุกสาขาวิชาที่ผ่านการคัดเลือก ให้กด “ไม่ใช้สิทธิ์”
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // countdown mock
+    let h = 78, m = 36, s = 25;
+    setInterval(() => {
+      if (--s < 0) { s = 59; if (--m < 0) { m = 59; if (h > 0) h--; } }
+      document.getElementById("timer").innerHTML =
+        `${h} <span>ชั่วโมง</span> ${m} <span>นาที</span> ${s} <span>วินาที</span>`;
+    }, 1000);
+  </script>
+
+</body>
+
+</html>

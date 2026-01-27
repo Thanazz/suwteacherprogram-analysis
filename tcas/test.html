@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .confirm-btn {
+            display: inline-flex;
+            align-items: center;
+            border: none;
+            padding: 0;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        /* กล่องซ้าย (❤️ -1) */
+        .confirm-btn .btn-left {
+            background: #4aa7b8;
+            color: #fff;
+            padding: 10px 14px;
+            font-size: 14px;
+            border-right: 1px solid rgba(255, 255, 255, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* กล่องขวา (ยืนยันสิทธิ์) */
+        .confirm-btn .btn-right {
+            background: #4aa7b8;
+            color: #fff;
+            padding: 10px 28px;
+            font-size: 16px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        /* hover */
+        .confirm-btn:hover .btn-left,
+        .confirm-btn:hover .btn-right {
+            background: #3f9cab;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="confirm-btn">
+        <span class="btn-left">
+            ❤️ -1
+        </span>
+        <span class="btn-right">
+            ยืนยันสิทธิ์
+        </span>
+    </button>
+
+</body>
+
+</html>

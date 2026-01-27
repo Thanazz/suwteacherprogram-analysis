@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)https://student.mytcas.com/ -->
+<html lang="th">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="icon" type="image/png" href="https://student.mytcas.com/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/svg+xml" href="https://student.mytcas.com/favicon.svg">
+	<link rel="shortcut icon" href="https://student.mytcas.com/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://student.mytcas.com/apple-touch-icon.png">
+	<meta name="apple-mobile-web-app-title" content="TCAS">
+	<!-- <link rel="manifest" href="https://student.mytcas.com/site.webmanifest"> -->
+	<meta name="theme-color" content="#ffffff">
+	<title>TCAS69 - ระบบการคัดเลือกบุคคลเข้าศึกษาต่อในระดับมหาวิทยาลัย ปีการศึกษา 2569</title>
+	<link rel="stylesheet" href="assets/mobile.css">
+	<link rel="stylesheet" href="assets/desktop.css" media="(min-width:1024px)">
+	<script src="assets/cb=gapi.loaded_0" async=""></script>
+	<script defer="defer" data-domain="student.mytcas.com" src="assets/plausible.js.download"></script>
+	<script src="assets/client" async="" defer="defer"></script>
+	<link rel="stylesheet"
+		href="TCAS69 - ระบบการคัดเลือกบุคคลเข้าศึกษาต่อในระดับมหาวิทยาลัย ปีการศึกษา 2569_files/main.css">
+	<link href="assets/2.a2032d84.chunk.css" rel="stylesheet">
+	<link href="assets/main.9e3e9b11.chunk.css" rel="stylesheet">
+	<link rel="stylesheet" href="chrome-extension://ihcjicgdanjaechkgeegckofjjedodee/app/content-style.css">
+	<script src="assets/js" async=""></script>
+	<style>
+		#fb-root {
+			width: 0
+		}
+
+		.register-card {
+			max-width: 900px;
+			margin: 24px auto;
+			background: #ffffff;
+			border-radius: 6px;
+			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+			overflow: hidden;
+			font-family: "Sarabun", "Prompt", sans-serif;
+		}
+
+		.card-header {
+			background: #6b86b3;
+			color: #ffffff;
+			padding: 10px 16px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 15px;
+			font-weight: 500;
+		}
+
+		.card-header .card-link {
+			color: #ffffff;
+			text-decoration: none;
+			font-size: 14px;
+		}
+
+		.card-header .card-link:hover {
+			text-decoration: underline;
+		}
+
+		.card-body {
+			display: flex;
+			gap: 16px;
+			padding: 16px;
+		}
+
+		.profile img {
+			width: 90px;
+			height: 110px;
+			object-fit: cover;
+			border-radius: 4px;
+			border: 1px solid #e5e7eb;
+		}
+
+		.info {
+			font-size: 14px;
+			color: #111827;
+			line-height: 1.8;
+		}
+
+		.info .name {
+			font-weight: 600;
+			margin-bottom: 4px;
+		}
+
+		/* ===== Mobile ===== */
+		@media (max-width: 640px) {
+			.card-body {
+				flex-direction: row;
+				/* 🔑 ยังเป็นซ้าย–ขวา */
+				align-items: flex-start;
+				gap: 12px;
+			}
+
+			.profile img {
+				width: 80px;
+				height: 100px;
+				flex-shrink: 0;
+				/* รูปไม่ถูกบีบ */
+			}
+
+			.info {
+				font-size: 13px;
+				line-height: 1.6;
+			}
+		}
+
+
+		.apply-block {
+			max-width: 900px;
+			margin: 24px auto;
+			font-family: "Sarabun", "Prompt", sans-serif;
+		}
+
+		.apply-header {
+			background: #1f4f82;
+			color: #ffffff;
+			padding: 6px 16px;
+			font-size: 20px;
+			font-weight: 100;
+			border-radius: 6px 6px 0 0;
+		}
+
+		.apply-row {
+			display: flex;
+			border-radius: 0 0 6px 6px;
+			overflow: hidden;
+		}
+
+		/* แถบซ้าย รอบ */
+		.apply-round {
+			background: #fef2d6;
+			width: 72px;
+			text-align: center;
+			padding: 12px 6px;
+			color: #ffc336;
+		}
+
+		.apply-round span {
+			display: block;
+			font-size: 13px;
+			margin-bottom: 4px;
+		}
+
+		.apply-round strong {
+			font-size: 26px;
+			font-weight: 700;
+			line-height: 1;
+		}
+
+		/* แถบหลัก */
+		.apply-main {
+			background: #ffbe1a;
+			flex: 1;
+			display: flex;
+			align-items: center;
+			padding: 14px 16px;
+		}
+
+		.apply-text {
+			flex: 1;
+		}
+
+		.apply-title {
+			font-size: 18px;
+			font-weight: 600;
+			color: #ffffff;
+			line-height: 1.3;
+		}
+
+		.apply-date {
+			font-size: 14px;
+			color: #ffffff;
+			opacity: 0.95;
+		}
+
+		.apply-dropdown {
+			margin-left: 12px;
+			display: flex;
+			align-items: center;
+		}
+
+		.apply-dropdown svg {
+			transition: transform 0.25s ease;
+		}
+
+		/* ตอนเปิด dropdown */
+		.apply-main.open .apply-dropdown svg {
+			transform: rotate(180deg);
+			/* v → ^ */
+		}
+
+
+		/* responsive */
+		@media (max-width: 640px) {
+			.apply-title {
+				font-size: 16px;
+			}
+
+			.apply-round {
+				width: 64px;
+			}
+		}
+
+		/* โทน Quota */
+		.quota-round {
+			background: #ffd6d6;
+			/* ชมพูอ่อนซ้าย */
+			color: #ee6c73;
+		}
+
+		.quota-main {
+			background: #f26c5b;
+			/* แดงส้มหลัก */
+		}
+
+		/* โทน Admission */
+		.admission-round {
+			background: #cffdff;
+			/* ฟ้าอ่อนฝั่งซ้าย */
+			color: #0f766e;
+		}
+
+		.admission-main {
+			background: #0ea5a4;
+			/* เขียวอมฟ้าหลัก */
+		}
+
+		/* ตัวอักษร */
+		.admission-main .apply-title,
+		.admission-main .apply-date {
+			color: #ffffff;
+		}
+
+		.profile p {
+			margin: 2px 0;
+			line-height: 1.5;
+		}
+
+		.apply-dropdown-content {
+			display: none;
+			background: #fff7e6;
+			border: 1px solid #f3d08b;
+			border-top: none;
+		}
+
+		.apply-dropdown-content.active {
+			display: block;
+		}
+
+		.dd-wrapper {
+			padding: 20px;
+			text-align: center;
+			font-family: kvl, Sarabun, sans-serif;
+		}
+
+		.dd-wrapper img {
+			display: block;
+			margin: 0 auto 5px;
+			width: 100px;
+		}
+
+
+		.dd-title {
+			font-size: 18px;
+			font-weight: 600;
+			color: rgb(214, 28, 28);
+			/* น้ำเงินเข้มแบบ TCAS */
+		}
+
+		.dd-sub {
+			font-size: 14px;
+			margin-top: 4px;
+			color: rgb(214, 28, 28);
+			/* น้ำเงินเทา */
+		}
+
+		.dd-timer {
+			margin: 12px 0;
+			font-size: 26px;
+			color: #d12b2b;
+			font-weight: 700;
+		}
+
+		.dd-heart {
+			margin-bottom: 16px;
+			font-size: 20px;
+		}
+
+		.dd-program {
+			display: flex;
+			align-items: flex-start;
+			gap: 12px;
+			background: #ffffff;
+			border: 2px solid #93c5fd;
+			/* ฟ้า */
+			border-left: 6px solid #2563eb;
+			/* เส้น accent */
+			border-radius: 6px;
+			padding: 14px;
+			text-align: left;
+		}
+
+
+		.dd-logo {
+			width: 48px;
+			height: 48px;
+			background: #ffffff;
+			color: #1f4f82;
+			font-weight: 700;
+			border: 1px solid #cbd5e1;
+			border-radius: 4px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+
+		.dd-text {
+			font-size: 13px;
+			line-height: 1.6;
+		}
+
+		.dd-action {
+			margin-top: 10px;
+			font-size: 14px;
+			text-align: center;
+		}
+
+		.dd-action .ok {
+			color: #16a34a;
+			font-weight: 600;
+		}
+
+
+		.dd-btns {
+			display: flex;
+			justify-content: center;
+			gap: 12px;
+			margin-top: 10px;
+		}
+
+		.dd-btns .btn {
+			border: none;
+			padding: 10px 14px;
+			font-size: 14px;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		/* ปุ่มหลัก */
+		.btn {
+			display: inline-flex;
+			align-items: stretch;
+			border-radius: 4px;
+			overflow: hidden;
+			border: none;
+			cursor: pointer;
+			padding: 0;
+		}
+
+		/* confirm button */
+		.btn.confirm {
+			background: transparent;
+		}
+
+		/* กล่องซ้าย ❤️ -1 */
+		.btn.confirm .heart {
+			background: #4eaab9;
+			color: #ffffff;
+			padding: 10px 45px;
+			font-size: 14px;
+			font-weight: 600;
+			display: flex;
+			align-items: center;
+			border-right: 1px solid rgba(255, 255, 255, 0.35);
+			margin: 0;
+		}
+
+		/* กล่องขวา ยืนยันสิทธิ์ */
+		.btn.confirm span:last-child {
+			background: #4eaab9;
+			color: #ffffff;
+			padding: 10px 28px;
+			font-size: 15px;
+			font-weight: 600;
+			display: flex;
+			align-items: center;
+			white-space: nowrap;
+			margin: 0;
+		}
+
+		/* hover */
+		.btn.confirm:hover .heart,
+		.btn.confirm:hover span:last-child {
+			background: #3992a0;
+		}
+
+
+		.btn .heart {
+			padding: 6px 8px;
+			background: #777;
+			color: #fff;
+		}
+
+
+		/* DECLINE BUTTON - 2 ส่วน */
+		.btn.decline {
+			background: transparent;
+			padding: 0;
+		}
+
+		/* กล่องซ้าย ❤️ -1 */
+		.btn.decline .heart {
+			background: #e9e4d8;
+			/* เทาเข้ม */
+			color: #ffffff;
+			padding: 10px 45px;
+			font-size: 14px;
+			font-weight: 600;
+			display: flex;
+			align-items: center;
+			border-right: 1px solid rgba(255, 255, 255, 0.4);
+			margin: 0;
+		}
+
+		/* กล่องขวา ไม่ใช้สิทธิ์ */
+		.btn.decline span:last-child {
+			background: #e9e4d8;
+			/* เทาอ่อน */
+			color: #374151;
+			padding: 10px 28px;
+			font-size: 15px;
+			font-weight: 600;
+			display: flex;
+			align-items: center;
+			white-space: nowrap;
+			margin: 0;
+		}
+
+		/* hover */
+		.btn.decline:hover .heart {
+			background: #d6cfbe;
+		}
+
+		.btn.decline:hover span:last-child {
+			background: #d6cfbe;
+		}
+
+		.dd-decline-row {
+			opacity: 0.95;
+		}
+
+		.dd-decline-row .btn.decline:hover {
+			opacity: 1;
+		}
+
+
+		.dd-decline-row {
+			margin-top: 12px;
+		}
+
+		.dd-decline-row .btn.decline {
+			background: #f3f4f6;
+			color: #6b7280;
+		}
+
+		.dd-note {
+			margin-top: 14px;
+			font-size: 12px;
+			color: #555;
+			line-height: 1.3;
+		}
+
+		.dd-timer {
+			display: flex;
+			justify-content: center;
+			gap: 18px;
+			margin: 14px 0;
+		}
+
+		.dd-card {
+			background: #ffffff;
+			border: 1px solid #e5e7eb;
+			border-radius: 6px;
+			padding: 12px;
+			margin-bottom: 16px;
+			transition: border-color 0.2s, box-shadow 0.2s;
+		}
+
+		.time-box {
+			text-align: center;
+		}
+
+		.time-box .num {
+			display: block;
+			font-size: 32px;
+			font-weight: 700;
+			color: #dc2626;
+			/* แดง TCAS */
+			line-height: 1;
+		}
+
+		.time-box .unit {
+			font-size: 13px;
+			color: #dc2626;
+			margin-top: 4px;
+			display: block;
+		}
+
+		.dd-btns {
+			display: flex;
+			justify-content: center;
+			gap: 12px;
+			margin-top: 12px;
+		}
+
+		.program-card {
+			position: relative;
+			border: 2px solid #f4c04e;
+			border-radius: 4px;
+			background: #ffffff;
+			padding: 14px 12px 12px;
+		}
+
+		.corner-flag {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 0;
+			height: 0;
+			border-top: 36px solid #f4c04e;
+			border-right: 36px solid transparent;
+		}
+
+		.program-card input[type="radio"] {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+		}
+
+		.program-logo {
+			position: absolute;
+			top: 12px;
+			right: 12px;
+			font-weight: bold;
+			color: #3c6e47;
+			font-size: 20px;
+		}
+
+		.program-text {
+			font-size: 16px;
+			line-height: 1.45;
+			padding-left: 22px;
+			padding-right: 40px;
+		}
+
+		.action-box {
+			font-size: 16px;
+		}
+
+		.site-body-wrapper {
+			position: relative;
+			min-height: 300px;
+			/* กันกระพริบ */
+		}
+
+		/* ซ่อน content ก่อน */
+		.site-body {
+			opacity: 0;
+		}
+
+		/* loading overlay */
+		.section-loading {
+			position: absolute;
+			inset: 0;
+			z-index: 10;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		/* spinner */
+		.spinner {
+			width: 42px;
+			height: 42px;
+			border: 4px solid #e5e7eb;
+			border-top-color: #2563eb;
+			border-radius: 50%;
+			animation: spin 0.9s linear infinite;
+		}
+
+		@keyframes spin {
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		/* ตอนโหลดเสร็จ */
+		.site-body-wrapper.loaded .section-loading {
+			display: none;
+		}
+
+		.site-body-wrapper.loaded .site-body {
+			opacity: 1;
+			transition: opacity 0.3s ease;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="root">
+		<div id="tcas">
+			<div class="t-loading"></div>
+			<header class="site-header">
+				<nav class="site-nav">
+					<ul>
+						<li class="m-home"><a href="https://www.mytcas.com/"><img src="assets/icon.svg" alt="TCAS Logo"
+									width="20" height="24"><span>หน้าแรก</span></a></li>
+						<li class="m-register"><a href="https://student.mytcas.com/"><svg
+									xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
+									viewBox="0 0 48 48">
+									<path
+										d="M 24 4 C 23.731 4 23.462156 4.0717969 23.222656 4.2167969 L 9.6132812 12.466797 C 7.2492813 13.898797 6 15.984 6 18.5 C 6 19.329 6.672 20 7.5 20 L 40.5 20 C 41.328 20 42 19.329 42 18.5 C 42 15.984 40.750719 13.898797 38.386719 12.466797 L 24.777344 4.2167969 C 24.537844 4.0717969 24.269 4 24 4 z M 24 11 C 25.105 11 26 11.895 26 13 C 26 14.105 25.105 15 24 15 C 22.895 15 22 14.105 22 13 C 22 11.895 22.895 11 24 11 z M 11.476562 21.978516 A 1.50015 1.50015 0 0 0 10 23.5 L 10 36.5 A 1.50015 1.50015 0 0 0 11.5 38 L 36.5 38 A 1.50015 1.50015 0 0 0 38 36.5 L 38 23.5 A 1.50015 1.50015 0 1 0 35 23.5 L 35 35 L 33 35 L 33 23.5 A 1.50015 1.50015 0 1 0 30 23.5 L 30 35 L 28 35 L 28 23.5 A 1.50015 1.50015 0 1 0 25 23.5 L 25 35 L 23 35 L 23 23.5 A 1.50015 1.50015 0 1 0 20 23.5 L 20 35 L 18 35 L 18 23.5 A 1.50015 1.50015 0 1 0 15 23.5 L 15 35 L 13 35 L 13 23.5 A 1.50015 1.50015 0 0 0 11.476562 21.978516 z M 7.5 40 A 1.50015 1.50015 0 1 0 7.5 43 L 40.5 43 A 1.50015 1.50015 0 1 0 40.5 40 L 7.5 40 z"
+										fill="currentColor"></path>
+								</svg><span>สถาบัน</span></a></li>
+						<li class="m-manual"><a href="https://course.mytcas.com/"><svg
+									xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
+									viewBox="0 0 48 48">
+									<path
+										d="M 24 6.0117188 C 22.96575 6.0117188 21.932156 6.2355937 20.972656 6.6835938 L 2.8652344 15.138672 C 2.3372344 15.384672 2 15.916047 2 16.498047 C 2 17.080047 2.3372344 17.611422 2.8652344 17.857422 L 20.972656 26.3125 C 21.949656 26.7685 22.974 26.996094 24 26.996094 C 25.026 26.996094 26.051344 26.7685 27.027344 26.3125 L 34 23.056641 L 34 35.503906 A 2.5 2.5 0 0 0 35.5 40 A 2.5 2.5 0 0 0 37 35.501953 L 37 21.835938 A 1.50015 1.50015 0 0 0 36.759766 20.765625 A 1.50015 1.50015 0 0 0 36.685547 20.664062 A 1.50015 1.50015 0 0 0 35.914062 20.138672 A 1.50015 1.50015 0 0 0 35.910156 20.136719 L 26.267578 15.666016 C 26.100483 15.481771 26 15.245683 26 14.998047 C 26 14.857047 26.03075 14.715078 26.09375 14.580078 C 26.32475 14.078078 26.921875 13.86175 27.421875 14.09375 L 37.857422 18.931641 C 38.554422 19.254641 39 19.953656 39 20.722656 L 45.134766 17.857422 C 45.154766 17.848422 45.160734 17.839078 45.177734 17.830078 C 45.465734 17.683078 45.712375 17.448813 45.859375 17.132812 C 46.209375 16.381813 45.884766 15.488672 45.134766 15.138672 L 27.027344 6.6835938 C 26.067844 6.2355937 25.03425 6.0117187 24 6.0117188 z M 10 24.396484 L 10 34.529297 C 10 36.678297 11.243969 38.636625 13.167969 39.515625 C 16.826969 41.186625 20.345875 42 23.921875 42 L 24 42 L 24.005859 42 C 26.723859 41.99 29.523422 41.503125 32.232422 40.578125 C 31.473422 39.773125 31 38.694 31 37.5 C 31 36.437 31.384 35.473125 32 34.703125 L 32 27.197266 L 27.873047 29.123047 C 26.635047 29.702047 25.332 29.996094 24 29.996094 C 22.668 29.996094 21.365953 29.702047 20.126953 29.123047 L 10 24.396484 z"
+										fill="currentColor"></path>
+								</svg><span><em class="_plus">ข้อมูล</em>หลักสูตร</span></a></li>
+						<li class="m-docs active"><a href="https://www.mytcas.com/docs/"><svg
+									xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
+									viewBox="0 0 48 48">
+									<path
+										d="M 13.5 4 C 10.467 4 8 6.467 8 9.5 L 8 36 L 8 37.5 L 8 38.5 C 8 41.519774 10.480226 44 13.5 44 L 39.5 44 A 1.50015 1.50015 0 1 0 39.5 41 L 13.5 41 C 12.273237 41 11.277238 40.152347 11.050781 39 L 39.5 39 C 40.329 39 41 38.329 41 37.5 L 41 9.5 C 41 6.467 38.533 4 35.5 4 L 35 4 L 35 20.5 C 35 21.029 34.720625 21.519062 34.265625 21.789062 C 34.029625 21.929063 33.765 22 33.5 22 C 33.253 22 33.00525 21.938406 32.78125 21.816406 L 28 19.207031 L 23.21875 21.816406 C 22.75475 22.070406 22.191375 22.060063 21.734375 21.789062 C 21.279375 21.520063 21 21.029 21 20.5 L 21 4 L 13.5 4 z M 24 4 L 24 17.972656 L 27.28125 16.183594 C 27.50425 16.061594 27.753 16 28 16 C 28.247 16 28.49575 16.061594 28.71875 16.183594 L 32 17.972656 L 32 4 L 24 4 z"
+										fill="currentColor"></path>
+								</svg><span>การสมัคร<em class="_plus"></em></span></a></li>
+					</ul>
+				</nav>
+			</header>
+			<div class="site-logo"><a href="https://student.mytcas.com/"><img src="assets/logo.svg" alt="TCAS Logo"
+						class="logo" width="160" height="50"></a></div>
+
+			<div class="site-body-wrapper">
+				<div class="section-loading">
+					<div class="spinner"></div>
+				</div>
+
+				<main class="site-body">
+					<div class="t-form">
+						<h1>การสมัคร</h1>
+						<div class="register-card" style="font-family: kvl;">
+							<div class="card-header">
+								<span style="font-weight: 700;">ข้อมูลการลงทะเบียน</span>
+								<a href="#" class="card-link" style="text-decoration: none;">รายละเอียด →</a>
+							</div>
+
+							<div class="card-body">
+								<div class="profile">
+									<img src="assets/phakchira.png" alt="student photo" />
+								</div>
+
+								<div class="info">
+									<div class="profile">
+										<p><span>ชื่อ </span> <b>นางสาวภัคจีรา หมื่นมะโน</b></p>
+										<p><span>โรงเรียน</span> <b>สุโขทัยวิทยาคม</b></p>
+										<p><span>จังหวัด</span> <b>สุโขทัย</b></p>
+										<p><span>หลักสูตร</span> <b>หลักสูตรแกนกลาง (สามัญ)</b></p>
+										<p><span>ปีการศึกษา</span> <b>2568</b></p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="apply-block" style="font-family: kvl; font-weight: 400;">
+							<div class="apply-header">
+								รอบการสมัคร
+							</div>
+
+							<div class="apply-row">
+								<div class="apply-round">
+									<span>รอบ</span>
+									<strong>1</strong>
+								</div>
+
+								<div class="apply-main">
+									<div class="apply-text">
+										<div class="apply-title">Portfolio</div>
+										<div class="apply-date">4 มี.ค. - 6 มี.ค. 68</div>
+									</div>
+
+									<div class="apply-dropdown">
+										<svg viewBox="0 0 24 24" width="20" height="20">
+											<path d="M6 9l6 6 6-6" fill="none" stroke="white" stroke-width="2" />
+										</svg>
+									</div>
+								</div>
+							</div>
+							<!-- DROPDOWN CONTENT -->
+							<div class="apply-dropdown-content">
+								<div class="dd-wrapper">
+
+									<img src="assets/failed.png" alt="">
+
+									<div class="dd-title">ขอแสดงความเสียใจ</div>
+									<div class="dd-sub">ท่านไม่ผ่านการคัดเลือกจากอันดับ</div>
+
+								</div>
+							</div>
+
+
+							<div class="apply-row quota">
+								<div class="apply-round quota-round">
+									<span>รอบ</span>
+									<strong>2</strong>
+								</div>
+
+								<div class="apply-main quota-main">
+									<div class="apply-text">
+										<div class="apply-title">Quota</div>
+										<div class="apply-date">2 พ.ค. - 4 พ.ค. 68</div>
+									</div>
+
+									<div class="apply-dropdown">
+										<svg viewBox="0 0 24 24" width="20" height="20">
+											<path d="M6 9l6 6 6-6" fill="none" stroke="white" stroke-width="2" />
+										</svg>
+									</div>
+								</div>
+							</div>
+							<div class="apply-row admission">
+								<div class="apply-round admission-round">
+									<span>รอบ</span>
+									<strong>3</strong>
+								</div>
+
+								<div class="apply-main admission-main">
+									<div class="apply-text">
+										<div class="apply-title">Admission</div>
+										<div class="apply-date">6 พ.ค. - 12 พ.ค. 68</div>
+									</div>
+
+									<div class="apply-dropdown">
+										<svg viewBox="0 0 24 24" width="20" height="20">
+											<path d="M6 9l6 6 6-6" fill="none" stroke="white" stroke-width="2" />
+										</svg>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</main>
+
+				<script>
+					/* toggle dropdown */
+					document.querySelectorAll('.apply-main').forEach((row) => {
+						row.addEventListener('click', () => {
+							const content = row.parentElement.nextElementSibling;
+
+							/* ปิดอันอื่น */
+							document.querySelectorAll('.apply-dropdown-content').forEach(d => {
+								if (d !== content) d.classList.remove('active');
+							});
+							document.querySelectorAll('.apply-main').forEach(m => {
+								if (m !== row) m.classList.remove('open');
+							});
+
+							/* toggle อันที่กด */
+							content.classList.toggle('active');
+							row.classList.toggle('open');
+						});
+					});
+
+					/* countdown */
+					function startCountdown(el) {
+						const deadline = new Date(el.dataset.deadline).getTime();
+
+						function tick() {
+							const now = Date.now();
+							let diff = Math.max(0, deadline - now);
+
+							const h = Math.floor(diff / 3600000);
+							diff %= 3600000;
+							const m = Math.floor(diff / 60000);
+							diff %= 60000;
+							const s = Math.floor(diff / 1000);
+
+							el.querySelector('.h').textContent = h;
+							el.querySelector('.m').textContent = m;
+							el.querySelector('.s').textContent = s;
+						}
+
+						tick();
+						setInterval(tick, 1000);
+					}
+
+					document.querySelectorAll('.dd-timer').forEach(startCountdown);
+
+					window.addEventListener('load', () => {
+						const wrapper = document.querySelector('.site-body-wrapper');
+
+						setTimeout(() => {
+							wrapper.classList.add('loaded');
+						}, 1500); // 2 วินาที
+					});
+				</script>
+
+
+</body>
+
+</html>
