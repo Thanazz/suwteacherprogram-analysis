@@ -567,11 +567,6 @@
 			/* กันกระพริบ */
 		}
 
-		/* ซ่อน content ก่อน */
-		.site-body {
-			opacity: 0;
-		}
-
 		/* loading overlay */
 		.section-loading {
 			position: absolute;
@@ -684,6 +679,21 @@
 				font-size: 13px;
 			}
 		}
+
+		.content-section-1,
+		.content-section-2 {
+			opacity: 0;
+		}
+
+		.site-body-wrapper.loaded .content-section-1 {
+			opacity: 1;
+			transition: opacity 0.3s ease;
+		}
+
+		.site-body-wrapper.loaded .content-section-2 {
+			opacity: 1;
+			transition: opacity 0.5s ease 1s;
+		}
 	</style>
 </head>
 
@@ -731,128 +741,127 @@
 				<main class="site-body show-h1">
 					<div class="t-form">
 						<h1>การสมัคร</h1>
-						
-						<div class="register-card" style="font-family: kvl;">
-							<div class="card-header">
-								<span style="font-weight: 700;">ข้อมูลการลงทะเบียน</span>
-								<a href="#" class="card-link" style="text-decoration: none;">รายละเอียด →</a>
-							</div>
 
-							<div class="card-body">
-								<div class="profile">
-									<img src="assets/phakchira.png" alt="student photo" />
+						<div class="content-section-1">
+							<div class="register-card" style="font-family: kvl;">
+								<div class="card-header">
+									<span style="font-weight: 700;">ข้อมูลการลงทะเบียน</span>
+									<a href="#" class="card-link" style="text-decoration: none;">รายละเอียด →</a>
 								</div>
 
-								<div class="info">
+								<div class="card-body">
 									<div class="profile">
-										<p><span>ชื่อ </span> <b>นางสาวภัคจีรา หมื่นมะโน</b></p>
-										<p><span>โรงเรียน</span> <b>สุโขทัยวิทยาคม</b></p>
-										<p><span>จังหวัด</span> <b>สุโขทัย</b></p>
-										<p><span>หลักสูตร</span> <b>หลักสูตรแกนกลาง (สามัญ)</b></p>
-										<p><span>ปีการศึกษา</span> <b>2568</b></p>
+										<img src="assets/phakchira.png" alt="student photo" />
+									</div>
+
+									<div class="info">
+										<div class="profile">
+											<p><span>ชื่อ </span> <b>นางสาวภัคจีรา หมื่นมะโน</b></p>
+											<p><span>โรงเรียน</span> <b>สุโขทัยวิทยาคม</b></p>
+											<p><span>จังหวัด</span> <b>สุโขทัย</b></p>
+											<p><span>หลักสูตร</span> <b>หลักสูตรแกนกลาง (สามัญ)</b></p>
+											<p><span>ปีการศึกษา</span> <b>2568</b></p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="portfolio-card">
+								<div class="portfolio-header">
+									แฟ้มสะสมผลงาน
+								</div>
+
+								<div class="portfolio-body">
+									<div class="portfolio-text">
+										<div class="portfolio-title">สร้างแฟ้มสะสมผลงาน</div>
+										<div class="portfolio-desc">
+											สร้างแฟ้มสะสมผลงานผ่านระบบ TCASfolio
+											เพื่อใช้ในการยื่นสมัครกับสถาบันต่าง ๆ
+										</div>
+
+										<button class="portfolio-btn">
+											<span class="icon">📁</span>
+											<span>สร้างแฟ้มสะสมผลงาน</span>
+										</button>
 									</div>
 								</div>
 							</div>
 						</div>
 
-						<div class="portfolio-card">
-							<div class="portfolio-header">
-								แฟ้มสะสมผลงาน
-							</div>
+						<div class="content-section-2">
+							<div class="apply-block" style="font-family: kvl; font-weight: 400;">
+								<div class="apply-header">
+									รอบการสมัคร
+								</div>
 
-							<div class="portfolio-body">
-								<div class="portfolio-text">
-									<div class="portfolio-title">สร้างแฟ้มสะสมผลงาน</div>
-									<div class="portfolio-desc">
-										สร้างแฟ้มสะสมผลงานผ่านระบบ TCASfolio
-										เพื่อใช้ในการยื่นสมัครกับสถาบันต่าง ๆ
+								<div class="apply-row">
+									<div class="apply-round">
+										<span>รอบ</span>
+										<strong>1</strong>
 									</div>
 
-									<button class="portfolio-btn">
-										<span class="icon">📁</span>
-										<span>สร้างแฟ้มสะสมผลงาน</span>
-									</button>
-								</div>
-							</div>
-						</div>
+									<div class="apply-main">
+										<div class="apply-text">
+											<div class="apply-title">Portfolio</div>
+											<div class="apply-date">ประกาศผลแล้ว</div>
+										</div>
 
-
-						<div class="apply-block" style="font-family: kvl; font-weight: 400;">
-							<div class="apply-header">
-								รอบการสมัคร
-							</div>
-
-							<div class="apply-row">
-								<div class="apply-round">
-									<span>รอบ</span>
-									<strong>1</strong>
-								</div>
-
-								<div class="apply-main">
-									<div class="apply-text">
-										<div class="apply-title">Portfolio</div>
-										<div class="apply-date">ประกาศผลแล้ว</div>
-									</div>
-
-									<div class="apply-dropdown">
-										<svg viewBox="0 0 24 24" width="20" height="20">
-											<path d="M6 9l6 6 6-6" fill="none" stroke="white" stroke-width="2" />
-										</svg>
+										<div class="apply-dropdown">
+											<svg viewBox="0 0 24 24" width="20" height="20">
+												<path d="M6 9l6 6 6-6" fill="none" stroke="white" stroke-width="2" />
+											</svg>
+										</div>
 									</div>
 								</div>
-							</div>
-							<!-- DROPDOWN CONTENT -->
-							<div class="apply-dropdown-content">
-								<div class="dd-wrapper">
-
-									<img src="assets/failed.png" alt="">
-
-									<div class="dd-title">ขอแสดงความเสียใจ</div>
-									<div class="dd-sub">ท่านไม่ผ่านการคัดเลือกจากอันดับ</div>
-
-								</div>
-							</div>
-
-
-							<div class="apply-row quota">
-								<div class="apply-round quota-round">
-									<span>รอบ</span>
-									<strong>2</strong>
+								<!-- DROPDOWN CONTENT -->
+								<div class="apply-dropdown-content">
+									<div class="dd-wrapper">
+										<img src="assets/failed.png" alt="">
+										<div class="dd-title">ขอแสดงความเสียใจ</div>
+										<div class="dd-sub">ท่านไม่ผ่านการคัดเลือกจากอันดับ</div>
+									</div>
 								</div>
 
-								<div class="apply-main quota-main">
-									<div class="apply-text">
-										<div class="apply-title">Quota</div>
-										<div class="apply-date">2 พ.ค. - 4 พ.ค. 68</div>
+								<div class="apply-row quota">
+									<div class="apply-round quota-round">
+										<span>รอบ</span>
+										<strong>2</strong>
 									</div>
 
-									<div class="apply-dropdown">
-										<svg viewBox="0 0 24 24" width="20" height="20">
-											<path d="M6 9l6 6 6-6" fill="none" stroke="white" stroke-width="2" />
-										</svg>
+									<div class="apply-main quota-main">
+										<div class="apply-text">
+											<div class="apply-title">Quota</div>
+											<div class="apply-date">2 พ.ค. - 4 พ.ค. 68</div>
+										</div>
+
+										<div class="apply-dropdown">
+											<svg viewBox="0 0 24 24" width="20" height="20">
+												<path d="M6 9l6 6 6-6" fill="none" stroke="white" stroke-width="2" />
+											</svg>
+										</div>
+									</div>
+								</div>
+
+								<div class="apply-row admission">
+									<div class="apply-round admission-round">
+										<span>รอบ</span>
+										<strong>3</strong>
+									</div>
+
+									<div class="apply-main admission-main">
+										<div class="apply-text">
+											<div class="apply-title">Admission</div>
+											<div class="apply-date">6 พ.ค. - 12 พ.ค. 68</div>
+										</div>
+
+										<div class="apply-dropdown">
+											<svg viewBox="0 0 24 24" width="20" height="20">
+												<path d="M6 9l6 6 6-6" fill="none" stroke="white" stroke-width="2" />
+											</svg>
+										</div>
 									</div>
 								</div>
 							</div>
-							<div class="apply-row admission">
-								<div class="apply-round admission-round">
-									<span>รอบ</span>
-									<strong>3</strong>
-								</div>
-
-								<div class="apply-main admission-main">
-									<div class="apply-text">
-										<div class="apply-title">Admission</div>
-										<div class="apply-date">6 พ.ค. - 12 พ.ค. 68</div>
-									</div>
-
-									<div class="apply-dropdown">
-										<svg viewBox="0 0 24 24" width="20" height="20">
-											<path d="M6 9l6 6 6-6" fill="none" stroke="white" stroke-width="2" />
-										</svg>
-									</div>
-								</div>
-							</div>
-
 						</div>
 					</div>
 				</main>
