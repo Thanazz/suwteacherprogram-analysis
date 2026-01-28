@@ -133,14 +133,6 @@ video {
   margin: 0 auto;
 }
 
-/* จอใหญ่เท่านั้น */
-@media (min-width: 1024px) {
-  img,
-  video {
-    margin-right: 0;
-  }
-}
-
 
 iframe {
   border: none;

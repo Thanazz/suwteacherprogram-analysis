@@ -561,53 +561,6 @@
 			font-size: 16px;
 		}
 
-		.site-body-wrapper {
-			position: relative;
-			min-height: 300px;
-			/* กันกระพริบ */
-		}
-
-		/* ซ่อน content ก่อน */
-		.site-body {
-			opacity: 0;
-		}
-
-		/* loading overlay */
-		.section-loading {
-			position: absolute;
-			inset: 0;
-			z-index: 10;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-
-		/* spinner */
-		.spinner {
-			width: 42px;
-			height: 42px;
-			border: 4px solid #e5e7eb;
-			border-top-color: #2563eb;
-			border-radius: 50%;
-			animation: spin 0.9s linear infinite;
-		}
-
-		@keyframes spin {
-			to {
-				transform: rotate(360deg);
-			}
-		}
-
-		/* ตอนโหลดเสร็จ */
-		.site-body-wrapper.loaded .section-loading {
-			display: none;
-		}
-
-		.site-body-wrapper.loaded .site-body {
-			opacity: 1;
-			transition: opacity 0.3s ease;
-		}
-
 		/* ===== Portfolio Card ===== */
 		.portfolio-card {
 			max-width: 900px;
@@ -684,6 +637,40 @@
 				font-size: 13px;
 			}
 		}
+
+		.section-loading {
+			position: fixed;
+			inset: 0;
+			background: rgba(255, 255, 255, 0.726);
+			display: none;
+			/* ซ่อนก่อน */
+			align-items: center;
+			justify-content: center;
+			z-index: 9999;
+		}
+
+		.btn-main.disabled {
+			opacity: 0.5;
+			pointer-events: none;
+			cursor: not-allowed;
+		}
+
+		/* ===== Spinner ===== */
+		.spinner {
+			width: 48px;
+			height: 48px;
+			border: 5px solid #e5e7eb;
+			border-top-color: #2563eb;
+			/* น้ำเงิน TCAS */
+			border-radius: 50%;
+			animation: spin 0.9s linear infinite;
+		}
+
+		@keyframes spin {
+			to {
+				transform: rotate(360deg);
+			}
+		}
 	</style>
 </head>
 
@@ -696,13 +683,13 @@
 					<ul>
 						<li class="m-home"><a href="https://www.mytcas.com/"><img src="assets/icon.svg" alt="TCAS Logo"
 									width="20" height="24"><span>หน้าแรก</span></a></li>
-						<li class="m-register"><a href="https://student.mytcas.com/"><svg
+						<li class="m-register active"><a href="https://student.mytcas.com/"><svg
 									xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
 									viewBox="0 0 48 48">
 									<path
-										d="M 24 4 C 23.731 4 23.462156 4.0717969 23.222656 4.2167969 L 9.6132812 12.466797 C 7.2492813 13.898797 6 15.984 6 18.5 C 6 19.329 6.672 20 7.5 20 L 40.5 20 C 41.328 20 42 19.329 42 18.5 C 42 15.984 40.750719 13.898797 38.386719 12.466797 L 24.777344 4.2167969 C 24.537844 4.0717969 24.269 4 24 4 z M 24 11 C 25.105 11 26 11.895 26 13 C 26 14.105 25.105 15 24 15 C 22.895 15 22 14.105 22 13 C 22 11.895 22.895 11 24 11 z M 11.476562 21.978516 A 1.50015 1.50015 0 0 0 10 23.5 L 10 36.5 A 1.50015 1.50015 0 0 0 11.5 38 L 36.5 38 A 1.50015 1.50015 0 0 0 38 36.5 L 38 23.5 A 1.50015 1.50015 0 1 0 35 23.5 L 35 35 L 33 35 L 33 23.5 A 1.50015 1.50015 0 1 0 30 23.5 L 30 35 L 28 35 L 28 23.5 A 1.50015 1.50015 0 1 0 25 23.5 L 25 35 L 23 35 L 23 23.5 A 1.50015 1.50015 0 1 0 20 23.5 L 20 35 L 18 35 L 18 23.5 A 1.50015 1.50015 0 1 0 15 23.5 L 15 35 L 13 35 L 13 23.5 A 1.50015 1.50015 0 0 0 11.476562 21.978516 z M 7.5 40 A 1.50015 1.50015 0 1 0 7.5 43 L 40.5 43 A 1.50015 1.50015 0 1 0 40.5 40 L 7.5 40 z"
+										d="M24 4A10 10 0 1024 24 10 10 0 1024 4zM36.021 28H11.979C9.785 28 8 29.785 8 31.979V33.5c0 3.312 1.885 6.176 5.307 8.063C16.154 43.135 19.952 44 24 44c7.706 0 16-3.286 16-10.5v-1.521C40 29.785 38.215 28 36.021 28z"
 										fill="currentColor"></path>
-								</svg><span>สถาบัน</span></a></li>
+								</svg><span>เข้าสู่ระบบ</span></a></li>
 						<li class="m-manual"><a href="https://course.mytcas.com/"><svg
 									xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
 									viewBox="0 0 48 48">
@@ -710,7 +697,7 @@
 										d="M 24 6.0117188 C 22.96575 6.0117188 21.932156 6.2355937 20.972656 6.6835938 L 2.8652344 15.138672 C 2.3372344 15.384672 2 15.916047 2 16.498047 C 2 17.080047 2.3372344 17.611422 2.8652344 17.857422 L 20.972656 26.3125 C 21.949656 26.7685 22.974 26.996094 24 26.996094 C 25.026 26.996094 26.051344 26.7685 27.027344 26.3125 L 34 23.056641 L 34 35.503906 A 2.5 2.5 0 0 0 35.5 40 A 2.5 2.5 0 0 0 37 35.501953 L 37 21.835938 A 1.50015 1.50015 0 0 0 36.759766 20.765625 A 1.50015 1.50015 0 0 0 36.685547 20.664062 A 1.50015 1.50015 0 0 0 35.914062 20.138672 A 1.50015 1.50015 0 0 0 35.910156 20.136719 L 26.267578 15.666016 C 26.100483 15.481771 26 15.245683 26 14.998047 C 26 14.857047 26.03075 14.715078 26.09375 14.580078 C 26.32475 14.078078 26.921875 13.86175 27.421875 14.09375 L 37.857422 18.931641 C 38.554422 19.254641 39 19.953656 39 20.722656 L 45.134766 17.857422 C 45.154766 17.848422 45.160734 17.839078 45.177734 17.830078 C 45.465734 17.683078 45.712375 17.448813 45.859375 17.132812 C 46.209375 16.381813 45.884766 15.488672 45.134766 15.138672 L 27.027344 6.6835938 C 26.067844 6.2355937 25.03425 6.0117187 24 6.0117188 z M 10 24.396484 L 10 34.529297 C 10 36.678297 11.243969 38.636625 13.167969 39.515625 C 16.826969 41.186625 20.345875 42 23.921875 42 L 24 42 L 24.005859 42 C 26.723859 41.99 29.523422 41.503125 32.232422 40.578125 C 31.473422 39.773125 31 38.694 31 37.5 C 31 36.437 31.384 35.473125 32 34.703125 L 32 27.197266 L 27.873047 29.123047 C 26.635047 29.702047 25.332 29.996094 24 29.996094 C 22.668 29.996094 21.365953 29.702047 20.126953 29.123047 L 10 24.396484 z"
 										fill="currentColor"></path>
 								</svg><span><em class="_plus">ข้อมูล</em>หลักสูตร</span></a></li>
-						<li class="m-docs active"><a href="https://www.mytcas.com/docs/"><svg
+						<li class="m-docs"><a href="https://www.mytcas.com/docs/"><svg
 									xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
 									viewBox="0 0 48 48">
 									<path
@@ -724,192 +711,71 @@
 						class="logo" width="160" height="50"></a></div>
 
 			<div class="site-body-wrapper">
-				<div class="section-loading">
+
+				<div class="section-loading" id="loginLoading">
 					<div class="spinner"></div>
 				</div>
 
-				<main class="site-body show-h1">
+				<main class="site-body">
 					<div class="t-form">
-						<h1>การสมัคร</h1>
-						
-						<div class="register-card" style="font-family: kvl;">
-							<div class="card-header">
-								<span style="font-weight: 700;">ข้อมูลการลงทะเบียน</span>
-								<a href="#" class="card-link" style="text-decoration: none;">รายละเอียด →</a>
-							</div>
-
-							<div class="card-body">
-								<div class="profile">
-									<img src="assets/phakchira.png" alt="student photo" />
-								</div>
-
-								<div class="info">
-									<div class="profile">
-										<p><span>ชื่อ </span> <b>นางสาวภัคจีรา หมื่นมะโน</b></p>
-										<p><span>โรงเรียน</span> <b>สุโขทัยวิทยาคม</b></p>
-										<p><span>จังหวัด</span> <b>สุโขทัย</b></p>
-										<p><span>หลักสูตร</span> <b>หลักสูตรแกนกลาง (สามัญ)</b></p>
-										<p><span>ปีการศึกษา</span> <b>2568</b></p>
-									</div>
-								</div>
+						<h1>ลงทะเบียน • เข้าสู่ระบบ</h1>
+						<p class="text-center"><img src="assets/thai_id.svg" width="213" height="122"
+								alt="Thai ID Card"></p>
+						<div class="t-box -info -half">เข้าระบบลงทะเบียนด้วย <b>เลขประจำตัวประชาชน 13 หลัก</b>
+							หากไม่มี ให้ใช้ <b>G Number</b> หรือ<b> Passport Number</b>
+							<div style="line-height: 16px;"><small class="color-orange"><br>คำแนะนำ:
+									โปรดศึกษารายละเอียดและรูปแบบการให้คะแนนของแบบทดสอบทาง <a target="_blank"
+										href="https://www.mytcas.com/blueprint"><u>blueprint.mytcas.com</u></a>
+									โดยเฉพาะวิชา TGAT ตอนที่ 3 ส่วนที่ 1
+									การสร้างคุณค่าและนวัตกรรม<br><br>ก่อนทำข้อสอบโปรดอ่านคำสั่งและการให้คะแนนแต่ละส่วนแต่ละข้อให้ละเอียด</small>
 							</div>
 						</div>
-
-						<div class="portfolio-card">
-							<div class="portfolio-header">
-								แฟ้มสะสมผลงาน
-							</div>
-
-							<div class="portfolio-body">
-								<div class="portfolio-text">
-									<div class="portfolio-title">สร้างแฟ้มสะสมผลงาน</div>
-									<div class="portfolio-desc">
-										สร้างแฟ้มสะสมผลงานผ่านระบบ TCASfolio
-										เพื่อใช้ในการยื่นสมัครกับสถาบันต่าง ๆ
-									</div>
-
-									<button class="portfolio-btn">
-										<span class="icon">📁</span>
-										<span>สร้างแฟ้มสะสมผลงาน</span>
-									</button>
-								</div>
-							</div>
+						<div class="t-row">
+							<div class="col required"><label class="has-meta"><span>เลขประจำตัว</span></label><input
+									type="text" class="" required="" value="" id="citizenInput"></div>
 						</div>
-
-
-						<div class="apply-block" style="font-family: kvl; font-weight: 400;">
-							<div class="apply-header">
-								รอบการสมัคร
-							</div>
-
-							<div class="apply-row">
-								<div class="apply-round">
-									<span>รอบ</span>
-									<strong>1</strong>
-								</div>
-
-								<div class="apply-main">
-									<div class="apply-text">
-										<div class="apply-title">Portfolio</div>
-										<div class="apply-date">ประกาศผลแล้ว</div>
-									</div>
-
-									<div class="apply-dropdown">
-										<svg viewBox="0 0 24 24" width="20" height="20">
-											<path d="M6 9l6 6 6-6" fill="none" stroke="white" stroke-width="2" />
-										</svg>
-									</div>
-								</div>
-							</div>
-							<!-- DROPDOWN CONTENT -->
-							<div class="apply-dropdown-content">
-								<div class="dd-wrapper">
-
-									<img src="assets/failed.png" alt="">
-
-									<div class="dd-title">ขอแสดงความเสียใจ</div>
-									<div class="dd-sub">ท่านไม่ผ่านการคัดเลือกจากอันดับ</div>
-
-								</div>
-							</div>
-
-
-							<div class="apply-row quota">
-								<div class="apply-round quota-round">
-									<span>รอบ</span>
-									<strong>2</strong>
-								</div>
-
-								<div class="apply-main quota-main">
-									<div class="apply-text">
-										<div class="apply-title">Quota</div>
-										<div class="apply-date">2 พ.ค. - 4 พ.ค. 68</div>
-									</div>
-
-									<div class="apply-dropdown">
-										<svg viewBox="0 0 24 24" width="20" height="20">
-											<path d="M6 9l6 6 6-6" fill="none" stroke="white" stroke-width="2" />
-										</svg>
-									</div>
-								</div>
-							</div>
-							<div class="apply-row admission">
-								<div class="apply-round admission-round">
-									<span>รอบ</span>
-									<strong>3</strong>
-								</div>
-
-								<div class="apply-main admission-main">
-									<div class="apply-text">
-										<div class="apply-title">Admission</div>
-										<div class="apply-date">6 พ.ค. - 12 พ.ค. 68</div>
-									</div>
-
-									<div class="apply-dropdown">
-										<svg viewBox="0 0 24 24" width="20" height="20">
-											<path d="M6 9l6 6 6-6" fill="none" stroke="white" stroke-width="2" />
-										</svg>
-									</div>
-								</div>
-							</div>
-
+						<div class="action">
+							<a class="btn-main cursor-pointer disabled" id="loginBtn">เข้าสู่ระบบ</a>
+							<p><a class="btn-thaid cursor-pointer"><img alt="ThaiD" src="assets/thaid.svg" width="32"
+										height="32"><span>ดำเนินการต่อด้วย ThaiD</span></a></p>
 						</div>
 					</div>
 				</main>
 
 				<script>
-					/* toggle dropdown */
-					document.querySelectorAll('.apply-main').forEach((row) => {
-						row.addEventListener('click', () => {
-							const content = row.parentElement.nextElementSibling;
+					const input = document.getElementById("citizenInput");
+					const loginBtn = document.getElementById("loginBtn");
+					const loading = document.getElementById("loginLoading");
 
-							/* ปิดอันอื่น */
-							document.querySelectorAll('.apply-dropdown-content').forEach(d => {
-								if (d !== content) d.classList.remove('active');
-							});
-							document.querySelectorAll('.apply-main').forEach(m => {
-								if (m !== row) m.classList.remove('open');
-							});
-
-							/* toggle อันที่กด */
-							content.classList.toggle('active');
-							row.classList.toggle('open');
-						});
+					// ตอนพิมพ์ข้อความ
+					input.addEventListener("input", function () {
+						if (this.value.trim() !== "") {
+							loginBtn.classList.remove("disabled");
+							loginBtn.style.pointerEvents = "auto";
+						} else {
+							loginBtn.classList.add("disabled");
+							loginBtn.style.pointerEvents = "none";
+						}
 					});
 
-					/* countdown */
-					function startCountdown(el) {
-						const deadline = new Date(el.dataset.deadline).getTime();
+					// ตอนกดเข้าสู่ระบบ
+					loginBtn.addEventListener("click", function (e) {
+						e.preventDefault();
 
-						function tick() {
-							const now = Date.now();
-							let diff = Math.max(0, deadline - now);
+						// กันกดตอนยัง disabled
+						if (loginBtn.classList.contains("disabled")) return;
 
-							const h = Math.floor(diff / 3600000);
-							diff %= 3600000;
-							const m = Math.floor(diff / 60000);
-							diff %= 60000;
-							const s = Math.floor(diff / 1000);
+						// แสดง loading
+						loading.style.display = "flex";
+						loginBtn.style.pointerEvents = "none";
 
-							el.querySelector('.h').textContent = h;
-							el.querySelector('.m').textContent = m;
-							el.querySelector('.s').textContent = s;
-						}
-
-						tick();
-						setInterval(tick, 1000);
-					}
-
-					document.querySelectorAll('.dd-timer').forEach(startCountdown);
-
-					window.addEventListener('load', () => {
-						const wrapper = document.querySelector('.site-body-wrapper');
-
+						// จำลองโหลด 2 วินาที
 						setTimeout(() => {
-							wrapper.classList.add('loaded');
-						}, 1500); // 2 วินาที
+							window.location.href = "fail.html"; // เปลี่ยน URL ได้
+						}, 2000);
 					});
 				</script>
+
 
 
 </body>
