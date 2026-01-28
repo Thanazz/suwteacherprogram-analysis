@@ -1,31 +1,31 @@
-/* @font-face {
+@font-face {
   font-family: "kvl";
-  src: url("font/kvl-bold.woff2") format("woff2");
+  src: url("fonts/kvl-bold.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
   font-display: fallback;
 }
 @font-face {
   font-family: "kvl";
-  src: url("font/kvl-reg.woff2") format("woff2");
+  src: url("fonts/kvl-reg.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: fallback;
 }
 @font-face {
   font-family: "tt";
-  src: url("font/tt-bold.woff2") format("woff2");
+  src: url("fonts/tt-bold.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
   font-display: fallback;
 }
 @font-face {
   font-family: "tt";
-  src: url("font/tt-reg.woff2") format("woff2");
+  src: url("fonts/tt-reg.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: fallback;
-} */
+}
 
 @font-face {
     font-family: "kvl";
@@ -2072,6 +2072,7 @@ textarea {
   padding: var(--s-box);
   border-radius: 3px;
   margin: 0 auto var(--s-space);
+  font-family: "tt";
 }
 .r-all .t-box {
   box-shadow: none;
