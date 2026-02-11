@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Copy Preset Text</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+        }
+
+        .copy-card {
+            transition: .2s ease;
+        }
+
+        .copy-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+        }
+
+        .copy-text {
+            white-space: pre-line;
+            font-size: .95rem;
+        }
+
+        .toggle-btn,
+        .toggle-btn i {
+            cursor: pointer;
+        }
+
+        .main-fa i {
+            font-size: 30px;
+            transition: .15s ease;
+            color: gray;
+        }
+
+        .main-fa i:hover {
+            transform: scale(1.2);
+            color: rgb(68, 65, 65);
+            /* bootstrap primary */
+        }
+
+        .swal2-popup {
+            font-size: .9rem !important;
+            border-radius: 14px !important;
+        }
+    </style>
+</head>
+
+<body class="py-5">
+
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Copy Text Collection</h2>
+            <p class="text-muted">กดปุ่มเพื่อคัดลอกข้อความที่ต้องการ</p>
+        </div>
+
+        <div class="row g-4" id="list">
+
+            <!-- ITEM 1 -->
+            <div class="col-md-6">
+                <div class="card copy-card border-0 rounded-4 h-100">
+                    <div class="card-body">
+                        <h5 class="fw-semibold">1. สรุปผลการศึกษาค้นคว้า</h5>
+                        <div class="copy-text text-secondary mb-3 d-none" data-copy>
+                            จากการศึกษาพบว่า ชาวบ้านเตว็ดนอกประกอบอาชีพทำไร่ยาสูบสืบทอดต่อกันมาตั้งแต่สมัยบรรพบุรุษจนถึงปัจจุบัน เนื่องจากยาสูบเป็นพืชที่ให้รายได้ดีกว่าการทำเกษตรประเภทอื่นเช่นข้าวโพด, ผักกะหล่ำปลี อีกทั้งสภาพพื้นที่มีข้อจำกัดด้านน้ำทำให้ทำนาได้เพียงบางช่วงเวลา การปลูกยาสูบจึงเป็นอาชีพหลักที่ช่วยสร้างรายได้และความมั่นคงให้กับครอบครัวในชุมชน ผลผลิตยาสูบจะเก็บเกี่ยวในช่วงปลายฤดูหนาวต่อเนื่องถึงฤดูร้อน โดยเริ่มประมาณเดือนมกราคม–กุมภาพันธ์ และสิ้นสุดราวเดือนเมษายน–พฤษภาคม ทั้งนี้ขึ้นอยู่กับช่วงเวลาการปลูกและอายุของต้นยาสูบซึ่งใช้เวลาประมาณ 60 วันจึงเก็บเกี่ยวได้ กระบวนการทำไร่ยาสูบเริ่มจากการเพาะเมล็ดในแปลงเพาะหรือถาดเพาะ แล้วย้ายลงถาดหลุมเลี้ยงต่อประมาณ 20–30 วัน ก่อนย้ายปลูกลงแปลงที่เตรียมโดยการไถพรวน ขุดหลุม และใส่ปุ๋ย หลังปลูกจะให้น้ำตามร่องหรือที่เรียกว่าไล่น้ำ พร้อมใส่ปุ๋ยและป้องกันแมลง เมื่อต้นโตจะเด็ดดอกและเก็บใบตามลำดับ จากนั้นนำมาร้อยหรือแขวนตากให้แห้ง ปรับความชื้น คัดแยกคุณภาพ อัดกำ และจำหน่าย โดยบางครัวเรือนใช้ระบบน้ำหยดแทนการปล่อยน้ำเข้าร่องแต่ขั้นตอนโดยรวมใกล้เคียงกัน การเก็บรักษาจะนำใบยาสูบที่เก็บแล้วแขวนในที่ร่มให้แห้งก่อน แล้วอัดเป็นฟ่อนเพื่อพักลดความชื้น ก่อนอัดรวมเป็นก้อนใหญ่ประมาณ 60–70 กิโลกรัม ระหว่างเก็บต้องไม่อัดแน่นและต้องระบายอากาศ หากความชื้นสูงอาจทำให้ใบเน่าหรือขึ้นราได้ โดยทั่วไปควบคุมความชื้นไม่เกินประมาณ 16% การจำหน่ายจะทำสัญญาหรือขึ้นโควตากับโรงงานรับซื้อและนำไปส่งตามกำหนด โดยโรงงานจะคัดเกรดก่อนกำหนดราคา ด้านรายได้ การปลูกยาสูบให้ผลตอบแทนค่อนข้างดี บางรายได้กำไรประมาณไร่ละสองหมื่นบาทและมีราคาประกันรับซื้อ ทำให้ยังเป็นอาชีพหลักของชุมชน อย่างไรก็ตามยังมีความเสี่ยงสูงจากสภาพอากาศ เช่น ฝนหลงฤดู ฝนตกหนัก ภัยแล้ง หรืออากาศหนาว รวมถึงโรคและแมลงศัตรูพืช ซึ่งอาจทำให้ผลผลิตเสียหายและต้นทุนเพิ่มขึ้น จึงสรุปได้ว่าการปลูกยาสูบให้รายได้ดี ขึ้นอยู่กับสภาพอากาศในแต่ละปีแต่ก็มีโอกาสขาดทุนได้เช่นกัน
+                        </div>
+                        <div class="d-flex justify-content-center gap-3 mb-2 main-fa">
+                            <i class="fa-solid fa-eye eye-toggle" style="cursor:pointer;"></i>
+                            <i class="fa-solid fa-copy copy-btn" style="cursor:pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ITEM 2 -->
+            <div class="col-md-6">
+                <div class="card copy-card border-0 rounded-4 h-100">
+                    <div class="card-body">
+                        <h5 class="fw-semibold">2. อภิปรายผลการศึกษาค้นคว้า</h5>
+                        <div class="copy-text text-secondary mb-3 d-none" data-copy>
+                            จากการศึกษาค้นคว้าเรื่องการทำไร่ยาสูบของชาวบ้านเตว็ดนอก พบว่า ผลการศึกษาสอดคล้องกับวัตถุประสงค์และสมมติฐานที่กำหนดไว้ กล่าวคือชาวบ้านเตว็ดนอกประกอบอาชีพทำไร่ยาสูบมาตั้งแต่อดีตจนถึงปัจจุบันจริง เนื่องจากเป็นอาชีพที่สืบทอดกันมาและเหมาะสมกับสภาพพื้นที่ที่ทำนาได้จำกัด จึงเป็นอาชีพหลักของชุมชน อีกทั้งพบว่าชาวบ้านมีขั้นตอนการทำไร่ยาสูบที่เป็นลำดับชัดเจนตั้งแต่เพาะกล้า ปลูก ดูแล เก็บเกี่ยว ตาก และจำหน่าย ซึ่งสามารถเข้าใจได้ไม่ยาก ในด้านฤดูกาลเก็บเกี่ยวพบว่าส่วนใหญ่เก็บในช่วงปลายฤดูหนาวต่อเนื่องถึงฤดูร้อน จึงเป็นไปตามสมมติฐานที่ตั้งไว้ ส่วนการเก็บรักษาใบยาสูบก่อนจำหน่ายชาวบ้านมีวิธีแขวนผึ่งในที่ร่ม ควบคุมความชื้น และอัดก้อนก่อนส่งขาย แสดงให้เห็นว่ามีวิธีการดูแลผลผลิตก่อนจำหน่ายอย่างเป็นระบบ ด้านรายได้พบว่ายาสูบให้รายได้ค่อนข้างดีและสามารถเลี้ยงชีพได้ แต่ยังขึ้นอยู่กับราคาตลาดและสภาพอากาศ จึงแม้จะสอดคล้องกับสมมติฐานเรื่องรายได้เพียงพอต่อการดำรงชีวิต แต่ยังมีความเสี่ยงต่อการขาดทุนหากเกิดความเสียหายจากภัยธรรมชาติ เช่น ฝนหลงฤดู ฝนตกหนัก หรือภัยแล้ง ปัญหาและอุปสรรคในการศึกษา คือข้อมูลจากผู้ให้สัมภาษณ์บางส่วนแตกต่างกันตามประสบการณ์และช่วงเวลาการทำงาน รวมถึงการนัดสัมภาษณ์ต้องอาศัยเวลาว่างของเกษตรกร ทำให้การเก็บข้อมูลทำได้จำกัด สำหรับผู้ที่สนใจศึกษาเรื่องใกล้เคียงควรศึกษาต้นทุนการผลิตอย่างละเอียด เปรียบเทียบความคุ้มค่ากับข้าวโพด, ผักกะหล่ำปลี และศึกษาผลกระทบของสภาพอากาศต่อผลผลิต เพื่อให้เห็นความเสี่ยงและความเหมาะสมของอาชีพได้ชัดเจนยิ่งขึ้น
+                        </div>
+                        <div class="d-flex justify-content-center gap-3 mb-2 main-fa">
+                            <i class="fa-solid fa-eye eye-toggle" style="cursor:pointer;"></i>
+                            <i class="fa-solid fa-copy copy-btn" style="cursor:pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ITEM 3 -->
+            <div class="col-md-6">
+                <div class="card copy-card border-0 rounded-4 h-100">
+                    <div class="card-body">
+                        <h5 class="fw-semibold">3. ที่มาและความสำคัญ</h5>
+                        <div class="copy-text text-secondary mb-3 d-none" data-copy>
+                            ยาสูบ มีแหล่งกำเนิดตอนกลางของทวีปอเมริกา ที่ซานซัลวาดอร์ในหมู่เกาะอินดีสตะวันตก มีลำต้นสูงตั้งแต่ 1.00 - 2.50 เมตร ใบรียาว ประมาณ 90 เซนติเมตร กว้าง 30 เซนติเมตร ดอกมีหลายสีตามแต่ชนิด ดอกยาสูบเป็นดอกสมบูรณ์เพศ ทำให้ยาสูบสามารถแพร่พันธุ์ได้ด้วยตนเอง โดยไม่ต้องพึ่งพาอาศัยแมลง ธรรมชาติของยาสูบแตกต่างจากพืชอื่นใบของยาสูบมีสารประกอบไนโตรเจนจนหมู่หนึ่งที่เรียกว่า “แอลคาลอยด์” ซึ่งมีนิโคตินเป็นส่วนใหญ่นิโคตินเป็นองค์ประกอบที่ทำให้เกิดลักษณะเฉพาะตัวของยาสูบ การทำไร่ยาสูบในประเทศไทยไม่มีหลักฐานแน่ชัดว่าใครเป็นผู้นำยาสูบเข้ามา มีเพียงแค่บันทึกของหมอสอนศาสนาชาวฝรั่งเศสในสมัยสมเด็จพระนารายณ์มหาราช จนสมัยรัชกาลที่ 5 มีบริษัท British American Tobacco (B.A.T.) ได้ทดลองการปลูกยาสูบที่จังหวัดเชียงใหม่และเชียงรายซึ่งได้ผลดี และเป็นจุดเริ่มของการส่งเสริมการปลูกยาสูบเวอร์จิเนียในประเทศต่อมาเมื่อ พ.ศ. 2482 รัฐบาลได้ผูกขาดกิจการยาสูบโดยการซื้อโรงงานและกิจการจากเอกชนทั้งหมด ทำให้อุตสาหกรรมยาสูบไทยขยายตัวอย่างมั่นคง และยังได้มีการทดลองและส่งเสริมการปลูกพันธุ์ยาสูบต่าง ๆ เช่น เวอร์จิเนีย เบอร์เลย์ และเตอร์กิซ จนพัฒนาเป็นรากฐานสำคัญของอุตสาหกรรมยาสูบไทยในปัจจุบันจากการที่ครอบครัวของผู้ศึกษามีพื้นเพอยู่ในพื้นที่ที่มีการปลูกยาสูบ และได้รับฟังเรื่องราวเกี่ยวกับการปลูกและการใช้ประโยชน์จากยาสูบเพื่อนำมาหารายได้มาโดยตลอด จึงเกิดความสนใจอยากศึกษาเรื่องยาสูบ เพื่อเรียนรู้ทั้งด้านประวัติ ความสำคัญ รวมถึงผลกระทบที่เกิดขึ้นต่อชุมชน
+                        </div>
+                        <div class="d-flex justify-content-center gap-3 mb-2 main-fa">
+                            <i class="fa-solid fa-eye eye-toggle" style="cursor:pointer;"></i>
+                            <i class="fa-solid fa-copy copy-btn" style="cursor:pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ITEM 4 -->
+            <div class="col-md-6">
+                <div class="card copy-card border-0 rounded-4 h-100">
+                    <div class="card-body">
+                        <h5 class="fw-semibold">4. คำถามในการศึกษา</h5>
+                        <div class="copy-text text-secondary mb-3 d-none" data-copy>
+	1)  ชาวบ้านเตว็ดนอกเริ่มทำไร่ยาสูบกันมาตั้งแต่เมื่อไหร่ อย่างไร เพราะเหตุใด
+	2)  ชาวบ้านเตว็ดนอกเก็บเกี่ยวผลผลิตจากการทำไร่ยาสูบในช่วงฤดูใดของปี
+	3)  ชาวบ้านเตว็ดนอกมีวิธีการและกระบวนการการทำไร่ยาสูบอย่างไร
+	4)  ชาวบ้านเตว็ดนอกมีวิธีการเก็บรักษาใบยาสูบอย่างไรก่อนนำส่งขาย และสามารถนำใบยาสูบไปขายที่ไหนได้บ้าง อย่างไร
+	5)  การทำไร่ยาสูบของชาวบ้านเตว็ดนอกมีความเสี่ยงต่อการขาดทุนหรือไม่ อย่างไร
+                        </div>
+                        <div class="d-flex justify-content-center gap-3 mb-2 main-fa">
+                            <i class="fa-solid fa-eye eye-toggle" style="cursor:pointer;"></i>
+                            <i class="fa-solid fa-copy copy-btn" style="cursor:pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ITEM 5 -->
+            <div class="col-md-6">
+                <div class="card copy-card border-0 rounded-4 h-100">
+                    <div class="card-body">
+                        <h5 class="fw-semibold">5. วัตถุประสงค์ในการศึกษา</h5>
+                        <div class="copy-text text-secondary mb-3 d-none" data-copy>
+1)  รู้และเข้าใจชาวบ้านเตว็ดนอกเริ่มมีการทำไร่ยาสูบตั้งแต่เมื่อไหร่
+	2)  รู้และเข้าใจการเลือกเวลาและฤดูการในการเก็บใบยาสูบของชาวบ้านเตว็ดนอก
+	3)  รู้และเข้าใจขั้นตอนการทำไรยาสูบของชาวบ้านเตว็ดนอก
+	4)  รู้และเข้าใจวิธีการเก็บรักษาใบยาสูบก่อนนำส่งให้ผู้รับเหมาของชาวบ้านเตว็ดนอก
+	5)  รู้และเข้าใจรายได้จากการขายใบยาสูบของชาวบ้านเตว็ดนอก
+                        </div>
+                        <div class="d-flex justify-content-center gap-3 mb-2 main-fa">
+                            <i class="fa-solid fa-eye eye-toggle" style="cursor:pointer;"></i>
+                            <i class="fa-solid fa-copy copy-btn" style="cursor:pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ITEM 6 -->
+            <div class="col-md-6">
+                <div class="card copy-card border-0 rounded-4 h-100">
+                    <div class="card-body">
+                        <h5 class="fw-semibold">6. สมมุติฐาน</h5>
+                        <div class="copy-text text-secondary mb-3 d-none" data-copy>
+	1)  ชาวบ้านเตว็ดนอกเริ่มทำไร่ยาสูบกันมาตั้งแต่อดีตจนถึงปัจจุบัน
+	2)  ชาวบ้านเตว็ดนอกมีขั้นตอนการทำไร่ยาสูบที่เข้าใจง่าย
+	3)  ชาวบ้านเตว็ดนอกนิยมเก็บเกี่ยวผลผลิตจากการทำไร่ยาสูบในช่วงฤดูร้อนและฤดูหนาว
+	4)  ชาวบ้านเตว็ดนอกมีวิธีการเก็บรักษาโดยใบยาสูบก่อนนำส่งขาย
+	5)  รายได้ของการทำไร่ยาสูบของชาวบ้านเตว็ดนอกมีรายได้จากการทำไร่ยาสูบเพียงพอต่อการดำรงชีวิตประจำวัน
+                        </div>
+                        <div class="d-flex justify-content-center gap-3 mb-2 main-fa">
+                            <i class="fa-solid fa-eye eye-toggle" style="cursor:pointer;"></i>
+                            <i class="fa-solid fa-copy copy-btn" style="cursor:pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ITEM 7 -->
+            <div class="col-md-6">
+                <div class="card copy-card border-0 rounded-4 h-100">
+                    <div class="card-body">
+                        <h5 class="fw-semibold">7. ขอบเขตการศึกษา</h5>
+                        <div class="copy-text text-secondary mb-3 d-none" data-copy>
+                            	ตัวแปรที่ศึกษา
+		การทำไร่ยาสูบของชาวบ้านเตว็ดนอก
+	ประชากรและกลุ่มตัวอย่าง
+		ประชากร  คือ  ประชาชนที่ประกอบอาชีพหรืออาศัยอยู่ ตำบลทับผึ้ง อำเภอศรีสำโรง  จังหวัดสุโขทัย
+                        </div>
+                        <div class="d-flex justify-content-center gap-3 mb-2 main-fa">
+                            <i class="fa-solid fa-eye eye-toggle" style="cursor:pointer;"></i>
+                            <i class="fa-solid fa-copy copy-btn" style="cursor:pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ITEM 8 -->
+            <div class="col-md-6">
+                <div class="card copy-card border-0 rounded-4 h-100">
+                    <div class="card-body">
+                        <h5 class="fw-semibold">8. นิยามศัพท์เฉพาะ</h5>
+                        <div class="copy-text text-secondary mb-3 d-none" data-copy>
+                            ยาสูบ หมายถึง พืชใบเลี้ยงคู่ และเป็นพืชฤดูเดียว ที่ต้องเพาะเมล็ดปลูกกันใหม่ทุกปี ใบคือ ส่วนที่เรานำมาใช้ประโยชน์ต่างๆ รากมีคุณสมบัติพิเศษเฉพาะตัว คือ ผลิตสารที่เรียกว่า "นิโคติน" เมื่อผลิตแล้ว ส่งมาเก็บไว้ที่ใบ ก่อนที่จะนำใบยาสูบเหล่านี้มาใช้ประโยชน์ เราจะนำใบมาบ่มให้แห้ง ด้วยวิธีใช้ความร้อนจากไฟ จากแสงแดด หรือนำไปแขวนให้แห้งในร่ม เช่น ใต้ถุนบ้าน ทั้งนี้แล้วแต่ประเภทของยาสูบ
+                        </div>
+                        <div class="d-flex justify-content-center gap-3 mb-2 main-fa">
+                            <i class="fa-solid fa-eye eye-toggle" style="cursor:pointer;"></i>
+                            <i class="fa-solid fa-copy copy-btn" style="cursor:pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ITEM 9 -->
+            <div class="col-md-6">
+                <div class="card copy-card border-0 rounded-4 h-100">
+                    <div class="card-body">
+                        <h5 class="fw-semibold">9. ประโยชน์ที่คาดว่าจะได้รับ</h5>
+                        <div class="copy-text text-secondary mb-3 d-none" data-copy>
+                            รู้และเข้าใจประวัติความเป็นมาของการทำไร่ยาสูบ วิธีการปลูก การดูแล การเก็บรักษา และการขายของชาวบ้านเตว็ดนอก ตลอดจนเห็นข้อดี ข้อจำกัด และความเสี่ยงของอาชีพการทำไร่ยาสูบมากขึ้น
+                        </div>
+                        <div class="d-flex justify-content-center gap-3 mb-2 main-fa">
+                            <i class="fa-solid fa-eye eye-toggle" style="cursor:pointer;"></i>
+                            <i class="fa-solid fa-copy copy-btn" style="cursor:pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelectorAll('.eye-toggle').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const text = btn.closest('.card-body').querySelector('[data-copy]');
+                text.classList.toggle('d-none');
+                btn.classList.toggle('fa-eye');
+                btn.classList.toggle('fa-eye-slash');
+            });
+        });
+
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+
+                const text = btn.closest('.card-body')
+                    .querySelector('[data-copy]')
+                    .innerText
+                    .trim();
+
+                if (!text) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'ไม่มีข้อความ',
+                        text: 'หัวข้อนี้ยังไม่ได้ใส่ข้อความ',
+                        confirmButtonText: 'โอเค'
+                    });
+                    return;
+                }
+
+                await navigator.clipboard.writeText(text);
+
+                // icon เขียว
+                btn.classList.add('text-success');
+                setTimeout(() => btn.classList.remove('text-success'), 1200);
+
+                // SweetAlert2
+                Swal.fire({
+                    icon: 'success',
+                    title: 'คัดลอกแล้ว',
+                    text: 'ข้อความถูกคัดลอกไปยัง Clipboard',
+                    timer: 1300,
+                    showConfirmButton: false,
+                    toast: true,
+                    position: 'top-end'
+                });
+
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
