@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Dialogue Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        header {
+            top: 10px;
+            position: relative;
+        }
+
+        .alert {
+            width: 60%;
+        }
+
+        .red-text {
+            color: #dc3545;
+        }
+
+        .green-text {
+            color: #28a745;
+        }
+
+        .current-word {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #17a2b8;
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+
+    <header>
+        <a href="/goal" class="btn btn-primary">Home</a>
+        <a href="../chinese" class="btn btn-primary">Back?</a>
+    </header>
+
+    <div class="container">
+        <br><br><br>
+        <h2>English Dialogue Quiz</h2>
+
+        <!-- Speaker 1 question shown here -->
+        <div id="currentWord" class="current-word">Click Submit to start!</div>
+
+        <form id="myForm">
+            <div class="form-group">
+                <label for="inputText">Speaker 2 ตอบว่า (พิมพ์ทั้งประโยค):</label>
+                <input type="text" class="form-control" id="inputText" placeholder="Type Speaker 2's full sentence..."
+                    onkeydown="handleKeyDown(event)" autocomplete="off">
+            </div><br>
+            <button type="button" class="btn btn-primary" onclick="validateText()">Submit</button>
+            <button type="button" class="btn btn-primary" onclick="giveUp()">Give Up</button>
+        </form><br>
+
+        <div id="result"></div>
+        <div id="wordCount"></div>
+        <div id="timer"></div>
+        <div id="missedTerms"></div>
+    </div>
+
+    <script>
+        var pairs = [
+            {
+                q: "Hey, I saw you carrying a big bag earlier. What did you buy?",
+                a: "Oh I went to the weekend market. I bought some fresh fruit and a new shirt."
+            },
+            {
+                q: "Nice! That shirt looks good on you. How much was it?",
+                a: "It was 250 baht not too bad right?"
+            },
+            {
+                q: "Yeah, that's a fair price. Did you bargain with the seller?",
+                a: "A little he want 300 baht at first but i ask politely and he gave me a discount"
+            },
+            {
+                q: "Good job! And what about the fruit? How much was it?",
+                a: "The mangoes were 80 baht for a kilo and the bananas were 40 baht"
+            },
+            {
+                q: "That's cheap compared to the supermarket.",
+                a: "Exactly Thats why I love the market You get fresh food for less money"
+            },
+            {
+                q: "Next time, I'll go with you. Maybe you can teach me how to bargain.",
+                a: "Sure its all about being friendly and smiling"
+            }
+        ];
+
+        var currentIndex = 0;
+        var timerSeconds = 90;
+        var timerStarted = false;
+        var timerInterval;
+        var missedList = [];
+
+        var inputField      = document.getElementById("inputText");
+        var currentWordDiv  = document.getElementById("currentWord");
+        var wordCountDiv    = document.getElementById("wordCount");
+        var timerDiv        = document.getElementById("timer");
+        var resultDiv       = document.getElementById("result");
+        var missedTermsDiv  = document.getElementById("missedTerms");
+
+        function normalize(s) {
+            return s.toLowerCase().replace(/[?.!,']/g, "").replace(/\s+/g, " ").trim();
+        }
+
+        function showCurrentQuestion() {
+            if (currentIndex < pairs.length) {
+                currentWordDiv.innerHTML =
+                    '<small style="color:#aaa;font-size:0.5em;display:block;">SPEAKER 1 ถาม:</small>' +
+                    pairs[currentIndex].q;
+                wordCountDiv.innerHTML = "<p>ข้อที่: " + (currentIndex + 1) + " / " + pairs.length + "</p>";
+            }
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(function () {
+                timerSeconds--;
+                if (timerSeconds >= 0) {
+                    timerDiv.textContent = "Time left: 0:" + (timerSeconds < 10 ? "0" : "") + timerSeconds;
+                } else {
+                    clearInterval(timerInterval);
+                    inputField.readOnly = true;
+                    revealRemaining();
+                    resultDiv.innerHTML = '<div class="alert alert-danger red-text">Time\'s up!</div>';
+                    showMissed();
+                    timerDiv.textContent = "";
+                }
+            }, 1000);
+        }
+
+        function revealRemaining() {
+            for (var i = currentIndex; i < pairs.length; i++) {
+                missedList.push(i);
+            }
+            currentWordDiv.innerHTML = '<span class="red-text">หมดเวลา!</span>';
+            currentIndex = pairs.length;
+        }
+
+        function handleKeyDown(event) {
+            if (!timerStarted) {
+                showCurrentQuestion();
+                startTimer();
+                timerStarted = true;
+                wordCountDiv.innerHTML = "<p>ข้อที่: 1 / " + pairs.length + "</p>";
+            }
+            if (event.key === "Enter") {
+                validateText();
+                event.preventDefault();
+            }
+        }
+
+        function validateText() {
+            if (!timerStarted) {
+                showCurrentQuestion();
+                startTimer();
+                timerStarted = true;
+                wordCountDiv.innerHTML = "<p>ข้อที่: 1 / " + pairs.length + "</p>";
+                return;
+            }
+
+            if (currentIndex >= pairs.length) return;
+
+            var userInput = inputField.value.trim();
+            if (!userInput) return;
+
+            var correct = pairs[currentIndex].a;
+
+            if (normalize(userInput) === normalize(correct)) {
+                resultDiv.innerHTML = '<div class="alert alert-success">Correct! "' + pairs[currentIndex].q + '" → "' + correct + '"</div>';
+                inputField.value = "";
+                currentIndex++;
+
+                if (currentIndex >= pairs.length) {
+                    clearInterval(timerInterval);
+                    currentWordDiv.innerHTML = '<div class="green-text">All done! ยอดเยี่ยมมาก 🎉</div>';
+                    wordCountDiv.innerHTML = "<p>ทำครบทุกข้อ: " + pairs.length + " / " + pairs.length + "</p>";
+                    timerDiv.textContent = "";
+                    inputField.readOnly = true;
+                } else {
+                    showCurrentQuestion();
+                }
+            } else {
+                resultDiv.innerHTML = '<div class="alert alert-danger">Incorrect! ลองใหม่อีกครั้ง</div>';
+            }
+
+            setTimeout(function () {
+                if (resultDiv.innerHTML.indexOf("All done") === -1 &&
+                    resultDiv.innerHTML.indexOf("ยอดเยี่ยม") === -1) {
+                    resultDiv.innerHTML = "";
+                }
+            }, 2500);
+        }
+
+        function giveUp() {
+            clearInterval(timerInterval);
+            inputField.readOnly = true;
+            revealRemaining();
+            timerDiv.textContent = "";
+            showMissed();
+        }
+
+        function showMissed() {
+            if (missedList.length > 0) {
+                var html = '<div class="red-text">You missed:<br>';
+                missedList.forEach(function (i) {
+                    html += "• Q" + (i + 1) + ": <em>" + pairs[i].a + "</em><br>";
+                });
+                missedTermsDiv.innerHTML = html + "</div>";
+            } else {
+                missedTermsDiv.innerHTML = '<div class="green-text">Congratulations! You got all the answers.</div>';
+            }
+        }
+    </script>
+</body>
+</html>
