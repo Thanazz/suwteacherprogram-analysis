@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio-Quest: เจาะลึกสิงสาราสัตว์</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; color: #333; line-height: 1.6; padding: 20px; }
+        .container { max-width: 850px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; text-align: center; border-bottom: 3px solid #e74c3c; padding-bottom: 10px; }
+        .instruction { text-align: center; color: #7f8c8d; font-size: 15px; margin-bottom: 20px; }
+        .level-card { background: #fff; padding: 20px; border-radius: 10px; margin-bottom: 25px; border: 1px solid #ecf0f1; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .question { margin-bottom: 20px; border-bottom: 1px dashed #eee; padding-bottom: 15px; }
+        .question:last-child { border-bottom: none; }
+        .question label { font-weight: bold; color: #34495e; display: block; margin-bottom: 8px; font-size: 16px; }
+        .input-group { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-left: 15px; }
+        input[type="text"] { padding: 8px 12px; border-radius: 5px; border: 2px solid #bdc3c7; font-size: 15px; outline: none; width: 220px; transition: 0.3s; }
+        input[type="text"]:focus { border-color: #e74c3c; box-shadow: 0 0 5px rgba(231, 76, 60, 0.3); }
+        
+        /* ปุ่มแอคชั่นด้านล่าง */
+        .action-buttons { display: flex; gap: 15px; margin-top: 30px; }
+        .submit-btn { flex: 2; padding: 15px; font-size: 18px; font-weight: bold; color: white; background-color: #27ae60; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .submit-btn:hover { background-color: #219653; transform: translateY(-2px); }
+        
+        .reveal-btn { flex: 1; padding: 15px; font-size: 16px; font-weight: bold; color: white; background-color: #3498db; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .reveal-btn:hover { background-color: #2980b9; transform: translateY(-2px); }
+
+        #result { margin-top: 25px; padding: 20px; border-radius: 8px; font-size: 18px; font-weight: bold; text-align: center; display: none; }
+        .correct { background-color: #d4edda; color: #155724; border: 2px solid #c3e6cb; }
+        .incorrect { background-color: #f8d7da; color: #721c24; border: 2px solid #f5c6cb; }
+        .revealed { background-color: #d6eaf8; color: #154360; border: 2px solid #a9cce3; }
+        .note { font-size: 13px; color: #e67e22; font-style: italic; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🐸 Bio-Quest: เจาะลึกอวัยวะขับถ่ายสิงสาราสัตว์</h1>
+    <p class="instruction">
+        พิมพ์ชื่อ <b>"อวัยวะขับถ่าย"</b> และ <b>"รูปของเสีย (แอมโมเนีย/ยูเรีย/กรดยูริก)"</b> ให้ถูกต้อง <br>
+        <span style="color:#e74c3c; font-size: 13px;">(คำใบ้: ถ้าสัตว์ชั้นต่ำมากๆ ยังไม่มีอวัยวะเฉพาะ ให้พิมพ์ว่า "เยื่อหุ้มเซลล์" หรือ "ไม่มี")</span>
+    </p>
+
+    <div class="level-card">
+        
+        <div class="question">
+            <label>1. ฟองน้ำ / ไฮดรา</label>
+            <div class="input-group">อวัยวะ: <input type="text" id="q1_organ" placeholder="ไม่มี หรือ ใช้..."> ของเสีย: <input type="text" id="q1_waste"></div>
+        </div>
+
+        <div class="question">
+            <label>2. พลานาเรีย (หนอนตัวแบน)</label>
+            <div class="input-group">อวัยวะ: <input type="text" id="q2_organ"> ของเสีย: <input type="text" id="q2_waste"></div>
+        </div>
+
+        <div class="question">
+            <label>3. ไส้เดือนดิน</label>
+            <div class="input-group">อวัยวะ: <input type="text" id="q3_organ"> ของเสีย: <input type="text" id="q3_waste"></div>
+        </div>
+
+        <div class="question">
+            <label>4. กุ้ง / ปู <span class="note">(คำใบ้: ต่อมแอน... หรือ ต่อม...)</span></label>
+            <div class="input-group">อวัยวะ: <input type="text" id="q4_organ"> ของเสีย: <input type="text" id="q4_waste"></div>
+        </div>
+
+        <div class="question">
+            <label>5. แมลง (เช่น ตั๊กแตน)</label>
+            <div class="input-group">อวัยวะ: <input type="text" id="q5_organ"> ของเสีย: <input type="text" id="q5_waste"></div>
+        </div>
+
+        <div class="question">
+            <label>6. ปลาน้ำจืด (ปลากระดูกแข็ง)</label>
+            <div class="input-group">อวัยวะ: <input type="text" id="q6_organ"> ของเสีย: <input type="text" id="q6_waste"></div>
+        </div>
+
+        <div class="question">
+            <label>7. ลูกอ๊อด (วัยเด็กของกบที่อยู่ในน้ำ)</label>
+            <div class="input-group">อวัยวะ: <input type="text" id="q7_organ"> ของเสีย: <input type="text" id="q7_waste"></div>
+        </div>
+
+        <div class="question">
+            <label>8. กบ (ตัวเต็มวัยที่อยู่บนบก)</label>
+            <div class="input-group">อวัยวะ: <input type="text" id="q8_organ"> ของเสีย: <input type="text" id="q8_waste"></div>
+        </div>
+
+        <div class="question">
+            <label>9. นก / สัตว์เลื้อยคลาน / แมลง</label>
+            <div class="input-group">อวัยวะ: <input type="text" id="q9_organ"> ของเสีย: <input type="text" id="q9_waste" placeholder="เหมือนแมลง"></div>
+        </div>
+
+        <div class="question">
+            <label>10. สัตว์เลี้ยงลูกด้วยน้ำนม (รวมถึงคน)</label>
+            <div class="input-group">อวัยวะ: <input type="text" id="q10_organ"> ของเสีย: <input type="text" id="q10_waste"></div>
+        </div>
+
+    </div>
+
+    <div class="action-buttons">
+        <button class="reveal-btn" onclick="revealAnswers()">💡 ขอรับเฉลย</button>
+        <button class="submit-btn" onclick="checkAnswers()">✔️ ตรวจคำตอบทั้งหมด</button>
+    </div>
+    
+    <div id="result"></div>
+</div>
+
+<script>
+    // ชุดคำตอบที่คลุมทุกชนิด
+    const answers = {
+        // 1. ฟองน้ำ / ไฮดรา
+        q1_organ: ["ไม่มี", "ไม่มีอวัยวะเฉพาะ", "เยื่อหุ้มเซลล์", "cellmembrane"], 
+        q1_waste: ["แอมโมเนีย", "ammonia"],
+
+        // 2. พลานาเรีย
+        q2_organ: ["เฟลมเซลล์", "flamecell"], 
+        q2_waste: ["แอมโมเนีย", "ammonia"],
+
+        // 3. ไส้เดือนดิน
+        q3_organ: ["เนฟริเดียม", "nephridium"], 
+        q3_waste: ["ยูเรีย", "urea", "แอมโมเนียและยูเรีย", "แอมโมเนีย"], 
+
+        // 4. กุ้ง / ปู
+        q4_organ: ["ต่อมแอนเทนนัล", "antennalgland", "ต่อมเขียว", "greengland"], 
+        q4_waste: ["แอมโมเนีย", "ammonia"],
+
+        // 5. แมลง
+        q5_organ: ["มัลพิเกียนทิวบูล", "มัลพิกียนทิวบูล", "ท่อมัลพิเกียน", "malpighiantubule"], 
+        q5_waste: ["กรดยูริก", "uricacid", "ยูริก"],
+
+        // 6. ปลา
+        q6_organ: ["ไต", "kidney"], 
+        q6_waste: ["แอมโมเนีย", "ammonia"],
+
+        // 7. ลูกอ๊อด (อยู่ในน้ำ ของเสียใช้น้ำเยอะ)
+        q7_organ: ["ไต", "kidney"], 
+        q7_waste: ["แอมโมเนีย", "ammonia"],
+
+        // 8. กบ (ตัวเต็มวัย อยู่บนบก ต้องสงวนน้ำ)
+        q8_organ: ["ไต", "kidney"], 
+        q8_waste: ["ยูเรีย", "urea"],
+
+        // 9. นก / สัตว์เลื้อยคลาน
+        q9_organ: ["ไต", "kidney"], 
+        q9_waste: ["กรดยูริก", "uricacid", "ยูริก"],
+
+        // 10. สัตว์เลี้ยงลูกด้วยน้ำนม / คน
+        q10_organ: ["ไต", "kidney"], 
+        q10_waste: ["ยูเรีย", "urea"]
+    };
+
+    function checkAnswers() {
+        let score = 0; let total = Object.keys(answers).length;
+        for (const [id, validAnswers] of Object.entries(answers)) {
+            const el = document.getElementById(id);
+            let userVal = el.value.replace(/\s+/g, '').toLowerCase(); 
+            if (validAnswers.some(ans => ans === userVal)) {
+                score++;
+                el.style.borderColor = "#27ae60"; el.style.backgroundColor = "#e8f8f5";
+            } else {
+                el.style.borderColor = "#e74c3c"; el.style.backgroundColor = "#fdedec";
+            }
+        }
+        const resultDiv = document.getElementById('result');
+        resultDiv.style.display = "block";
+        if (score === total) {
+            resultDiv.className = "correct"; resultDiv.innerHTML = `🏆 เก่งมากครับ! ตอบถูกครบหมด (${score}/${total}) <br>ระวังข้อสอบหลอกเรื่องกบกับลูกอ๊อดให้ดีนะครับ!`;
+        } else {
+            resultDiv.className = "incorrect"; resultDiv.innerHTML = `ได้คะแนน ${score}/${total} <br>แก้ไขข้อสีแดงแล้วลองส่งใหม่นะ (สัตว์บางตัวมีอวัยวะเฉพาะแปลกๆ เช่น กุ้ง หรือ แมลง)!`;
+        }
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    function revealAnswers() {
+        for (const [id, validAnswers] of Object.entries(answers)) {
+            const el = document.getElementById(id);
+            el.value = validAnswers[0]; // ดึงคำตอบหลักมาแสดง
+            el.style.borderColor = "#3498db"; 
+            el.style.backgroundColor = "#ebf5fb";
+        }
+        const resultDiv = document.getElementById('result');
+        resultDiv.style.display = "block";
+        resultDiv.className = "revealed"; 
+        resultDiv.innerHTML = `💡 เฉลยครบทุกตัวแล้วครับ! แนะนำให้ท่องจำพวกที่มีชื่อเฉพาะอย่าง เฟลมเซลล์, เนฟริเดียม, มัลพิเกียนทิวบูล และ ต่อมแอนเทนนัล ครับ`;
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
