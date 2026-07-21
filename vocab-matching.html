@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocab Match · Thai–English</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          accent: '#4f46e5',
+          accentSoft: '#eef2ff',
+        },
+        fontFamily: {
+          display: ['"Plus Jakarta Sans"', 'sans-serif'],
+          sans: ['Inter', '"Noto Sans Thai"', 'sans-serif'],
+          thai: ['"Noto Sans Thai"', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body{ background: radial-gradient(circle at top, rgba(99,102,241,.16), transparent 28%), #f8fafc; font-feature-settings:"cv11","ss01"; }
+  .card-shell{ background:#fff; border:1px solid rgba(229,231,235,.7); box-shadow:0 24px 90px rgba(15,23,42,.08); border-radius:2rem; overflow:hidden; }
+  .surface{ background:#f8fafc; border-radius:1.75rem; padding:1rem; }
+  .field-input{ outline:none; transition:box-shadow .15s ease, border-color .15s ease, background .15s ease; background:#f8fafc; border:1px solid #e5e7eb; }
+  .field-input:focus{ border-color:#c7d2fe; box-shadow:0 0 0 4px rgba(199,210,254,.35); background:#fff; }
+  .row{ background:#fff; border:1px solid #e5e7eb; border-radius:1.25rem; padding:1rem 1.25rem; }
+  .row + .row{ margin-top:.75rem; }
+  .row.is-correct .field-input{ border-color:#bbf7d0; background:#f0fdf4; color:#15803d; }
+  .row.is-wrong .field-input{ border-color:#fecaca; background:#fef2f2; color:#b91c1c; }
+  .correct-answer{ display:block; margin-top:.5rem; font-size:.85rem; color:#4b5563; }
+  .row.is-wrong .correct-answer{ color:#dc2626; }
+  .badge{ opacity:0; transform:scale(.6); transition:opacity .18s cubic-bezier(.34,1.56,.64,1), transform .18s cubic-bezier(.34,1.56,.64,1); }
+  .badge.show{ opacity:1; transform:scale(1); }
+  .seg-btn{ transition:all .18s ease; }
+  .seg-btn.active{ background:#fff; color:#111827; box-shadow:0 10px 30px rgba(15,23,42,.08); }
+  .progress-fill{ transition:width .25s ease; }
+  ::selection{ background:#c7d2fe; }
+  @media (prefers-reduced-motion: reduce){ .badge{ transition:none; } .progress-fill{ transition:none; } }
+  @media (max-width: 640px) {
+    .card-shell{ border-radius:1.5rem; }
+    .row{ padding:1rem; }
+    .segmented-group{ width:100%; }
+    .segmented-group .seg-btn{ flex:1 1 0; min-width:0; width:100%; }
+    .action-group{ width:100%; }
+    .action-group button{ width:100%; }
+    .text-right{ text-align:left !important; }
+  }
+</style>
+</head>
+<body class="min-h-screen text-gray-900 font-sans antialiased">
+
+<div class="max-w-6xl mx-auto px-6 pt-16 pb-24">
+  <div class="card-shell">
+    <div class="p-6 sm:p-8">
+      <!-- HERO -->
+      <div class="mb-10">
+        <p class="text-[13px] font-semibold text-accent mb-3">Vocabulary practice</p>
+        <h1 class="font-display font-extrabold text-4xl sm:text-[44px] leading-[1.1] tracking-tight text-gray-900">
+          Match the word<br class="hidden sm:block"> to its meaning.
+        </h1>
+        <p class="text-gray-500 mt-4 text-[15px] font-thai leading-relaxed">
+          อ่านคำแปลภาษาไทยทางด้านซ้าย แล้วพิมพ์คำศัพท์ภาษาอังกฤษที่ตรงกันลงในช่องว่าง
+        </p>
+        <p id="unit-title" class="text-sm font-semibold text-gray-500 mt-5">Unit 1 · 15 words</p>
+      </div>
+
+      <!-- SEGMENTED CONTROL + PROGRESS -->
+  <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between mb-6 gap-4">
+    <div class="inline-flex flex-wrap p-1 rounded-full bg-gray-100 segmented-group">
+      <button data-unit="1" class="seg-btn active px-5 py-2 rounded-full text-sm font-semibold bg-white text-gray-900 shadow-sm">Unit 1</button>
+      <button data-unit="2" class="seg-btn px-5 py-2 rounded-full text-sm font-semibold text-gray-400">Unit 2</button>
+    </div>
+    <div class="text-right sm:text-right">
+      <div class="text-sm font-semibold text-gray-900"><span id="score-correct">0</span><span class="text-gray-300"> / </span><span id="score-total">15</span></div>
+      <div class="text-[11px] text-gray-400">correct</div>
+    </div>
+  </div>
+
+  <!-- PROGRESS BAR -->
+  <div class="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden mb-8">
+    <div id="progressBar" class="progress-fill h-full bg-accent rounded-full" style="width:0%"></div>
+  </div>
+
+  <!-- LISTS -->
+  <section id="unit-1" class="unit-panel">
+    <div id="list-1" class="flex flex-col divide-y divide-gray-100"></div>
+  </section>
+  <section id="unit-2" class="unit-panel hidden">
+    <div id="list-2" class="flex flex-col divide-y divide-gray-100"></div>
+  </section>
+
+  <!-- CONTROLS -->
+  <div class="flex flex-col sm:flex-row flex-wrap gap-3 mt-10 action-group">
+    <button id="checkBtn" class="flex-1 sm:flex-none w-full sm:w-auto text-sm font-semibold px-7 py-3.5 rounded-full bg-accent text-white hover:bg-indigo-700 active:scale-[.98] transition">
+      Check answers
+    </button>
+    <button id="revealBtn" class="w-full sm:w-auto text-sm font-semibold px-6 py-3.5 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 active:scale-[.98] transition">
+      Reveal
+    </button>
+    <button id="resetBtn" class="w-full sm:w-auto text-sm font-semibold px-6 py-3.5 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-50 active:scale-[.98] transition">
+      Reset
+    </button>
+  </div>
+
+  <p class="text-center text-xs text-gray-400 mt-10">Press Enter to jump to the next word</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const UNIT_1 = [
+  ["Deliberate", "รอบครอบ / ไตร่ตรอง"],
+  ["Ideal", "ดีเลิศ"],
+  ["Initially", "ในตอนแรก"],
+  ["Relief", "ความผ่อนคลาย"],
+  ["Association", "สมาคม"],
+  ["Behalf", "ในนามของ"],
+  ["Capable", "มีความสามารถ"],
+  ["Institution", "สถาบัน"],
+  ["Assume", "ทึกทัก"],
+  ["Circumstance", "สถานการณ์"],
+  ["Cope", "รับมือ"],
+  ["Intention", "เจตนา / ความตั้งใจ"],
+  ["Sufficient", "เพียงพอ"],
+  ["Encounter", "เผชิญหน้า / พบเจอ"],
+  ["Reputation", "ชื่อเสียง"]
+];
+
+const UNIT_2 = [
+  ["Aside from", "นอกเหนือจาก"],
+  ["Attractive", "น่าดึงดูดใจ / มีเสน่ห์"],
+  ["Dreadful", "แย่มาก"],
+  ["Remarkable", "โดดเด่น"],
+  ["Determine", "ตัดสินใจ"],
+  ["Significant", "สำคัญ"],
+  ["Insignificant", "ไม่สำคัญ"],
+  ["Sophisticated", "ซับซ้อน / มีความประณีต"],
+  ["Unsophisticated", "ไม่ซับซ้อน / เรียบง่าย"],
+  ["Tremendous", "มหาศาล / ใหญ่โต"],
+  ["Astonishing", "น่าประหลาดใจอย่างยิ่ง"],
+  ["Classify", "จัดประเภท"],
+  ["Sail", "แล่นเรือ / ล่องเรือ"]
+];
+
+const UNIT_DATA = { 1: UNIT_1, 2: UNIT_2 };
+let currentUnit = 1;
+
+function buildList(containerId, words){
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+  words.forEach((pair, i) => {
+    const [en, th] = pair;
+    const row = document.createElement('div');
+    row.className = 'row flex flex-col sm:flex-row items-start sm:items-center gap-4 py-3.5';
+    row.dataset.answer = en.toLowerCase();
+    row.innerHTML = `
+      <span class="font-thai font-medium text-[15px] text-gray-700 w-full sm:w-40 sm:w-48 shrink-0">${th}</span>
+      <div class="flex-1 min-w-0">
+        <input type="text" class="field-input w-full text-sm text-gray-900 bg-gray-50 border border-transparent rounded-xl px-4 py-2.5 placeholder:text-gray-300" autocomplete="off" spellcheck="false" placeholder="Type the English word…">
+        <span class="correct-answer"></span>
+      </div>
+      <span class="badge result-icon w-8 h-8 rounded-full shrink-0 flex items-center justify-center text-sm font-bold"></span>
+    `;
+    container.appendChild(row);
+  });
+}
+buildList('list-1', UNIT_1);
+buildList('list-2', UNIT_2);
+
+function updateTotalForUnit(unit){
+  document.getElementById('score-total').textContent = UNIT_DATA[unit].length;
+  document.getElementById('unit-title').textContent = `Unit ${unit} · ${UNIT_DATA[unit].length} words`;
+}
+updateTotalForUnit(1);
+
+// segmented control
+document.querySelectorAll('.seg-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.seg-btn').forEach(b => {
+      b.classList.remove('active','bg-white','text-gray-900','shadow-sm');
+      b.classList.add('text-gray-400');
+    });
+    btn.classList.add('active','bg-white','text-gray-900','shadow-sm');
+    btn.classList.remove('text-gray-400');
+    document.querySelectorAll('.unit-panel').forEach(p => p.classList.add('hidden'));
+    currentUnit = btn.dataset.unit;
+    document.getElementById(`unit-${currentUnit}`).classList.remove('hidden');
+    updateTotalForUnit(currentUnit);
+    updateScore();
+  });
+});
+
+// enter to advance
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Enter' && e.target.classList.contains('field-input')){
+    const panel = document.querySelector('.unit-panel:not(.hidden)');
+    const inputs = Array.from(panel.querySelectorAll('.field-input'));
+    const idx = inputs.indexOf(e.target);
+    if(idx > -1 && idx < inputs.length - 1){
+      inputs[idx+1].focus();
+    } else {
+      checkAnswers();
+    }
+  }
+});
+
+function updateScore(){
+  const panel = document.getElementById(`unit-${currentUnit}`);
+  const rows = panel.querySelectorAll('.row');
+  const correct = panel.querySelectorAll('.row.is-correct').length;
+  document.getElementById('score-correct').textContent = correct;
+  const pct = rows.length ? Math.round((correct / rows.length) * 100) : 0;
+  document.getElementById('progressBar').style.width = pct + '%';
+}
+
+function checkAnswers(){
+  const panel = document.querySelector('.unit-panel:not(.hidden)');
+  const rows = panel.querySelectorAll('.row');
+  rows.forEach(row => {
+    const input = row.querySelector('.field-input');
+    const icon = row.querySelector('.result-icon');
+    const hint = row.querySelector('.correct-answer');
+    const val = input.value.trim().toLowerCase();
+    row.classList.remove('is-correct','is-wrong');
+    icon.className = 'badge result-icon w-8 h-8 rounded-full shrink-0 flex items-center justify-center text-sm font-bold';
+    icon.textContent = '';
+    hint.textContent = '';
+    const answer = row.dataset.answer;
+    if(val.length > 0 && val === answer){
+      row.classList.add('is-correct');
+      icon.classList.add('show','bg-green-100','text-green-600');
+      icon.textContent = '✓';
+    } else {
+      row.classList.add('is-wrong');
+      icon.classList.add('show','bg-red-100','text-red-500');
+      icon.textContent = '✕';
+      hint.textContent = `Correct: ${answer.charAt(0).toUpperCase() + answer.slice(1)}`;
+    }
+  });
+  updateScore();
+}
+
+function revealAnswers(){
+  const panel = document.querySelector('.unit-panel:not(.hidden)');
+  panel.querySelectorAll('.row').forEach(row => {
+    const input = row.querySelector('.field-input');
+    const ans = row.dataset.answer;
+    input.value = ans.charAt(0).toUpperCase() + ans.slice(1);
+  });
+  checkAnswers();
+}
+
+function resetAll(){
+  const panel = document.querySelector('.unit-panel:not(.hidden)');
+  panel.querySelectorAll('.field-input').forEach(i => i.value = '');
+  panel.querySelectorAll('.row').forEach(row => {
+    row.classList.remove('is-correct','is-wrong');
+    const icon = row.querySelector('.result-icon');
+    const hint = row.querySelector('.correct-answer');
+    icon.classList.remove('show');
+    icon.textContent = '';
+    if(hint) hint.textContent = '';
+  });
+  updateScore();
+}
+
+document.getElementById('checkBtn').addEventListener('click', checkAnswers);
+document.getElementById('revealBtn').addEventListener('click', revealAnswers);
+document.getElementById('resetBtn').addEventListener('click', resetAll);
+</script>
+
+</body>
+</html>
