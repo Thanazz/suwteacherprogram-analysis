@@ -1,0 +1,1 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');body{font-family:'Kanit',sans-serif;}.color-card{transition:all 0.3s cubic-bezier(0.4,0,0.2,1);}.color-card:hover{transform:translateY(-5px);}.color-card.active{ring:4px;ring-offset:2px;}

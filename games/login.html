@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta name="sig-validid" content="622ff41d3810f74e653e72057d9dc86d36778a603e49e301c51a639162a61ce3">
+    <script src="assets/js/sig_sc.js?v=1780221754"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าแรก | SUW GAMES</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            prefix: 'tw-',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            701: '#36a1dbff',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Kanit', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/styler.css?v=1780484691">
+    <link rel="stylesheet" href="assets/css/banner.css?v=1780935358">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="tw-min-h-screen tw-bg-gray-50">
+    <!-- Top Nav Bar - Fixed at top -->
+    <nav class="tw-bg-white tw-shadow-sm tw-sticky tw-top-0 tw-z-50">
+        <div class="tw-container tw-mx-auto tw-flex tw-justify-between tw-items-center tw-px-4 md:tw-px-6 tw-py-3">
+            <div class="tw-flex tw-items-center tw-space-x-2">
+                <div
+                    class="tw-bg-brand-500 tw-text-white tw-p-3 tw-flex tw-items-center tw-justify-center tw-rounded-lg">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <span class="tw-font-semibold tw-text-gray-800">SUW-INTHANIN<span
+                        class="tw-text-brand-500 games-blink">GAMES</span> 2569</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient tw-text-white tw-pt-20 tw-pb-24 tw-px-6 md:tw-px-10 tw-relative">
+        <div class="tw-container tw-mx-auto tw-relative tw-z-10">
+            <div class="tw-max-w-3xl">
+                <h1 class="tw-text-4xl md:tw-text-5xl tw-font-bold tw-mb-4 mc-title"><span
+                        style="--char-idx: 0">อิ</span><span style="--char-idx: 1">น</span><span
+                        style="--char-idx: 2">ท</span><span style="--char-idx: 3">นิ</span><span
+                        style="--char-idx: 4">น</span><span style="--char-idx: 5">ส์</span><span
+                        style="--char-idx: 6">เ</span><span style="--char-idx: 7">ก</span><span
+                        style="--char-idx: 8">ม</span><span style="--char-idx: 9">ส์</span></h1>
+                <p class="tw-text-brand-50 tw-text-lg tw-mb-8">การแข่งขันกีฬาภายในโรงเรียนสุโขทัยวิทยาคม ประจำปี 2569
+                </p>
+                <div class="tw-flex tw-flex-row tw-gap-2 sm:tw-gap-4 sm:tw-inline-flex tw-w-full sm:tw-w-auto">
+                    <div class="tw-relative tw-flex-1 sm:tw-flex-none">
+                        <a href="#comingsoon"
+                            target="_blank"
+                            class="tw-bg-white tw-text-brand-600 tw-px-3 sm:tw-px-6 tw-py-2.5 sm:tw-py-3 tw-rounded-lg tw-font-medium hover:tw-bg-brand-50 tw-transition-colors tw-no-underline tw-text-center tw-text-xs sm:tw-text-base tw-w-full tw-block">
+                            ตารางการแข่งขัน
+                        </a>
+                    </div>
+                    <div class="tw-relative tw-flex-1 sm:tw-flex-none">
+                        <a href="#" target="_blank"
+                            class="tw-bg-brand-701 tw-text-white tw-px-3 sm:tw-px-6 tw-py-2.5 sm:tw-py-3 tw-rounded-lg tw-font-medium hover:tw-bg-brand-800 tw-transition-colors tw-no-underline tw-text-center tw-text-xs sm:tw-text-base tw-w-full tw-block">
+                            ผลคะแนนล่าสุด
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tw-absolute tw-bottom-0 tw-right-0 tw-opacity-10 tw-pointer-events-none">
+            <i class="fas fa-running tw-text-9xl"></i>
+        </div>
+    </header>
+
+    <!-- Games Ended Notice -->
+    <div class="tw-bg-gray-50 tw-py-10 tw-px-6">
+        <div class="tw-container tw-mx-auto">
+            <div class="tw-bg-white tw-rounded-xl tw-shadow-sm tw-border tw-border-gray-100 tw-p-8 tw-flex tw-items-start tw-gap-5">
+                <div class="tw-bg-blue-100 tw-text-brand-500 tw-rounded-xl tw-p-4 tw-flex-shrink-0">
+                    <i class="fas fa-flag-checkered tw-text-2xl"></i>
+                </div>
+                <div>
+                    <style>
+                        .ended-color-text {
+                            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, rgb(15,159,255), #8400e2, #8b00ff, #ff0000);
+                            background-size: 200% 100%;
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                            background-clip: text;
+                            animation: rgb-text-move 5s linear infinite;
+                        }
+                        @keyframes rgb-text-move {
+                            0%   { background-position: 100% 0%; }
+                            100% { background-position: -100% 0%; }
+                        }
+                    </style>
+                    <h2 class="tw-text-2xl tw-font-semibold tw-mb-2 ended-color-text">อินทนินส์เกมส์ 2569 ได้จบลงแล้ว</h2>
+                    <p class="tw-text-gray-500 tw-text-base">ขอบคุณพี่ๆสตาฟทุกคนและนักกีฬาทุกๆคนที่ร่วมสร้างความทรงจำในครั้งนี้ครับ</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="tw-container tw-mx-auto tw-px-6 tw-py-12">
+       
+        <!-- Green Team Stats Section -->
+        <section class="tw-mb-12">
+            <div class="tw-flex tw-items-center tw-justify-between tw-mb-6">
+                <div class="tw-flex tw-items-center">
+                    <div class="tw-bg-blue-100 tw-p-2 tw-rounded-full tw-text-blue-600 tw-mr-3">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h2 class="tw-text-2xl tw-font-semibold tw-text-gray-800">สถิติสีเขียว</h2>
+                </div>
+                <!-- <span class="tw-bg-green-100 tw-text-green-700 tw-px-4 tw-py-1 tw-rounded-lg tw-text-sm tw-font-medium">
+                    อันดับที่ -                </span> -->
+            </div>
+
+            <div class="tw-bg-white tw-rounded-xl tw-shadow-sm tw-p-6 tw-border tw-border-gray-100">
+                <!-- Team Participation Bar -->
+                <div class="tw-mb-8">
+                    <div class="tw-flex tw-justify-between tw-items-end tw-mb-2">
+                        <!-- <div> -->
+                        <!-- <span class="tw-text-sm tw-text-gray-500 tw-block">คะแนนความสามัคคี (การเข้าร่วมกิจกรรม)</span> -->
+                        <!-- <span class="tw-text-2xl tw-font-bold tw-text-gray-800">0 <small class="tw-text-sm tw-font-normal tw-text-gray-400">จาก 357 คน</small></span> -->
+                        <!-- </div> -->
+                        <!-- <span class="tw-text-xl tw-font-bold tw-text-green-600">0%</span> -->
+                        <span class="tw-text-xl tw-font-bold tw-text-black-600">จำนวนรางวัลทั้งหมด</span>
+                    </div>
+                    <div class="tw-w-full tw-bg-gray-100 tw-rounded-full tw-h-4 tw-overflow-hidden">
+                        <div class="rgb-bar-fill tw-h-4 tw-rounded-full tw-transition-all tw-duration-1000"
+                            style="width: 100%"></div>
+                    </div>
+                </div>
+
+                <!-- Medals Grid -->
+                <div class="tw-grid tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-4">
+                    <div
+                        class="tw-bg-amber-50/50 tw-p-4 tw-rounded-xl tw-border tw-border-amber-100 tw-shadow-sm tw-text-center tw-transition tw-duration-300 hover:tw-scale-[1.03]">
+                        <div class="tw-text-amber-500 tw-mb-2"><i class="fas fa-medal tw-text-3xl"></i></div>
+                        <div class="tw-text-2xl tw-font-bold tw-text-gray-800">0</div>
+                        <div class="tw-text-gray-500 tw-text-sm font-medium">ชนะเลิศ</div>
+                    </div>
+                    <div
+                        class="tw-bg-slate-50/80 tw-p-4 tw-rounded-xl tw-border tw-border-slate-100 tw-shadow-sm tw-text-center tw-transition tw-duration-300 hover:tw-scale-[1.03]">
+                        <div class="tw-text-slate-400 tw-mb-2"><i class="fas fa-medal tw-text-3xl"></i></div>
+                        <div class="tw-text-2xl tw-font-bold tw-text-gray-800">0</div>
+                        <div class="tw-text-gray-500 tw-text-sm font-medium">รองชนะเลิศ</div>
+                    </div>
+                    <div
+                        class="tw-bg-orange-50/50 tw-p-4 tw-rounded-xl tw-border tw-border-orange-100 tw-shadow-sm tw-text-center tw-transition tw-duration-300 hover:tw-scale-[1.03]">
+                        <div class="tw-text-orange-500 tw-mb-2"><i class="fas fa-medal tw-text-3xl"></i></div>
+                        <div class="tw-text-2xl tw-font-bold tw-text-gray-800"></div>
+                        <div class="tw-text-gray-500 tw-text-sm font-medium">-</div>
+                    </div>
+                    <div
+                        class="tw-bg-blue-50/50 tw-p-4 tw-rounded-xl tw-border tw-border-blue-100 tw-shadow-sm tw-text-center tw-transition tw-duration-300 hover:tw-scale-[1.03]">
+                        <div class="tw-text-blue-500 tw-mb-2"><i class="fas fa-award tw-text-3xl"></i></div>
+                        <div class="tw-text-2xl tw-font-bold tw-text-gray-800">0</div>
+                        <div class="tw-text-gray-500 tw-text-sm font-medium">รวมทั้งหมด</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Dashboard Section -->
+        <section class="tw-mb-12">
+            <div class="tw-flex tw-items-center tw-mb-6">
+                <div class="tw-bg-indigo-100 tw-p-2 tw-rounded-full tw-text-indigo-600 tw-mr-3">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h2 class="tw-text-2xl tw-font-semibold tw-text-gray-800">สถิติและภาพรวมของสีเขียว</h2>
+            </div>
+
+            <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-6">
+                <!-- Chart 1: Grade Chart -->
+                <div class="tw-bg-white tw-p-6 tw-rounded-xl tw-shadow-sm tw-border tw-border-gray-100">
+                    <h3 class="tw-text-base tw-font-semibold tw-text-gray-800 tw-mb-4">การเข้าร่วมกีฬาตามระดับชั้น</h3>
+                    <div class="tw-h-64">
+                        <canvas id="gradeChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Chart 2: Popular Sports Chart -->
+                <div class="tw-bg-white tw-p-6 tw-rounded-xl tw-shadow-sm tw-border tw-border-gray-100">
+                    <h3 class="tw-text-base tw-font-semibold tw-text-gray-800 tw-mb-4">กีฬายอดนิยม</h3>
+                    <div class="tw-h-64">
+                        <canvas id="sportsChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Chart 3: Attendance Chart -->
+                <div class="tw-bg-white tw-p-6 tw-rounded-xl tw-shadow-sm tw-border tw-border-gray-100">
+                    <div class="tw-flex tw-items-center tw-justify-between tw-mb-4">
+                        <h3 class="tw-text-base tw-font-semibold tw-text-gray-800">สถิติการเช็คชื่อ (ทุกห้องเรียน)</h3>
+                    </div>
+                    <p class="tw-text-xs tw-text-gray-400 tw-mb-1">ภาพรวมจากทุกวัน</p>
+                    <p class="tw-text-[11px] tw-text-blue-600 tw-mb-4">เฉลี่ยต่อวัน: มา 378 คน / ขาด 9 คน / อื่นๆ 28 คน
+                    </p>
+                    <div class="tw-h-64">
+                        <canvas id="attendanceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Match Schedule Section (New Dedicated Card) -->
+        <section id="suwschedule" class="tw-mb-12">
+            <div class="tw-flex tw-items-center tw-mb-6">
+                <div class="tw-bg-brand-100 tw-p-2 tw-rounded-full tw-text-brand-600 tw-mr-3">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h2 class="tw-text-2xl tw-font-semibold tw-text-gray-800">ตารางการแข่งขัน</h2>
+            </div>
+
+            <div class="tw-bg-white tw-p-6 tw-rounded-xl tw-shadow-sm tw-border tw-border-gray-100">
+                <p class="tw-text-gray-600 tw-mb-4">ดาวน์โหลดตารางการแข่งขันและไฟล์ข้อมูลย่อย</p>
+                <div class="tw-flex tw-flex-col tw-gap-2.5">
+                    <div>
+                        <a href="#comingsoon"
+                            target="_blank"
+                            class="tw-inline-flex tw-items-center tw-text-sm tw-text-blue-600 hover:tw-text-blue-700 tw-font-medium tw-group">
+                            <i
+                                class="fas fa-chevron-right tw-text-[10px] tw-text-gray-400 tw-mr-2 tw-transition-transform tw-duration-200 group-hover:tw-translate-x-0.5"></i>
+                            <i class="fas fa-file-pdf tw-text-red-500 tw-mr-2 tw-text-base"></i>
+                            <span>ตารางการแข่งขัน</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#comingsoon"
+                            target="_blank"
+                            class="tw-inline-flex tw-items-center tw-text-sm tw-text-blue-600 hover:tw-text-blue-700 tw-font-medium tw-group">
+                            <i
+                                class="fas fa-chevron-right tw-text-[10px] tw-text-gray-400 tw-mr-2 tw-transition-transform tw-duration-200 group-hover:tw-translate-x-0.5"></i>
+                            <i class="fas fa-file-pdf tw-text-red-500 tw-mr-2 tw-text-base"></i>
+                            <span>ตารางการแข่งขันสีเขียว</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Access Cards -->
+        <section>
+            <div class="tw-flex tw-items-center tw-mb-6">
+                <div class="tw-bg-accent-100 tw-p-2 tw-rounded-full tw-text-accent-600 tw-mr-3">
+                    <i class="fas fa-th-large"></i>
+                </div>
+                <h2 class="tw-text-2xl tw-font-semibold tw-text-gray-800">เมนูลัด</h2>
+            </div>
+
+            <div class="dashboard-grid">
+                <div
+                    class="card-hover tw-bg-white tw-rounded-xl tw-overflow-hidden tw-shadow-sm tw-border tw-border-gray-100">
+                    <div class="tw-bg-gradient-to-r tw-from-brand-500 tw-to-brand-600 tw-h-2"></div>
+                    <div class="tw-p-6">
+                        <div class="tw-flex tw-items-center tw-mb-4">
+                            <div class="tw-bg-brand-100 tw-p-3 tw-rounded-lg tw-text-brand-500 tw-mr-4">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h3 class="tw-text-lg tw-font-medium tw-text-gray-800 tw-flex tw-items-center tw-gap-2">
+                                ตารางการแข่งขัน
+                            </h3>
+                        </div>
+                        <p class="tw-text-gray-600 tw-mb-4">ดาวน์โหลดตารางการแข่งขัน</p>
+                        <a href="#comingsoon"
+                            target="_blank"
+                            class="tw-inline-flex tw-items-center tw-text-brand-500 hover:tw-text-brand-600 tw-transition-colors tw-no-underline">
+                            ดูเพิ่มเติม <i class="fas fa-arrow-right tw-ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div
+                    class="card-hover tw-bg-white tw-rounded-xl tw-overflow-hidden tw-shadow-sm tw-border tw-border-gray-100">
+                    <div class="tw-bg-gradient-to-r tw-from-accent-500 tw-to-accent-600 tw-h-2"></div>
+                    <div class="tw-p-6">
+                        <div class="tw-flex tw-items-center tw-mb-4">
+                            <div class="tw-bg-accent-100 tw-p-3 tw-rounded-lg tw-text-accent-500 tw-mr-4">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h3 class="tw-text-lg tw-font-medium tw-text-gray-800 tw-flex tw-items-center tw-gap-2">
+                                ผลคะแนน
+                            </h3>
+                        </div>
+                        <p class="tw-text-gray-600 tw-mb-4">สรุปผลคะแนนการแข่งขัน</p>
+                        <a href="#" target="_blank"
+                            class="tw-inline-flex tw-items-center tw-text-accent-500 hover:tw-text-accent-600 tw-transition-colors tw-no-underline">
+                            ดูเพิ่มเติม <i class="fas fa-arrow-right tw-ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div
+                    class="card-hover tw-bg-white tw-rounded-xl tw-overflow-hidden tw-shadow-sm tw-border tw-border-gray-100">
+                    <div class="tw-bg-gradient-to-r tw-from-emerald-500 tw-to-emerald-600 tw-h-2"></div>
+                    <div class="tw-p-6">
+                        <div class="tw-flex tw-items-center tw-mb-4">
+                            <div class="tw-bg-emerald-100 tw-p-3 tw-rounded-lg tw-text-emerald-500 tw-mr-4">
+                                <i class="fas fa-file-download"></i>
+                            </div>
+                            <h3 class="tw-text-lg tw-font-medium tw-text-gray-800">เอกสารดาวน์โหลด</h3>
+                        </div>
+                        <p class="tw-text-gray-600 tw-mb-4">ดาวน์โหลดเอกสารสำคัญและแบบฟอร์มต่างๆ</p>
+                        <a href="#" target="_blank"
+                            class="tw-inline-flex tw-items-center tw-text-emerald-500 hover:tw-text-emerald-600 tw-transition-colors tw-no-underline">
+                            ดูเพิ่มเติม <i class="fas fa-arrow-right tw-ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div
+                    class="card-hover tw-bg-white tw-rounded-xl tw-overflow-hidden tw-shadow-sm tw-border tw-border-gray-100">
+                    <div class="tw-bg-gradient-to-r tw-from-amber-500 tw-to-amber-600 tw-h-2"></div>
+                    <div class="tw-p-6">
+                        <div class="tw-flex tw-items-center tw-mb-4">
+                            <div class="tw-bg-amber-100 tw-p-3 tw-rounded-lg tw-text-amber-500 tw-mr-4">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 class="tw-text-lg tw-font-medium tw-text-gray-800">ผลการแข่งขัน</h3>
+                        </div>
+                        <p class="tw-text-gray-600 tw-mb-4">ติดตามผลการแข่งขันกีฬาทุกประเภท</p>
+                        <a href="#" target="_blank"
+                            class="tw-inline-flex tw-items-center tw-text-amber-500 hover:tw-text-amber-600 tw-transition-colors tw-no-underline">
+                            ดูเพิ่มเติม <i class="fas fa-arrow-right tw-ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section><br><br><br>
+    </main>
+
+    <!-- Footer -->
+    <footer class="tw-bg-gray-900 tw-text-gray-400 tw-pt-16 tw-pb-12">
+        <div class="tw-container tw-mx-auto tw-px-6">
+            <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-4 tw-gap-8">
+                <div class="md:tw-col-span-2">
+                    <div class="tw-flex tw-items-center tw-space-x-2 tw-mb-4">
+                        <div class="tw-bg-brand-500 tw-text-white tw-p-2 tw-rounded-lg">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span class="tw-font-semibold tw-text-white tw-text-xl">โรงเรียนสุโขทัยวิทยาคม</span>
+                    </div>
+                    <p class="tw-mb-4 tw-max-w-md">อินทนิลเกมส์ ประจำปี พ.ศ. 2569 <br>"รู้แพ้ รู้ชนะ รู้อภัย"</p>
+                    <div class="tw-flex tw-space-x-4 tw-mt-6">
+                        <a href="https://www.instagram.com/scheeles_victorian" target="_blank"
+                            class="tw-bg-gray-800 hover:tw-bg-gray-700 tw-h-10 tw-w-10 tw-rounded-lg tw-flex tw-items-center tw-justify-center tw-transition-colors">
+                            <i class="fab fa-instagram tw-text-white"></i>
+                        </a>
+
+
+
+                    </div>
+                </div>
+                <div>
+                    <h3 class="tw-text-white tw-font-medium tw-text-lg tw-mb-4">ลิงก์</h3>
+                    <ul class="tw-space-y-2">
+                        <li><a href="home.php" class="hover:tw-text-white tw-transition-colors">หน้าหลัก</a></li>
+                        <li><a href="https://www.instagram.com/scheeles_victorian"
+                                class="hover:tw-text-white tw-transition-colors">ติดต่อเรา</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="tw-text-white tw-font-medium tw-text-lg tw-mb-4">ติดต่อเรา</h3>
+                    <ul class="tw-space-y-3">
+                        <li class="tw-flex tw-items-start">
+                            <i class="fas fa-map-marker-alt tw-mt-1.5 tw-mr-3 tw-text-brand-400"></i>
+                            <span>โรงเรียนสุโขทัยวิทยาคม จังหวัดสุโขทัย</span>
+                        </li>
+                        <!-- <li class="tw-flex tw-items-start">
+                            <i class="fas fa-phone tw-mt-1.5 tw-mr-3 tw-text-brand-400"></i>
+                            <span>Not available</span>
+                        </li>
+                        <li class="tw-flex tw-items-start">
+                            <i class="fas fa-envelope tw-mt-1.5 tw-mr-3 tw-text-brand-400"></i>
+                            <span>Not available</span>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="tw-border-t tw-border-gray-800 tw-mt-12 tw-pt-8 tw-text-center tw-text-sm">
+                <p>&copy; 2026 SUW-InthaninGames. โรงเรียนสุโขทัยวิทยาคม. All rights reserved.</p>
+                <p style="margin-top: 5px;">Created by ห้องเรียนเตรียมครู รุ่นที่ 1</p>
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+                // กราฟ 1: การเข้าร่วมกีฬาตามระดับชั้น
+                const gradeEl = document.getElementById('gradeChart');
+                if (gradeEl) {
+                    const gradeCtx = gradeEl.getContext('2d');
+                    const gradeLabels = ["ม.1\/2", "ม.1\/4", "ม.2\/3", "ม.2\/9", "ม.3\/10", "ม.3\/11", "ม.4\/10", "ม.4\/9", "ม.5\/7", "ม.5\/8", "ม.6\/1", "ม.6\/11"];
+                    const gradeData = [35, 21, 14, 24, 28, 25, 33, 30, 26, 9, 16, 12];
+
+                    new Chart(gradeCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: gradeLabels.length ? gradeLabels : ['(ยังไม่มีข้อมูล)'],
+                            datasets: [{
+                                label: 'จำนวนนักเรียนที่ลงกีฬา',
+                                data: gradeData.length ? gradeData : [0],
+                                backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                                borderColor: 'rgba(59, 130, 246, 1)',
+                                borderRadius: 6,
+                                borderWidth: 0
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: {
+                                    backgroundColor: 'rgba(255,255,255,0.95)',
+                                    titleColor: '#1e3a8a',
+                                    bodyColor: '#475569',
+                                    borderColor: 'rgba(226,232,240,1)',
+                                    borderWidth: 1,
+                                    cornerRadius: 8,
+                                    boxPadding: 6,
+                                    usePointStyle: true,
+                                    callbacks: {
+                                        label: ctx => ` ${ctx.parsed.y} คน`
+                                    }
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    grid: { display: true, color: 'rgba(226,232,240,0.5)' },
+                                    ticks: { color: '#94a3b8', precision: 0 }
+                                },
+                                x: {
+                                    grid: { display: false },
+                                    ticks: { color: '#94a3b8' }
+                                }
+                            }
+                        }
+                    });
+                }
+
+                // กราฟ 2: กีฬายอดนิยม
+                const sportsEl = document.getElementById('sportsChart');
+                if (sportsEl) {
+                    const sportsCtx = sportsEl.getContext('2d');
+                    const sportLabels = ["ฟุตบอล", "e-Sport Free Fire", "กรีฑา", "ฟุตซอล", "e-Sport ROV", "วอลเลย์บอล", "สแตน", "บาสเกตบอล"];
+                    const sportData = [62, 55, 52, 51, 39, 39, 37, 28];
+                    const sportColors = ["rgba(59,130,246,0.85)", "rgba(236,72,153,0.85)", "rgba(245,158,11,0.85)", "rgba(16,185,129,0.85)", "rgba(139,92,246,0.85)", "rgba(107,114,128,0.85)", "rgba(239,68,68,0.85)", "rgba(20,184,166,0.85)"];
+
+                    new Chart(sportsCtx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: sportLabels.length ? sportLabels : ['(ยังไม่มีข้อมูล)'],
+                            datasets: [{
+                                data: sportData.length ? sportData : [1],
+                                backgroundColor: sportColors.length ? sportColors : ['rgba(200,200,200,0.5)'],
+                                borderWidth: 0,
+                                hoverOffset: 6
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            cutout: '65%',
+                            plugins: {
+                                legend: {
+                                    position: 'bottom',
+                                    labels: {
+                                        padding: 16,
+                                        boxWidth: 10,
+                                        usePointStyle: true,
+                                        pointStyle: 'circle',
+                                        font: { size: 11 },
+                                        color: '#64748b'
+                                    }
+                                },
+                                tooltip: {
+                                    backgroundColor: 'rgba(255,255,255,0.95)',
+                                    titleColor: '#1e3a8a',
+                                    bodyColor: '#475569',
+                                    borderColor: 'rgba(226,232,240,1)',
+                                    borderWidth: 1,
+                                    cornerRadius: 8,
+                                    boxPadding: 6,
+                                    usePointStyle: true,
+                                    callbacks: {
+                                        label: ctx => ` ${ctx.label}: ${ctx.parsed} คน`
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+
+                // กราฟ 3: สถิติการเช็คชื่อ
+                const attEl = document.getElementById('attendanceChart');
+                if (attEl) {
+                    const attCtx = attEl.getContext('2d');
+                    const presentCount = 4913;
+                    const absentCount = 118;
+                    const otherCount = 359;
+                    const uncheckedCount = 278;
+                    let totalAll = 5668;
+
+                    const attChart = new Chart(attCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: totalAll > 0 ? ['มาเรียน', 'ขาดเรียน', 'อื่นๆ', 'ยังไม่เช็คชื่อ'] : ['ยังไม่มีข้อมูล'],
+                            datasets: [{
+                                label: 'จำนวนนักเรียน',
+                                data: totalAll > 0 ? [presentCount, absentCount, otherCount, uncheckedCount] : [0],
+                                backgroundColor: [
+                                    'rgba(34, 197, 94, 0.85)',
+                                    'rgba(239, 68, 68, 0.85)',
+                                    'rgba(245, 158, 11, 0.85)',
+                                    'rgba(148, 163, 184, 0.6)'
+                                ],
+                                borderRadius: 6,
+                                borderWidth: 0
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: {
+                                    backgroundColor: 'rgba(255,255,255,0.95)',
+                                    titleColor: '#1e3a8a',
+                                    bodyColor: '#475569',
+                                    borderColor: 'rgba(226,232,240,1)',
+                                    borderWidth: 1,
+                                    cornerRadius: 8,
+                                    boxPadding: 6,
+                                    usePointStyle: true,
+                                    callbacks: {
+                                        label: ctx => {
+                                            if (totalAll === 0) return ' ยังไม่มีข้อมูลนักเรียน';
+                                            const pct = totalAll > 0 ? Math.round(ctx.parsed.y / totalAll * 100) : 0;
+                                            return ` ${ctx.parsed.y} คน (${pct}%)`;
+                                        }
+                                    }
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    grid: { display: true, color: 'rgba(226,232,240,0.5)' },
+                                    ticks: { color: '#94a3b8', precision: 0 }
+                                },
+                                x: {
+                                    grid: { display: false },
+                                    ticks: { color: '#94a3b8' }
+                                }
+                            }
+                        }
+                    });
+
+
+                }
+            </script>
+</body>
+
+</html>

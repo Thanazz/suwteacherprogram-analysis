@@ -1,0 +1,147 @@
+/* ===== Banner Carousel ===== */
+.banner-carousel {
+    position: relative;
+    width: 100%;
+    height: 512px;
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    background: #000;
+    transform: translateZ(0);
+}
+@media (min-width: 640px) {
+    .banner-carousel {
+        height: 605px;
+    }
+}
+@media (min-width: 1024px) {
+    .banner-carousel {
+        height: 512px;
+    }
+}
+@media (min-width: 1024px) and (orientation: portrait) {
+    .banner-carousel {
+        height: 800px;
+    }
+}
+
+.carousel-slides-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: #000;
+    pointer-events: none;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+/* Blur background layer — real <img> element covering the full slide */
+.slide-blur-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0) scale(1.05);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(10px) brightness(0.4);
+    z-index: 1;
+    pointer-events: none;
+    backface-visibility: hidden;
+    will-change: opacity;
+}
+
+/* Actual picture shown on top of blur */
+.carousel-slide picture {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide picture img {
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Arrows ===== */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+.carousel-arrow:hover {
+    background: rgba(0, 0, 0, 0.6);
+    transform: translateY(-50%) scale(1.05);
+}
+.carousel-arrow:active {
+    transform: translateY(-50%) scale(0.95);
+}
+.carousel-arrow.prev-arrow { left: 16px; }
+.carousel-arrow.next-arrow { right: 16px; }
+
+/* ===== Dots ===== */
+.carousel-dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 20;
+}
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.carousel-dot.active {
+    background: #fff;
+    width: 20px;
+    border-radius: 4px;
+}
