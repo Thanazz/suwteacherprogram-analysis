@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="th" class="h-full bg-slate-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบวิชาฟิสิกส์ - แยกบทเรียน</title>
+    <meta name="description" content="แบบทดสอบวิชาฟิสิกส์ แยกบทเรียน พร้อมเฉลย">
+    <meta property="og:title" content="แบบทดสอบวิชาฟิสิกส์ - แยกบทเรียน">
+    <meta property="og:description" content="ฝึกทำแบบทดสอบฟิสิกส์แบ่งตามบท">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/physics_quiz_app%20(3).html">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&h=630&q=80">
+    <meta property="og:image:alt" content="Physics quiz social preview thumbnail">
+    <meta property="og:site_name" content="Physics Quiz App">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="แบบทดสอบวิชาฟิสิกส์ - แยกบทเรียน">
+    <meta name="twitter:description" content="ฝึกทำแบบทดสอบฟิสิกส์แบ่งตามบท">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&h=630&q=80">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Prompt', 'sans-serif'],
+                    },
+                    colors: {
+                        gform: {
+                            purple: '#673ab7',
+                            darkpurple: '#512da8',
+                            lightpurple: '#f0ebf8',
+                            border: '#dadce0',
+                            bg: '#f0f2f5'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #f0f2f5;
+        }
+        .form-card-top {
+            border-top: 8px solid #673ab7;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-full pb-20">
+
+    <header class="sticky top-0 z-30 bg-white shadow-md border-b border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-lg bg-gform-purple flex items-center justify-center text-white font-bold text-xl shadow">
+                    ⚛️
+                </div>
+                <div>
+                    <h1 class="text-base md:text-lg font-bold text-gray-800 leading-tight">แบบทดสอบวิชาฟิสิกส์</h1>
+                    <p class="text-xs text-gray-500">ตอบแล้ว <span id="answered-count" class="font-bold text-gform-purple">0</span>/<span id="total-count">0</span> ข้อ (รวมทั้ง 2 บท)</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-2">
+                <button id="btn-shuffle" onclick="shuffleCurrentPage()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs md:text-sm font-medium text-purple-700 bg-purple-50 hover:bg-purple-100 rounded-lg border border-purple-200 transition-colors shadow-sm active:scale-95">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                    <span>สลับโจทย์ & ตัวเลือก</span>
+                </button>
+                <button id="btn-reset" onclick="resetQuizWithConfirm()" class="px-3 py-1.5 text-xs md:text-sm font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                    รีเซ็ตคำตอบ
+                </button>
+            </div>
+        </div>
+
+        <!-- Chapter Navigation Tabs -->
+        <div class="bg-purple-50/70 border-t border-gray-200">
+            <div class="max-w-4xl mx-auto px-4 flex space-x-2 overflow-x-auto">
+                <button id="tab-btn-0" onclick="switchChapter(0)" class="px-4 py-2.5 text-sm font-semibold border-b-2 whitespace-nowrap transition-all border-gform-purple text-gform-purple">
+                    บทที่ 1: ฟิสิกส์อะตอม (20 ข้อ)
+                </button>
+                <button id="tab-btn-1" onclick="switchChapter(1)" class="px-4 py-2.5 text-sm font-semibold border-b-2 whitespace-nowrap transition-all border-transparent text-gray-500 hover:text-purple-700">
+                    บทที่ 2: ของไหลและความตึงผิว (14 ข้อ)
+                </button>
+            </div>
+        </div>
+
+        <!-- Global Progress Bar -->
+        <div class="w-full bg-gray-200 h-1.5">
+            <div id="progress-bar" class="bg-gform-purple h-1.5 w-0 transition-all duration-300"></div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 pt-6">
+
+        <!-- Title & Info Header Card -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 mb-6 form-card-top overflow-hidden">
+            <div class="p-6 md:p-8">
+                <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-100 w-max px-3 py-1 rounded-full mb-3">
+                    <span id="chapter-badge">บทที่ 1 จาก 2</span>
+                </div>
+                <h1 id="chapter-title" class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">เรื่อง ฟิสิกส์อะตอม</h1>
+                <p id="chapter-desc" class="text-gray-600 text-sm md:text-base">แบบทดสอบเก็บคะแนนตามผลการเรียนรู้</p>
+                
+                <div class="mt-4 bg-purple-50 rounded-lg p-4 text-xs md:text-sm text-purple-900 border border-purple-100 flex items-start gap-2">
+                    <span class="text-base">💡</span>
+                    <div>
+                        <p class="font-semibold">คำชี้แจง:</p>
+                        <p>สามารถทำบทใดก่อนก็ได้ โดยกดเลือกแท็บด้านบน หรือกดปุ่ม <strong>"ถัดไป ➔"</strong> เพื่อเปลี่ยนบทได้ตลอดเวลา</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dynamic Questions Container -->
+        <div id="questions-container" class="space-y-6">
+            <!-- Questions rendered dynamically -->
+        </div>
+
+        <!-- Bottom Navigation & Action Bar -->
+        <div class="mt-8 bg-white p-6 rounded-xl shadow-sm border border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3 w-full md:w-auto">
+                <button id="btn-prev-page" onclick="prevChapter()" class="flex-1 md:flex-initial px-5 py-2.5 text-sm font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
+                    ⬅ ย้อนกลับ
+                </button>
+                <button id="btn-next-page" onclick="nextChapter()" class="flex-1 md:flex-initial px-5 py-2.5 text-sm font-semibold text-purple-700 bg-purple-100 hover:bg-purple-200 rounded-lg transition-colors">
+                    ถัดไป ➔
+                </button>
+            </div>
+
+            <button onclick="submitQuiz()" class="w-full md:w-auto px-8 py-3 bg-gform-purple hover:bg-gform-darkpurple active:scale-95 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all text-center">
+                ส่งคำตอบและตรวจคะแนน 🚀
+            </button>
+        </div>
+
+    </main>
+
+    <div id="result-modal" onclick="handleModalBackdropClick(event)" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] flex flex-col overflow-hidden transform transition-all">
+            <div class="p-6 bg-gradient-to-r from-purple-700 to-indigo-800 text-white text-center relative">
+                <button onclick="closeModal()" class="absolute top-4 right-4 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 rounded-full w-8 h-8 flex items-center justify-center transition-colors">
+                    ✕
+                </button>
+                <h2 class="text-2xl font-bold mb-1">สรุปผลคะแนนแบบทดสอบ</h2>
+                <p class="text-purple-200 text-sm">วิชาฟิสิกส์</p>
+                <div class="mt-4 bg-white/10 rounded-xl p-4 backdrop-blur-md inline-block">
+                    <span class="text-xs uppercase tracking-wider text-purple-200 block">คะแนนรวมทั้งหมด</span>
+                    <span id="score-text" class="text-4xl font-extrabold">0 / 0</span>
+                    <span id="percentage-text" class="block text-xs mt-1 text-purple-200">(0%)</span>
+                </div>
+            </div>
+
+            <div class="p-6 overflow-y-auto space-y-4 custom-scrollbar text-gray-700 text-sm">
+                <h3 class="font-bold text-gray-900 border-b pb-2 text-base">รายละเอียดคะแนนแยกตามบท</h3>
+                
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center p-3.5 bg-purple-50 rounded-xl border border-purple-100">
+                        <div>
+                            <span class="font-bold text-gray-800 block">บทที่ 1: ฟิสิกส์อะตอม</span>
+                            <span class="text-xs text-gray-500">จำนวน 20 ข้อ</span>
+                        </div>
+                        <span id="sec1-score" class="font-bold text-lg text-gform-purple">0/20</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3.5 bg-purple-50 rounded-xl border border-purple-100">
+                        <div>
+                            <span class="font-bold text-gray-800 block">บทที่ 2: ของไหลและความตึงผิว</span>
+                            <span class="text-xs text-gray-500">จำนวน 14 ข้อ</span>
+                        </div>
+                        <span id="sec2-score" class="font-bold text-lg text-gform-purple">0/14</span>
+                    </div>
+                </div>
+
+                <div id="score-feedback" class="p-3.5 rounded-xl text-center font-medium">
+                    <!-- Dynamic Feedback Message -->
+                </div>
+            </div>
+
+            <div class="p-4 bg-gray-50 border-t flex gap-3">
+                <button onclick="closeModal()" class="flex-1 py-2.5 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold rounded-lg transition-colors text-center">
+                    ปิด & ดูเฉลย
+                </button>
+                <button onclick="resetQuizWithConfirm(); closeModal();" class="flex-1 py-2.5 bg-gform-purple hover:bg-gform-darkpurple text-white font-semibold rounded-lg transition-colors text-center">
+                    ทำแบบทดสอบอีกครั้ง
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chapter 1 Dataset: Atom Physics (20 Questions)
+        const chapter1Data = {
+            chapterId: 1,
+            title: "บทที่ 1: เรื่อง ฟิสิกส์อะตอม",
+            description: "แบบทดสอบเรื่อง ฟิสิกส์อะตอม (จำนวน 20 ข้อ)",
+            questions: [
+                {
+                    question: "จำนวนอิเล็กตรอนที่แฝงอยู่ในหยดน้ำมันของมิลลิแกน มีลักษณะอย่างไร",
+                    options: [
+                        "มีจำนวนเท่ากันทุกหยด",
+                        "มีจำนวนไม่แน่นอน อาจมีประจุเป็นเศษส่วนของประจุของอิเล็กตรอนได้",
+                        "มีจำนวนแน่นอน เท่ากันทุกหยด และมีประจุเป็นจำนวนเต็มเท่าของตัวเลขค่าหนึ่ง",
+                        "มีจำนวนไม่แน่นอน อาจมีมากหรือน้อยก็ได้ แต่มีประจุเป็นจำนวนเต็มเท่าของตัวเลขค่าหนึ่ง"
+                    ],
+                    correctIndex: 3
+                },
+                {
+                    question: "ข้อใดต่อไปนี้เป็นแบบจำลองอะตอมของทอมสัน",
+                    options: [
+                        "อะตอมมีลักษณะเป็นทรงกลม มีเนื้อเป็นประจุไฟฟ้าบวกและมีอิเล็กตรอนฝังอยู่ภายในเนื้ออะตอม",
+                        "อะตอมมีลักษณะเป็นวงกลม มีเนื้อเป็นประจุไฟฟ้าบวกและมีอิเล็กตรอนฝังอยู่ภายในเนื้ออะตอม",
+                        "อะตอมมีลักษณะเป็นทรงกลม มีเนื้อเป็นประจุไฟฟ้าลบและมีอิเล็กตรอนฝังอยู่ภายในเนื้ออะตอม",
+                        "อะตอมมีลักษณะเป็นทรงรี มีเนื้อเป็นประจุไฟฟ้าบวกและมีอิเล็กตรอนฝังอยู่ภายในเนื้ออะตอม"
+                    ],
+                    correctIndex: 0
+                },
+                {
+                    question: "เป็นที่ทราบกันแล้วว่า อิเล็กตรอนในโลหะสามารถเคลื่อนที่ได้อย่างอิสระ และมักจะพบเสมอว่าอิเล็กตรอนจะเคลื่อนที่อยู่ตามบริเวณผิวของโลหะ เหตุที่อิเล็กตรอนไม่เคลื่อนที่ต่อไปในอากาศ เพื่อหนีออกจากโลหะเพราะ",
+                    options: [
+                        "อากาศไม่เป็นตัวนำไฟฟ้า",
+                        "อิเล็กตรอนมีพลังงานน้อยกว่าพลังงานยึดเหนี่ยวของโลหะ",
+                        "อากาศมีแรงเสียดทานมาก",
+                        "อิเล็กตรอนถูกอะตอมของโลหะยึดจับไว้"
+                    ],
+                    correctIndex: 1
+                },
+                {
+                    question: "จงหาความยาวคลื่นของคลื่นแม่เหล็กไฟฟ้าที่ปล่อยออกมาจากอะตอมของไฮโดรเจน ถ้าอิเล็กตรอนย้ายจากระดับพลังงาน n = 3 ไปยัง n = 1 กำหนดให้ E1 = -13.6 eV",
+                    options: [
+                        "97.05 นาโนเมตร",
+                        "102.4 นาโนเมตร",
+                        "121.3 นาโนเมตร",
+                        "136.6 นาโนเมตร"
+                    ],
+                    correctIndex: 1
+                },
+                {
+                    question: "กลศาสตร์ควอนตัมสามารถอธิบายปรากฏการณ์ธรรมชาติของโลกแห่งวัตถุที่กลศาสตร์ของนิวตันอธิบายไม่ได้ทั้งนี้เพราะเหตุใด",
+                    options: [
+                        "ในระดับอนุภาค เราไม่สามารถทราบทั้งความเร็วและโมเมนตัมได้แม่นยำในเวลาเดียวกัน",
+                        "ในระดับอนุภาค เราไม่สามารถทราบทั้งตำแหน่งและโมเมนตัมได้แม่นยำในเวลาเดียวกัน",
+                        "ในระดับวัตถุขนาดใหญ่ เราไม่สามารถทราบทั้งตำแหน่งและโมเมนตัมได้แม่นยำในเวลาเดียวกัน",
+                        "ในระดับวัตถุขนาดใหญ่ เราไม่สามารถทราบทั้งตำแหน่งและความเร็วได้แม่นยำในเวลาเดียวกัน"
+                    ],
+                    correctIndex: 1
+                },
+                {
+                    question: "การทดลองรังสีแคโทดโดยใช้สนามแม่เหล็ก 0.005 เทสลา พบว่ารัศมีความโค้งของลำอนุภาคเท่ากับ 4 เซนติเมตร เมื่อต่อกับความต่างศักย์ 480 โวลต์เข้ากับแผ่นโลหะขนานที่อยู่ห่างกัน 3 มิลลิเมตร โดยให้สนามไฟฟ้าตั้งฉากกับสนามแม่เหล็ก ทำให้อนุภาคเคลื่อนที่ในแนวตรง ค่าประจุต่อมวลจากการทดลองนี้มีค่าเท่าใด",
+                    options: [
+                        "1.47 x 10¹¹ C/kg",
+                        "1.58 x 10¹¹ C/kg",
+                        "1.60 x 10¹¹ C/kg",
+                        "1.78 x 10¹¹ C/kg"
+                    ],
+                    correctIndex: 2
+                },
+                {
+                    question: "ในการทดลองของทอมสันทำให้เราได้ทราบอะไร",
+                    options: [
+                        "ค่าประจุของอิเล็กตรอน = 9.1 x 10⁻³¹ C",
+                        "ค่ามวลของอิเล็กตรอน = 1.6 x 10⁻¹⁹ kg",
+                        "ค่าประจุต่อมวลของอิเล็กตรอน = 9.7 x 10¹⁰ C/kg",
+                        "ค่าประจุต่อมวลของอิเล็กตรอน = 1.76 x 10¹¹ C/kg"
+                    ],
+                    correctIndex: 3
+                },
+                {
+                    question: "ในการทดลองของมิลลิแกน ประจุบนหยดน้ำมันเกิดขึ้นได้อย่างไร",
+                    options: [
+                        "โดยแสงซึ่งกระทบกับหยดน้ำมัน",
+                        "โดยการเสียดสีกับท่อพ่นน้ำมันและเสียดสีกับอากาศ",
+                        "โดยการเติมประจุให้กับหยดน้ำมัน",
+                        "โดยความต่างศักย์ระหว่างแผ่นโลหะของอุปกรณ์"
+                    ],
+                    correctIndex: 1
+                },
+                {
+                    question: "ประจุไฟฟ้าที่แฝงอยู่ในหยดน้ำมันของมิลลิแกน มีลักษณะอย่างไร",
+                    options: [
+                        "มีประจุเท่ากันทุกหยด",
+                        "มีประจุเป็นเศษส่วนของประจุของอิเล็กตรอนได้",
+                        "มีประจุเป็นจำนวนเต็มเท่าของประจุอิเล็กตรอน",
+                        "มีประจุไม่แน่นอน ขึ้นกับขนาดของหยดน้ำมัน"
+                    ],
+                    correctIndex: 2
+                },
+                {
+                    question: "แบบจำลองอะตอมที่กล่าวว่า \"อะตอมประกอบด้วยประจุไฟฟ้าบวกที่รวมกันอยู่ที่ศูนย์กลาง เรียกว่า นิวเคลียส และมีอิเล็กตรอนเคลื่อนที่เป็นวงๆ รอบๆ นิวเคลียส\" เป็นแบบจำลองอะตอมของใคร",
+                    options: [
+                        "รัทเทอร์ฟอร์ด",
+                        "ทอมสัน",
+                        "ดอลตัน",
+                        "โบร์"
+                    ],
+                    correctIndex: 0
+                },
+                {
+                    question: "ข้อใดต่อไปนี้เป็นแบบจำลองอะตอมของทอมสัน",
+                    options: [
+                        "อะตอมมีลักษณะเป็นทรงกลม มีเนื้อเป็นประจุไฟฟ้าบวกและมีอิเล็กตรอนฝังอยู่ภายในเนื้ออะตอม",
+                        "อะตอมมีลักษณะเป็นวงกลม มีเนื้อเป็นประจุไฟฟ้าบวกและมีอิเล็กตรอนฝังอยู่ภายในเนื้ออะตอม",
+                        "อะตอมมีลักษณะเป็นทรงกลม มีเนื้อเป็นประจุไฟฟ้าลบและมีอิเล็กตรอนฝังอยู่ภายในเนื้ออะตอม",
+                        "อะตอมมีลักษณะเป็นทรงรี มีเนื้อเป็นประจุไฟฟ้าบวกและมีอิเล็กตรอนฝังอยู่ภายในเนื้ออะตอม"
+                    ],
+                    correctIndex: 0
+                },
+                {
+                    question: "ข้อใดต่อไปนี้ไม่ถูกต้อง<br><span class='text-xs text-gray-500 block mt-1 bg-gray-50 p-2 rounded'>1. พลังงานจลน์ของโฟโตอิเล็กตรอนขึ้นอยู่กับความเข้มของแสงที่ตกกระทบ<br>2. พลังงานจลน์ของโฟโตอิเล็กตรอนขึ้นอยู่กับความถี่ของแสงที่ตกกระทบ<br>3. จำนวนโฟโตอิเล็กตรอนเพิ่มขึ้นเมื่อความเข้มแสงเพิ่มขึ้น<br>4. ความต่างศักย์หยุดยั้งเพิ่มขึ้นเมื่อความถี่เพิ่มขึ้น</span>",
+                    options: [
+                        "ข้อ 1 และ 2",
+                        "ข้อ 1 และ 3",
+                        "ข้อ 1 เท่านั้น",
+                        "ข้อ 2 เท่านั้น"
+                    ],
+                    correctIndex: 2
+                },
+                {
+                    question: "ในหลอดทดลองรังสีเอ็กซ์ เป้าอาโนดถูกชนด้วยรังสีคาโทดแล้วมีรังสีเอ็กซ์แผ่ออกมาจากอาโนด รังสีดังกล่าวเกิดจากสาเหตุใด",
+                    options: [
+                        "อิเล็กตรอนจากคาโทดเข้าชนอิเล็กตรอนชั้นในของอะตอมของเป้าหลุดไป อิเล็กตรอนชั้นนอกของอะตอมของเป้าเข้าไปแทนที่โดยการปล่อยรังสีเอ็กซ์ออกมา",
+                        "อิเล็กตรอนที่เข้าชนอาโนดจะสะท้อนจากอาโนดกลายเป็นรังสีเอ็กซ์",
+                        "อิเล็กตรอนที่ถูกเร่งให้ชนกับเป้าเสียพลังงานไปกลายเป็นรังสีเอ็กซ์",
+                        "ข้อ ก. และ ค. เป็นสาเหตุ แต่ข้อ ข. ไม่ใช่สาเหตุ"
+                    ],
+                    correctIndex: 3
+                },
+                {
+                    question: "ฟรังก์และเฮิรตซ์ได้ทำการทดลองเพื่อสนับสนุนทฤษฎีอะตอมของใคร",
+                    options: [
+                        "รัทเทอร์ฟอร์ด",
+                        "ดอลตัน",
+                        "ทอมสัน",
+                        "โบร์"
+                    ],
+                    correctIndex: 3
+                },
+                {
+                    question: "ใครเป็นผู้เสนอแนวคิดที่ว่าอนุภาคแสดงคุณสมบัติของคลื่นได้",
+                    options: [
+                        "ไอน์สไตน์",
+                        "คอมป์ตัน",
+                        "เดอ บรอย์",
+                        "ไฮเซนเบิร์ก"
+                    ],
+                    correctIndex: 2
+                },
+                {
+                    question: "จงพิจารณาข้อความต่อไปนี้ ข้อความที่ถูกต้องคือข้อใดบ้าง<br><span class='text-xs text-gray-500 block mt-1 bg-gray-50 p-2 rounded'>1. ปรากฏการณ์โฟโตอิเล็กตริกสนับสนุนว่าแสงแสดงสมบัติคลื่นได้<br>2. การทดลองของฟรังก์และเฮิรตซ์สนับสนุนว่าแสงแสดงสมบัติเป็นอนุภาค<br>3. ปรากฏการณ์คอมป์ตันแสดงว่าคลื่นแม่เหล็กไฟฟ้าแสดงสมบัติเป็นอนุภาคได้</span>",
+                    options: [
+                        "ข้อ 1 2 และ 3",
+                        "ข้อ 1 และ 3",
+                        "ข้อ 2 เท่านั้น",
+                        "ข้อ 3 เท่านั้น"
+                    ],
+                    correctIndex: 3
+                },
+                {
+                    question: "เมื่อใช้แสงที่มีความยาวคลื่น 330 นาโนเมตร ต้องใช้ความต่างศักย์หยุดยั้ง 1.25 โวลต์ ในการทดลองดังกล่าวใช้แผ่นโลหะชนิดใด (กำหนด: ซีเซียม 1.8 eV, โซเดียม 2.3 eV, แบเรียม 2.5 eV, อลูมิเนียม 4.2 eV)",
+                    options: [
+                        "ซีเซียม",
+                        "โซเดียม",
+                        "แบเรียม",
+                        "อลูมิเนียม"
+                    ],
+                    correctIndex: 2
+                },
+                {
+                    question: "วัตถุมวล 50 กิโลกรัม เคลื่อนที่ด้วยความเร็ว 2 เมตร/วินาที ความยาวคลื่นเดอบรอย์ มีค่าเท่าใด",
+                    options: [
+                        "3.3 x 10⁻³⁵ เมตร",
+                        "3.3 x 10⁻³⁶ เมตร",
+                        "6.6 x 10⁻³⁵ เมตร",
+                        "6.6 x 10⁻³⁶ เมตร"
+                    ],
+                    correctIndex: 3
+                },
+                {
+                    question: "กลศาสตร์ควอนตัมสามารถอธิบายปรากฏการณ์ธรรมชาติของโลกแห่งวัตถุที่กลศาสตร์ของนิวตันอธิบายไม่ได้ทั้งนี้เพราะเหตุใด",
+                    options: [
+                        "ในระดับอนุภาค เราไม่สามารถทราบทั้งความเร็วและโมเมนตัมได้แม่นยำในเวลาเดียวกัน",
+                        "ในระดับอนุภาค เราไม่สามารถทราบทั้งตำแหน่งและโมเมนตัมได้แม่นยำในเวลาเดียวกัน",
+                        "ในระดับวัตถุขนาดใหญ่ เราไม่สามารถทราบทั้งตำแหน่งและความเร็วได้แม่นยำในเวลาเดียวกัน",
+                        "ในระดับวัตถุขนาดใหญ่ เราไม่สามารถทราบทั้งตำแหน่งและโมเมนตัมได้แม่นยำในเวลาเดียวกัน"
+                    ],
+                    correctIndex: 1
+                },
+                {
+                    question: "แบบจำลองอะตอมตามทฤษฎีกลศาสตร์ควอนตัมคือข้อใด",
+                    options: [
+                        "อิเล็กตรอนรอบ ๆ นิวเคลียสเป็นเสมือนกลุ่มหมอกที่ห่อหุ้มนิวเคลียสอยู่อยู่ที่ใดมีหมอกหนาแน่นมากจะมีโอกาสพบอิเล็กตรอนรอบนั้นมาก",
+                        "อิเล็กตรอนวิ่งรอบนิวเคลียสด้วยระยะห่างจากนิวเคลียสมากเมื่อเทียบกับขนาดของนิวเคลียส",
+                        "อิเล็กตรอนเคลื่อนที่รอบนิวเคลียสในวงโคตร โดยไม่แผ่คลื่นแม่เหล็กไฟฟ้าออกมา",
+                        "อิเล็กตรอนที่อยู่รอบนิวเคลียสมีสมบัติเป็นคลื่นนิ่ง"
+                    ],
+                    correctIndex: 0
+                }
+            ]
+        };
+
+        // Chapter 2 Dataset: Fluids & Surface Tension (14 Questions)
+        const chapter2Data = {
+            chapterId: 2,
+            title: "บทที่ 2: เรื่อง ของไหลและความตึงผิว",
+            description: "แบบทดสอบเรื่อง ของไหลและความตึงผิว (จำนวน 14 ข้อ)",
+            questions: [
+                {
+                    question: "เมื่อทิ้งลูกกลมเหล็กลงในน้ำที่บรรจุในภาชนะที่สูงมากและระดับน้ำในภาชนะสูงด้วยขณะที่ลูกกลมเหล็กเคลื่อนที่ลงในน้ำ ข้อความใดถูกต้อง<br><span class='text-xs text-gray-500 block mt-1 bg-gray-50 p-2 rounded'>1. แรงหนืดมีค่าเพิ่มขึ้นแล้วคงตัว<br>2. แรงลัพธ์มีค่าลดลงจนเป็นศูนย์<br>3. ความเร็วของลูกกลมลดลงจนเป็นศูนย์<br>4. ความเร่งของลูกกลมลดลงจนเป็นศูนย์</span>",
+                    options: [
+                        "ข้อ 1 , 3",
+                        "ข้อ 2 , 3",
+                        "ข้อ 1 , 2 และ 4",
+                        "ข้อ 2 , 3 และ 4"
+                    ],
+                    correctIndex: 2
+                },
+                {
+                    question: "จากข้อความข้างล่าง ข้อใดกล่าวไม่ถูกต้อง",
+                    options: [
+                        "แรงตึงผิว เป็นแรงที่เกิดจากการปรับสภาพสมดุลของแรงยึดเหนี่ยวระหว่างอนุภาคของของเหลวที่อยู่บริเวณผิว",
+                        "แรงยึดติดเป็นแรงยึดเหนี่ยวระหว่างอนุภาคของของเหลวกับผนัง เช่น แรงยึดเหนี่ยวระหว่างโมเลกุลของน้ำกับแก้ว",
+                        "แรงหนืด เป็นแรงต้านการเคลื่อนที่ชนิดหนึ่งแปรผันตรงกับความเร็ว และมีทิศทางเดียวกับการเคลื่อนที่ของวัตถุ",
+                        "แรงเชื่อมแน่น เป็นแรงยึดเหนี่ยวระหว่างอนุภาคของของเหลวด้วยกันเอง เช่น แรงยึดเหนี่ยวระหว่างโมเลกุลของน้ำกับน้ำ"
+                    ],
+                    correctIndex: 2
+                },
+                {
+                    question: "จงหาความเร็วของน้ำที่พุ่งออกจากปลายท่อน้ำดับเพลิง เมื่อความเร็วของน้ำบริเวณท่อใหญ่เท่ากับ 6 m/s และพื้นที่หน้าตัดของท่อใหญ่เท่ากับ 3 เท่าของท่อเล็ก",
+                    options: [
+                        "15 m/s",
+                        "16 m/s",
+                        "17 m/s",
+                        "18 m/s"
+                    ],
+                    correctIndex: 3
+                },
+                {
+                    question: "ท่อน้ำไม่สม่ำเสมอ ท่อนบนมีพื้นที่หน้าตัด 4 cm² อยู่สูงจากพื้นดิน 10 m ถ้าน้ำในท่อมีความดัน 1.5 x 10⁵ Pa ไหลด้วยอัตราเร็ว 2 m/s ไปยังท่อนล่างซึ่งมีพื้นที่หน้าตัด 8 cm² อยู่สูงจากพื้นดิน 1 m จงหาความเร็ว และความดันของน้ำในท่อนล่าง",
+                    options: [
+                        "1 m/s , 2.42 x 10⁵ Pa",
+                        "2 m/s , 2.42 x 10⁵ Pa",
+                        "2 m/s , 4.84 x 10⁵ Pa",
+                        "1 m/s , 4.84 x 10⁵ Pa"
+                    ],
+                    correctIndex: 0
+                },
+                {
+                    question: "เมื่อเทน้ำและปรอทลงในหลอดทดลอง ข้อใดเป็นสาเหตุทำให้ลักษณะของผิวของของเหลวที่สัมผัสผนังภาชนะเป็นรูปโค้งเว้าและโค้งนูนตามลำดับ<br><span class='text-xs text-gray-500 block mt-1 bg-gray-50 p-2 rounded'>1. แรงเชื่อมแน่นของน้ำมากกว่าแรงยึดติด<br>2. แรงยึดติดของน้ำมากกว่าแรงเชื่อมแน่น<br>3. แรงยึดติดของปรอทมากกว่าแรงเชื่อมแน่น<br>4. แรงเชื่อมแน่นของปรอทมากกว่าแรงยึดติด</span>",
+                    options: [
+                        "ข้อ 1 และ 3",
+                        "ข้อ 1 และ 4",
+                        "ข้อ 2 และ 3",
+                        "ข้อ 2 และ 4"
+                    ],
+                    correctIndex: 3
+                },
+                {
+                    question: "เมื่อทิ้งลูกกลมเหล็กลงในน้ำที่บรรจุในภาชนะสูง ขณะลูกกลมเคลื่อนที่ด้วยความเร็วปลาย (Terminal Velocity) ข้อความใดถูกต้อง",
+                    options: [
+                        "ข้อ 1 , 3",
+                        "ข้อ 2 , 3",
+                        "ข้อ 1 , 2 และ 4",
+                        "ข้อ 2 , 3 และ 4"
+                    ],
+                    correctIndex: 2
+                },
+                {
+                    question: "ลูกกลมโลหะมวล 20 กรัม กำลังเคลื่อนที่ลงในของเหลวด้วยความเร่งค่าหนึ่ง 5 เมตรต่อวินาที² ถ้ามีแรงพยุงต้านการเคลื่อนที่ขนาด 0.05 นิวตัน จะเกิดแรงหนืดเท่าใด (กำหนด g = 10 m/s²)",
+                    options: [
+                        "0.02 N",
+                        "0.03 N",
+                        "0.04 N",
+                        "0.05 N"
+                    ],
+                    correctIndex: 3
+                },
+                {
+                    question: "ถ้าใช้ลวดบางเส้นผ่านศูนย์กลางเล็กมากทำเป็นห่วงวงกลมรัศมี 7 มิลลิเมตร ในการหาความตึงผิวของน้ำผสมผงซักฟอกโดยใช้แรงดึงเท่ากับ 3.52 มิลลินิวตัน ทำให้ห่วงพ้นน้ำพอดี ความตึงผิวในหน่วยมิลลินิวตันต่อเมตรของน้ำผสมนี้มีค่าเท่าใด",
+                    options: [
+                        "30 mN/m",
+                        "40 mN/m",
+                        "50 mN/m",
+                        "60 mN/m"
+                    ],
+                    correctIndex: 1
+                },
+                {
+                    question: "แผ่นโลหะบางมากรูปวงกลม มีเส้นผ่านศูนย์กลาง 7 เซนติเมตร นำไปลอยอยู่บนผิวน้ำ ถ้าการที่แผ่นโลหะนี้สามารถลอยน้ำได้เป็นผลมาจากแรงตึงผิวเพียงอย่างเดียว จงหาว่าโลหะแผ่นนี้มีมวลอย่างมากที่สุดเท่าไร กำหนดให้ความตึงผิวของน้ำมีค่า 0.072 นิวตันต่อเมตร",
+                    options: [
+                        "1.58 x 10⁻³ kg",
+                        "1.88 x 10⁻³ kg",
+                        "15.8 x 10⁻³ kg",
+                        "2.58 x 10⁻³ kg"
+                    ],
+                    correctIndex: 0
+                },
+                {
+                    question: "จากข้อความเรื่องสมบัติของของเหลว ข้อใดกล่าวไม่ถูกต้อง",
+                    options: [
+                        "แรงตึงผิว เป็นแรงที่เกิดจากการปรับสภาพสมดุลของแรงยึดเหนี่ยวระหว่างอนุภาคของของเหลวที่อยู่บริเวณผิว",
+                        "แรงยึดติดเป็นแรงยึดเหนี่ยวระหว่างอนุภาคของของเหลวกับผนัง เช่น แรงยึดเหนี่ยวระหว่างโมเลกุลของน้ำกับแก้ว",
+                        "แรงหนืด เป็นแรงต้านการเคลื่อนที่ชนิดหนึ่งแปรผันตรงกับความเร็ว และมีทิศทางเดียวกับการเคลื่อนที่ของวัตถุ",
+                        "แรงเชื่อมแน่น เป็นแรงยึดเหนี่ยวระหว่างอนุภาคของของเหลวด้วยกันเอง เช่น แรงยึดเหนี่ยวระหว่างโมเลกุลของน้ำกับน้ำ"
+                    ],
+                    correctIndex: 2
+                },
+                {
+                    question: "ขนาดของแรงหนืดของของเหลวชนิดหนึ่งที่กระทำต่อวัตถุอันหนึ่งที่เคลื่อนที่ในของเหลวนั้นจะขึ้นอยู่กับข้อใด",
+                    options: [
+                        "ปริมาตรส่วนที่จม",
+                        "ความหนาแน่นของวัตถุ",
+                        "ความดันของของเหลว",
+                        "ความหนืดของของเหลว"
+                    ],
+                    correctIndex: 3
+                },
+                {
+                    question: "ทิ้งลูกกลมโลหะลงในของเหลวชนิดหนึ่ง โดยที่ลูกกลมโลหะมวล 15 กรัม มีปริมาตร 1 ลูกบาศก์เซนติเมตร ถ้าของเหลวมีความหนาแน่น 2 x 10³ กิโลกรัมต่อลูกบาศก์เมตร จงหาแรงหนืดสูงสุดของของเหลว",
+                    options: [
+                        "0.11 N",
+                        "0.13 N",
+                        "0.15 N",
+                        "0.18 N"
+                    ],
+                    correctIndex: 1
+                },
+                {
+                    question: "ท่อน้ำดับเพลิง มีเส้นผ่านศูนย์กลางบริเวณท่อน้ำเข้า 8 cm และที่ปากท่อ 4 cm ถ้าความเร็วของน้ำที่ปล่อยมาตามท่อคือ 5 m/s จงหาความเร็วของน้ำที่ปลายปากท่อ",
+                    options: [
+                        "15 m/s",
+                        "20 m/s",
+                        "25 m/s",
+                        "35 m/s"
+                    ],
+                    correctIndex: 1
+                },
+                {
+                    question: "ดูดน้ำหวานความหนาแน่น 1020 กิโลกรัม/ลูกบาศก์เมตร จนน้ำหวานไหลเข้าไปในหลอดเป็นระยะ 0.1 เมตร โดยหลอดเอียงทำมุม 60 องศากับแนวดิ่ง ความดันอากาศภายในหลอดเหนือน้ำหวานเท่าใด (กำหนดให้ ความดันบรรยากาศในขณะนั้นเท่ากับ 1.010 x 10⁵ พาสคัล)",
+                    options: [
+                        "9.95 x 10⁴ Pa",
+                        "1.005 x 10⁵ Pa",
+                        "1.015 x 10⁵ Pa",
+                        "1.025 x 10⁵ Pa"
+                    ],
+                    correctIndex: 1
+                }
+            ]
+        };
+
+        let currentChapterIndex = 0;
+        let processedChapters = [];
+        let userAnswers = {}; // Format: { "chapIndex_qIndex": selectedOptionIndex }
+        let isSubmitted = false;
+        const prefixLabels = ['ก.', 'ข.', 'ค.', 'ง.'];
+
+        function cloneAndPrepareData() {
+            const rawChapters = [chapter1Data, chapter2Data];
+            return rawChapters.map((chap) => {
+                const questions = chap.questions.map((q, qIdx) => {
+                    const optionsObj = q.options.map((optText, oIdx) => ({
+                        text: optText,
+                        isCorrect: oIdx === q.correctIndex
+                    }));
+                    return {
+                        originalQIndex: qIdx,
+                        question: q.question,
+                        options: optionsObj
+                    };
+                });
+                return {
+                    chapterId: chap.chapterId,
+                    title: chap.title,
+                    description: chap.description,
+                    questions: questions
+                };
+            });
+        }
+
+        // Fisher-Yates Shuffle
+        function shuffleArray(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function initQuiz() {
+            processedChapters = cloneAndPrepareData();
+            // Automatically shuffle questions and choices for both chapters independently
+            processedChapters.forEach(chap => {
+                chap.questions = shuffleArray(chap.questions);
+                chap.questions.forEach(q => {
+                    q.options = shuffleArray(q.options);
+                });
+            });
+
+            userAnswers = {};
+            isSubmitted = false;
+            currentChapterIndex = 0;
+            renderCurrentChapter();
+            updateGlobalProgress();
+        }
+
+        function shuffleCurrentPage() {
+            Swal.fire({
+                title: 'สลับโจทย์และตัวเลือก?',
+                text: 'การสลับโจทย์จะรีเซ็ตคำตอบเฉพาะบทนี้ที่คุณเลือกไว้',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#673ab7',
+                cancelButtonColor: '#6b7280',
+                confirmButtonText: 'สลับเลย',
+                cancelButtonText: 'ยกเลิก',
+                customClass: {
+                    popup: 'font-sans rounded-2xl'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const chap = processedChapters[currentChapterIndex];
+                    chap.questions = shuffleArray(chap.questions);
+                    chap.questions.forEach(q => {
+                        q.options = shuffleArray(q.options);
+                    });
+
+                    // Clear user answers for current chapter
+                    chap.questions.forEach((_, qIdx) => {
+                        delete userAnswers[`${currentChapterIndex}_${qIdx}`];
+                    });
+
+                    renderCurrentChapter();
+                    updateGlobalProgress();
+
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'สลับโจทย์บทนี้เรียบร้อย',
+                        showConfirmButton: false,
+                        timer: 1800
+                    });
+                }
+            });
+        }
+
+        function resetQuizWithConfirm() {
+            Swal.fire({
+                title: 'รีเซ็ตทำแบบทดสอบใหม่?',
+                text: 'คำตอบทั้งหมดทุกบทจะถูกล้างค่า',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6b7280',
+                confirmButtonText: 'รีเซ็ต',
+                cancelButtonText: 'ยกเลิก',
+                customClass: {
+                    popup: 'font-sans rounded-2xl'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    resetQuiz();
+                }
+            });
+        }
+
+        function resetQuiz() {
+            initQuiz();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function switchChapter(index) {
+            currentChapterIndex = index;
+            renderCurrentChapter();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextChapter() {
+            if (currentChapterIndex < processedChapters.length - 1) {
+                switchChapter(currentChapterIndex + 1);
+            }
+        }
+
+        function prevChapter() {
+            if (currentChapterIndex > 0) {
+                switchChapter(currentChapterIndex - 1);
+            }
+        }
+
+        function renderCurrentChapter() {
+            const chap = processedChapters[currentChapterIndex];
+
+            // Update Tab Highlight
+            for (let i = 0; i < processedChapters.length; i++) {
+                const tabBtn = document.getElementById(`tab-btn-${i}`);
+                if (i === currentChapterIndex) {
+                    tabBtn.className = "px-4 py-2.5 text-sm font-semibold border-b-2 whitespace-nowrap transition-all border-gform-purple text-gform-purple";
+                } else {
+                    tabBtn.className = "px-4 py-2.5 text-sm font-semibold border-b-2 whitespace-nowrap transition-all border-transparent text-gray-500 hover:text-purple-700";
+                }
+            }
+
+            // Update Chapter Card Header
+            document.getElementById('chapter-badge').textContent = `บทที่ ${currentChapterIndex + 1} จาก ${processedChapters.length}`;
+            document.getElementById('chapter-title').textContent = chap.title;
+            document.getElementById('chapter-desc').textContent = chap.description;
+
+            // Update Bottom Nav Buttons
+            document.getElementById('btn-prev-page').disabled = (currentChapterIndex === 0);
+            document.getElementById('btn-next-page').disabled = (currentChapterIndex === processedChapters.length - 1);
+
+            // Render Question List
+            const container = document.getElementById('questions-container');
+            container.innerHTML = '';
+
+            chap.questions.forEach((q, qIndex) => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-xl shadow-sm border border-gray-200 p-5 md:p-6 transition-all hover:shadow-md";
+
+                const answerKey = `${currentChapterIndex}_${qIndex}`;
+                const selectedOptIndex = userAnswers[answerKey];
+
+                let optionsHTML = '';
+                q.options.forEach((opt, oIndex) => {
+                    const isChecked = selectedOptIndex === oIndex;
+
+                    optionsHTML += `
+                        <div class="relative">
+                            <button type="button" 
+                                    onclick="selectOption(${currentChapterIndex}, ${qIndex}, ${oIndex})"
+                                    class="w-full text-left flex items-start p-3.5 rounded-lg border ${isChecked ? 'border-purple-600 bg-purple-50 text-purple-950 font-medium ring-2 ring-purple-600/20' : 'border-gray-200 hover:border-purple-300 hover:bg-purple-50/50 text-gray-700'} transition-all text-sm md:text-base">
+                                <span class="font-semibold text-gform-purple mr-3 min-w-[24px]">${prefixLabels[oIndex]}</span>
+                                <span class="flex-1 leading-relaxed">${opt.text}</span>
+                            </button>
+                        </div>
+                    `;
+                });
+
+                // Detailed Review Box on Submission
+                let feedbackHTML = '';
+                if (isSubmitted) {
+                    const isCorrect = selectedOptIndex !== undefined && q.options[selectedOptIndex].isCorrect;
+                    const correctOpt = q.options.find(o => o.isCorrect);
+                    const correctIndex = q.options.indexOf(correctOpt);
+
+                    let calcExplanationHTML = '';
+                    if (q.question.includes("330 นาโนเมตร")) {
+                        calcExplanationHTML = `
+                            <div class="mt-2 pt-2 border-t border-purple-200 text-xs text-purple-900 leading-relaxed font-sans">
+                                <strong>💡 วิธีคิดคำนวณ:</strong><br>
+                                • พลังงานโฟตอน $E = \\frac{1240}{\\lambda\\text{ (nm)}} = \\frac{1240}{330} \\approx 3.76\\text{ eV}$<br>
+                                • พลังงานจลน์สูงสุด $E_{k,\\max} = eV_s = 1.25\\text{ eV}$<br>
+                                • ฟังก์ชันงาน $W = E - E_{k,\\max} = 3.76 - 1.25 = 2.51\\text{ eV}$<br>
+                                🎯 สรุป: ตรงกับฟังก์ชั่นงานของ <strong>แบเรียม (2.5 eV)</strong>
+                            </div>
+                        `;
+                    }
+
+                    if (isCorrect) {
+                        feedbackHTML = `<div class="mt-4 p-3 bg-green-50 text-green-800 border border-green-200 rounded-lg text-sm font-medium">✅ <strong>ถูกต้อง!</strong> ${calcExplanationHTML}</div>`;
+                    } else {
+                        feedbackHTML = `<div class="mt-4 p-3 bg-red-50 text-red-800 border border-red-200 rounded-lg text-sm font-medium">❌ <strong>ยังไม่ถูกต้อง</strong> (คำตอบที่ถูกต้องคือ: <strong class="text-purple-800">${prefixLabels[correctIndex]} ${correctOpt.text}</strong>) ${calcExplanationHTML}</div>`;
+                    }
+                }
+
+                card.innerHTML = `
+                    <div class="flex items-start justify-between gap-4 mb-4">
+                        <div class="flex-1">
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-purple-100 text-purple-800 rounded-full mb-2 inline-block">ข้อที่ ${qIndex + 1}</span>
+                            <h3 class="text-base md:text-lg font-medium text-gray-900 leading-relaxed">${q.question}</h3>
+                        </div>
+                    </div>
+                    <div class="space-y-2.5">
+                        ${optionsHTML}
+                    </div>
+                    ${feedbackHTML}
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function selectOption(cIndex, qIndex, oIndex) {
+            userAnswers[`${cIndex}_${qIndex}`] = oIndex;
+            renderCurrentChapter();
+            updateGlobalProgress();
+        }
+
+        function updateGlobalProgress() {
+            let totalQuestions = 0;
+            processedChapters.forEach(chap => {
+                totalQuestions += chap.questions.length;
+            });
+
+            const answeredCount = Object.keys(userAnswers).length;
+            const percentage = totalQuestions > 0 ? (answeredCount / totalQuestions) * 100 : 0;
+
+            document.getElementById('answered-count').textContent = answeredCount;
+            document.getElementById('total-count').textContent = totalQuestions;
+            document.getElementById('progress-bar').style.width = `${percentage}%`;
+        }
+
+        function submitQuiz() {
+            let totalQuestions = 0;
+            processedChapters.forEach(chap => {
+                totalQuestions += chap.questions.length;
+            });
+
+            const answeredCount = Object.keys(userAnswers).length;
+
+            if (answeredCount < totalQuestions) {
+                Swal.fire({
+                    title: 'ยังตอบไม่ครบทุกข้อ',
+                    text: `คุณตอบไปแล้ว ${answeredCount} จาก ${totalQuestions} ข้อ ต้องการส่งแบบทดสอบเลยหรือไม่?`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#673ab7',
+                    cancelButtonColor: '#6b7280',
+                    confirmButtonText: 'ส่งข้อสอบ',
+                    cancelButtonText: 'กลับไปทำต่อ',
+                    customClass: {
+                        popup: 'font-sans rounded-2xl'
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        processQuizResults(totalQuestions);
+                    }
+                });
+            } else {
+                processQuizResults(totalQuestions);
+            }
+        }
+
+        function processQuizResults(totalQuestions) {
+            isSubmitted = true;
+
+            let totalScore = 0;
+            const chapterScores = [];
+
+            processedChapters.forEach((chap, cIdx) => {
+                let chapScore = 0;
+                chap.questions.forEach((q, qIdx) => {
+                    const selectedOptIndex = userAnswers[`${cIdx}_${qIdx}`];
+                    if (selectedOptIndex !== undefined && q.options[selectedOptIndex].isCorrect) {
+                        chapScore++;
+                        totalScore++;
+                    }
+                });
+                chapterScores.push({
+                    score: chapScore,
+                    total: chap.questions.length
+                });
+            });
+
+            // Update Modal UI
+            document.getElementById('score-text').textContent = `${totalScore} / ${totalQuestions}`;
+            
+            const pct = Math.round((totalScore / totalQuestions) * 100);
+            document.getElementById('percentage-text').textContent = `(${pct}%)`;
+
+            document.getElementById('sec1-score').textContent = `${chapterScores[0].score} / ${chapterScores[0].total}`;
+            document.getElementById('sec2-score').textContent = `${chapterScores[1].score} / ${chapterScores[1].total}`;
+
+            const feedbackBox = document.getElementById('score-feedback');
+            let swalIcon = 'success';
+            let swalTitle = 'ส่งแบบทดสอบเรียบร้อย!';
+
+            if (pct >= 80) {
+                feedbackBox.className = "p-3.5 rounded-xl text-center font-medium bg-green-100 text-green-800 border border-green-200";
+                feedbackBox.textContent = "🎉 ยอดเยี่ยมมาก! คุณมีความเข้าใจในเนื้อหาฟิสิกส์ทั้งสองบทในระดับดีเยี่ยม";
+            } else if (pct >= 50) {
+                feedbackBox.className = "p-3.5 rounded-xl text-center font-medium bg-yellow-100 text-yellow-800 border border-yellow-200";
+                feedbackBox.textContent = "👍 ผ่านเกณฑ์! คุณทำได้ดี ลองทบทวนข้อที่ตอบผิดเพื่อความเข้าใจที่ดียิ่งขึ้น";
+            } else {
+                swalIcon = 'info';
+                swalTitle = 'ส่งแบบทดสอบแล้ว';
+                feedbackBox.className = "p-3.5 rounded-xl text-center font-medium bg-red-100 text-red-800 border border-red-200";
+                feedbackBox.textContent = "💪 พยายามอีกนิด! ควรอ่านทบทวนเนื้อหาบทเรียนเพิ่มเติมและกดทำอีกครั้ง";
+            }
+
+            renderCurrentChapter();
+
+            Swal.fire({
+                title: swalTitle,
+                html: `คุณได้คะแนนรวม <b>${totalScore}/${totalQuestions}</b> (${pct}%)`,
+                icon: swalIcon,
+                confirmButtonColor: '#673ab7',
+                confirmButtonText: 'ดูผลคะแนนและเฉลย',
+                customClass: {
+                    popup: 'font-sans rounded-2xl'
+                }
+            }).then(() => {
+                document.getElementById('result-modal').classList.remove('hidden');
+            });
+        }
+
+        function closeModal() {
+            document.getElementById('result-modal').classList.add('hidden');
+        }
+
+        // Close modal when clicking backdrop
+        function handleModalBackdropClick(event) {
+            const modalContainer = document.getElementById('result-modal');
+            if (event.target === modalContainer) {
+                closeModal();
+            }
+        }
+
+        // Initialize App on Window Load
+        window.onload = function() {
+            initQuiz();
+        };
+    </script>
+</body>
+</html>
