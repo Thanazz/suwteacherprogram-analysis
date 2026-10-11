@@ -1,0 +1,1168 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><head><title>
+	DoTermX From Secondary Students System
+</title>
+ 
+        <script type="text/javascript" src="js/1.8.3/jquery.js"></script>
+        <script type="text/javascript" src="js/3.0.3/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="js/3.0.3/bootstrap.min.css" media="screen"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Bootstrap -->
+
+        
+        <link type="text/css" href="css/ui-lightness/jquery-ui-1.8.10.custom.css" rel="stylesheet">	
+		<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.10.offset.datepicker.min.js"></script>
+               
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <!-- Set the viewport width to device width for mobile -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Coming soon, Bootstrap, Bootstrap 3.0, Free Coming Soon, free coming soon, free template, coming soon template, Html template, html template, html5, Code lab, codelab, codelab coming soon template, bootstrap coming soon template">
+ 
+        <!-- ============ Google fonts ============ -->
+        <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300,800" rel="stylesheet" type="text/css">
+
+        <!-- ============ Add custom CSS here ============ -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"><link href="css/style.css" rel="stylesheet" type="text/css"><link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+
+        
+
+		<script type="text/javascript">
+
+		    $(function () {
+		    var d = new Date();
+		    var toDay = d.getDate() + '/' + (d.getMonth() + 1) + '/' + (d.getFullYear() + 543);
+		    
+		    $("#thaidate1").datepicker({
+		        dateFormat: 'dd/mm/yy', isBuddhist: true, defaultDate: toDay, dayNames: ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'],
+		        dayNamesMin: ['อา', 'จ.', 'อ.', 'พ.', 'พฤ', 'ศ.', 'ส.'],
+		        monthNames: ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'],
+		        monthNamesShort: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.']
+		    });
+		        // กรณีต้องการใส่ปฏิทินลงไปมากกว่า 1 อันต่อหน้า ก็ให้มาเพิ่ม Code ที่บรรทัดด้านล่างด้วยครับ (1 ชุด = 1 ปฏิทิน)
+		    $("#birthday").datepicker({
+		        dateFormat: 'dd/mm/yy', isBuddhist: true, defaultDate: toDay, dayNames: ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'],
+		        dayNamesMin: ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'],
+		        monthNames: ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'],
+		        monthNamesShort: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.']
+		    });
+
+		    $("#datepicker-en").datepicker({ dateFormat: 'dd/mm/yy' });
+		    $("#inline").datepicker({ dateFormat: 'dd/mm/yy', inline: true });
+		    });
+
+		</script>
+
+         <script type="text/javascript">
+        // Get your number elements
+        var numberElements = document.getElementsByClassName("number");
+        // Loop through each one
+        for (var i = 0; i < numberElements.length; i++) {
+            // Get your current element
+            numberElements[i].type = 'number';
+            }
+        </script>
+
+		<style type="text/css">
+			.demoHeaders { margin-top: 2em; }
+			#dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+			#dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+			ul#icons {margin: 0; padding: 0;}
+			ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+			ul#icons span.ui-icon {float: left; margin: 0 4px;}
+			ul.test {list-style:none; line-height:30px;}
+		</style>	
+         
+
+    <style>
+        .MySearch {
+            font-size: medium;
+            color: #989797;
+            height: 30px;
+         }
+
+        .MyInput {
+            font-size: medium;
+            color: black;
+            height: 30px;
+            /*width: 100%;*/
+            /*padding: 12px 20px;*/
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+         }
+
+        .MyCombo {
+            font-size: medium;
+            color: black;
+            height: 30px;
+            /*width: 100%;*/
+            /*padding: 12px 20px;*/
+            margin: 8px 0;
+            box-sizing: border-box;
+         }
+
+        .MyLabel {
+            padding-left:30px;
+            font-size: medium;
+            color: #3e3c3c;
+            height: 25px;
+        }
+
+        /*  ห่างข้างใน   padding-top:10px; padding-right:10px; padding-bottom:10px; padding-left:10px;*/
+        .MyLabelp {
+            /*padding:10px 10px 10px 10px;*/
+            padding-left:30px;
+            font-size: medium;
+            color: #3e3c3c;
+            height: 25px;
+        }
+
+        /*  ห่างข้างนอก   margin-top:10px; margin-right:10px; margin-bottom:10px; margin-left:10px;*/
+         .MyLabelm {
+            margin:10px 10px 10px 10px; 
+        }
+
+    </style>
+
+    <script type="text/javascript">                
+                $(document).ready(function () {
+                    //Mask the textbox as per your format 123-123-123
+                    $('#fPin').mask('9 9999 99999 99 9', { placeholder: "#" });
+                });
+    </script>
+
+<style>
+body {margin:0;}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+.main {
+  padding: 16px;
+  margin-top: 55px;
+  /*    height: 1500px;  Used in this example to enable scrolling */
+}
+</style>
+   
+
+     <script type="text/javascript">
+        function ShowConfirmSave() {
+            $("#btnShowConfirmSave").click();
+        }
+    </script>  
+
+     <script type="text/javascript">
+        function ShowSuccess() {
+            $("#btnShowSuccess").click();
+        }
+    </script>  
+
+     <script type="text/javascript">
+        function ShowFail() {
+            $("#btnShowFail").click();
+        }
+    </script>  
+
+    <style type="text/css">
+        #GridView2 tr.rowHover:hover
+        {
+            background-color: red;
+            color: black;
+            font-family: Arial;
+    }
+    </style>
+
+    <style type="text/css">
+        body
+        {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+        td
+        {
+            cursor: pointer;
+        }
+        .hover_row
+        {
+            background-color: #A1DCF2;
+        }
+        .auto-style1 {
+            height: 32px;
+        }
+    </style>
+
+
+                <link rel="stylesheet" href="http://dograde.online/SUW/css/font-awesome.css">
+                <link rel="stylesheet" href="http://dograde.online/SUW/css/bootstrap.min.css">
+                <link rel="stylesheet" href="http://dograde.online/SUW/css/ui-lightness/jquery-ui-1.8.10.custom.css">
+                <link rel="stylesheet" href="http://dograde.online/SUW/js/3.0.3/bootstrap.min.css">
+                <link rel="stylesheet" href="http://dograde.online/SUW/css/style.css">
+            
+                <style>
+                    body { margin:0; font-family: "SF Thonburi", sans-serif !important; }
+                    .navbar{overflow:hidden;background-color:#333;position:fixed;top:0;width:100%;}
+                    .navbar a{float:left;display:block;color:#f2f2f2;text-align:center;padding:14px 16px;text-decoration:none;font-size:17px;}
+                    .navbar a:hover{background:#ddd;color:black;}
+                    .main{padding:16px;margin-top:55px;}
+                    .MySearch,.MyInput,.MyCombo,.MyLabel,.MyLabelp,.MyLabelm{font-family:"SF Thonburi",sans-serif !important;}
+                    .MySearch{font-size:medium;color:#989797;height:30px;}
+                    .MyInput{font-size:medium;color:black;height:30px;padding:10px;margin:8px 0;box-sizing:border-box;}
+                    .MyCombo{font-size:medium;color:black;height:30px;margin:8px 0;box-sizing:border-box;}
+                    .MyLabel,.MyLabelp{padding-left:30px;font-size:medium;color:#3e3c3c;height:25px;}
+                    .MyLabelm{margin:10px;}
+                </style>
+            </head>
+
+
+<body id="Body1" bgcolor="Yellow" style="background-color: #EFEFEF">
+    <form method="post" action="./DooTermX.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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">
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="DA3E8459">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="UPs6ybM4cRalNlxqOIJ+2kLxN9aBV2eFsmtxNdoR2/4PDGdYJ8W/UZuObDtSMpcLjSDijaHFjifmskOjowuOixdzd97bMBqZKmXW81LJ8XBzyrBUOOeYj4G88up23dpXfVSyvwqsSb7C7NFUFLuZzTVZ1IfZeNin/yhgGFZFMWEmgmeFvvMVGYA9TWUUXmv3nZZZM2/tb//foJwgBdG8N4+fRdq9Yk4JKCKs4dqeUejw1ZNokHMxn+A8RVJ5sP2NoF21b+3uGIiyB6PSYN0C3ODuIu2Ss/4A2FCEcYI4PCQutVvVy37OgygWhYfzBq73VVH0E/fj0VclFtMqXiVxcMwLr9N9+wc3EqEEnmeegdA1IyZ+/zZVrTSr2HMsj1BLNhu5ux+WYbEhizKc2BJ9K1sU8oikxY/MGrSaNiS0UM4=">
+</div>   
+
+    <!-- Button trigger modal -->
+
+    <button type="button" style="display: none;" id="btnShowConfirmSave" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ShowConfirmSave">
+        Launch demo modal
+    </button> 
+
+    <button type="button" style="display: none;" id="btnShowSuccess" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ShowSuccess">
+        Launch demo modal
+    </button> 
+
+    <button type="button" style="display: none;" id="btnShowFail" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#ShowFail">
+        Launch demo modal
+    </button>
+
+ 
+<!-- Modal -->
+
+   <div class="modal fade" id="ShowConfirmSave">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span></button>
+                            <h3 class="modal-title">
+                                ตรวจสอบ</h3>
+                        </div>
+                        <div class="modal-body">
+                            <h4><span id="Label1">มีการปรับปรุงระเบียนข้อมูล ต้องการจัดเก็บก่อนหรือไม่ ?</span></h4>
+                        </div>
+                        <div class="modal-footer">
+
+
+     
+                            
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+        </div>
+
+          <div class="modal fade" id="ShowSuccess">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span></button>
+                            <h3 class="modal-title">
+                                รายงานการค้นหา</h3>
+                        </div>
+                        <div class="modal-body">
+                            <h4><span id="Label2">พบรายชื่อนักเรียนตามเงื่อนไขที่ระบุ</span></h4>
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-info btn-lg" data-dismiss="modal"> <i class="fa fa-smile-o"></i>
+                                ดำเนินการต่อ</button>
+
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+        </div>
+
+         <div class="modal fade" id="ShowFail">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span></button>
+                            <h3 class="modal-title">
+                                แจ้งเตือนการค้นหา</h3>
+                        </div>
+                        <div class="modal-body">
+                            <h4><span id="Label23">ไม่พบรายชื่อนักเรียนตามเงื่อนไขที่ระบุ</span></h4>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal"><i class="far fa-frown"></i>
+                                พยายามใหม่</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+        </div>
+
+   
+ 
+         <div class="navbar navbar-inverse navbar-fixed-top">       
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <img id="logo" src="http://dograde.online/SUW/assets_1/img/weschoollogo.png" width="50" height="50">
+                    <a href="secondary.aspx" class="navbar-brand" style="color: #FF0066">Secondary Students System </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+
+                                            
+
+                    </ul>
+
+                    
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="default.aspx" style="color: #00FFFF"><i class="fa fa-fw fa-home" style="font-size: x-large"></i> Home/LogOut</a></li>
+                        
+                    </ul>
+
+                    
+
+                  </div>
+            </div>
+        </div>
+
+
+   
+
+
+    <div class="container-fluid main" id="Container">
+
+        <div id="StudContainer">
+
+           <div id="LabelContainer" class="text-center " style="font-size: xx-large; font-weight: bold; color: #000000">
+                <span id="lblHeading">ปพ.5:ระเบียนผลการเรียนรายภาค</span>
+                 
+                
+                
+           </div>  
+         
+   
+
+    <div class="row" id="RowI">
+        <div class="col-md-6" style="background-color: #FCFCFC">
+              <h2 style="background-color: #666666; color: #FFFFFF; height: 30px;" class="text-center">ข้อมูลนักเรียน</h2>
+
+            <div class="form-inline text-center">
+                  <div class="col-sm-12">
+                      <img id="StudImage" class="img-circle" src="http://dograde.online/SUW/assets_1/img/weschoollogo.png" style="height:200px;">
+                  </div>
+              </div>
+
+        </div>
+
+        <div class="col-md-6" style="background-color: #FCFCFC">
+
+           <h2 style="background-color: #666666; color: #FFFFFF; height: 30px;" class="text-center">II</h2>
+
+            <div class="form-group row">
+                <label for="fid" class="col-sm-3 col-form-label MyLabelp" style="font-size: large">เลขประจำตัว</label>
+                <div class="col-sm-9">
+                     <input name="fid" type="text" value="39676" id="fid" disabled="disabled" class="aspNetDisabled form-control" placeholder="[Student ID]" autocomplete="off" style="font-size:Large;width:120px;">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="fName" class="col-sm-3 col-form-label MyLabel" style="font-size: large">ชื่อ-สกุล</label>
+                <div class="col-sm-9">
+                    <input name="fName" type="text" value="นายฉัตรดนัย  ดำดี" id="fName" disabled="disabled" class="aspNetDisabled form-control" placeholder="[Name]" autocomplete="off" style="font-size:Large;width:90%;">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="fRoom" class="col-sm-3 col-form-label MyLabel" style="font-size: large">ห้อง</label>
+                <div class="col-sm-9">
+                    <input name="fRoom" type="text" value="11" id="fRoom" disabled="disabled" class="aspNetDisabled form-control" placeholder="[Room]" autocomplete="off" style="font-size:Large;width:200px;">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                  <label for="fOrdinal" class="col-sm-3 col-form-label MyLabel " style="font-size: large">เลขที่</label>
+               <div class="col-sm-9">
+                     <input name="fOrdinal" type="text" value=" 4" id="fOrdinal" disabled="disabled" class="aspNetDisabled form-control" placeholder="[Ordinal]" autocomplete="off" style="font-size:Large;width:200px;">
+                </div>
+            </div>
+
+        </div>
+    </div>      
+    
+      <div class="row" id="Row0">
+        <div class="col-md-12">
+              <h2 style="background-color: #666666; color: #FFFFFF" class="text-center">
+                  <span id="LabelHead">ผลการเรียนชั้นมัธยมศึกษาปีที่ 6 ภาคเรียนที่ 1</span>
+                  
+              </h2>
+
+  
+
+            <div>
+	<table class="table table-striped table-bordered table-condensed" cellspacing="0" cellpadding="0" rules="all" border="1" id="GridView0" style="color:#333333;background-color:#D9ECEC;border-color:#005959;border-style:Dashed;font-size:Large;border-collapse:collapse;">
+		<tbody><tr>
+			<th class="text-center" scope="col">รหัสวิชา</th><th class="text-center" scope="col">รายวิชา</th><th class="text-center" scope="col">ประเภท</th><th class="text-center" scope="col">หน่วยกิต</th><th class="text-center" scope="col">คะแนนรวมหน่วย</th><th class="text-center" scope="col">กลางภาค</th><th class="text-center" scope="col">ปลายภาค</th><th class="text-center" scope="col">รวมคะแนน</th><th class="text-center" scope="col">ระดับคะแนน</th><th class="text-center" scope="col">แก้ตัว</th><th class="text-center" scope="col">คุณลักษณะ</th><th class="text-center" scope="col">อ่านคิดวิเคราะห์</th><th class="text-center" scope="col">ครูผู้สอน</th>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_0" title="1" style="color:Black;">ท33101</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_0" style="color:Black;">ภาษาไทย</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_0" style="color:Black;">1</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_0" style="color:Black;">1.0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_0" title="เต็ม 50" style="color:Black;"> 50</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_0" title="เต็ม 20" style="color:Black;"> 19</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_0" title="เต็ม 30" style="color:Black;"> 16</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_0" title="เต็ม100" style="color:Black;"> 85</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_0" style="color:Black;font-weight:bold;">4</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_0" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_0" style="color:Black;">3</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_0" style="color:Black;">3</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_0" style="color:Black;">นุศรา</span>
+                            </td>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_1" title="2" style="color:Black;">ค33101</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_1" style="color:Black;">คณิตศาสตร์</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_1" style="color:Black;">1</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_1" style="color:Black;">1.0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_1" title="เต็ม 50" style="color:Black;"> 42</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_1" title="เต็ม 20" style="color:Black;">  9</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_1" title="เต็ม 30" style="color:Black;"> 14</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_1" title="เต็ม100" style="color:Black;"> 65</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_1" style="color:Black;font-weight:bold;">2.5</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_1" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_1" style="color:Black;">3</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_1" style="color:Black;">3</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_1" style="color:Black;">ศริญญา</span>
+                            </td>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_2" title="3" style="color:Black;">ว30122</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_2" style="color:Black;">วิทยาศาสตร์กายภาพ 2</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_2" style="color:Black;">1</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_2" style="color:Black;">1.5</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_2" title="เต็ม 50" style="color:Black;"> 41</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_2" title="เต็ม 20" style="color:Black;"> 14</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_2" title="เต็ม 30" style="color:Black;"> 10</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_2" title="เต็ม100" style="color:Black;"> 65</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_2" style="color:Black;font-weight:bold;">2.5</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_2" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_2" style="color:Black;">3</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_2" style="color:Black;">2</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_2" style="color:Black;">จักกฤษณ์</span>
+                            </td>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_3" title="4" style="color:Black;">ส33101</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_3" style="color:Black;">สังคมศึกษา</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_3" style="color:Black;">1</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_3" style="color:Black;">1.0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_3" title="เต็ม 50" style="color:Black;"> 37</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_3" title="เต็ม 20" style="color:Black;"> 20</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_3" title="เต็ม 30" style="color:Black;"> 15</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_3" title="เต็ม100" style="color:Black;"> 72</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_3" style="color:Black;font-weight:bold;">3</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_3" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_3" style="color:Black;">3</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_3" style="color:Black;">3</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_3" style="color:Black;">จักรพันธ์</span>
+                            </td>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_4" title="5" style="color:Black;">พ33101</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_4" style="color:Black;">สุขศึกษาและพลศึกษา</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_4" style="color:Black;">1</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_4" style="color:Black;">0.5</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_4" title="เต็ม 60" style="color:Black;"> 51</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_4" title="เต็ม 20" style="color:Black;"> 20</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_4" title="เต็ม 20" style="color:Black;"> 17</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_4" title="เต็ม100" style="color:Black;"> 88</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_4" style="color:Black;font-weight:bold;">4</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_4" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_4" style="color:Black;">3</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_4" style="color:Black;">3</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_4" style="color:Black;">ดุลภัทร</span>
+                            </td>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_5" title="6" style="color:Black;">ศ33101</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_5" style="color:Black;">ศิลปะ</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_5" style="color:Black;">1</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_5" style="color:Black;">0.5</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_5" title="เต็ม 60" style="color:Black;"> 48</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_5" title="เต็ม 20" style="color:Black;"> 19</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_5" title="เต็ม 20" style="color:Black;"> 15</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_5" title="เต็ม100" style="color:Black;"> 82</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_5" style="color:Black;font-weight:bold;">4</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_5" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_5" style="color:Black;">3</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_5" style="color:Black;">3</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_5" style="color:Black;">ทวีพงศ์</span>
+                            </td>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_6" title="7" style="color:Black;">ง33101</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_6" style="color:Black;">การงานอาชีพ</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_6" style="color:Black;">1</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_6" style="color:Black;">0.5</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_6" title="เต็ม 60" style="color:Black;"> 52</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_6" title="เต็ม 20" style="color:Black;"> 13</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_6" title="เต็ม 20" style="color:Black;"> 11</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_6" title="เต็ม100" style="color:Black;"> 76</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_6" style="color:Black;font-weight:bold;">3.5</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_6" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_6" style="color:Black;">3</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_6" style="color:Black;">3</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_6" style="color:Black;">ยุพิน</span>
+                            </td>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_7" title="8" style="color:Black;">อ33101</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_7" style="color:Black;">ภาษาอังกฤษ</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_7" style="color:Black;">1</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_7" style="color:Black;">1.0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_7" title="เต็ม 50" style="color:Black;"> 39</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_7" title="เต็ม 20" style="color:Black;"> 14</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_7" title="เต็ม 30" style="color:Black;"> 14</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_7" title="เต็ม100" style="color:Black;"> 67</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_7" style="color:Black;font-weight:bold;">2.5</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_7" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_7" style="color:Black;">3</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_7" style="color:Black;">3</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_7" style="color:Black;">กฤติมา</span>
+                            </td>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_8" title="9" style="color:Black;">ท30209</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_8" style="color:Black;">หลักภาษาไทย</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_8" style="color:Black;">2</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_8" style="color:Black;">0.5</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_8" title="เต็ม 50" style="color:Black;"> 48</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_8" title="เต็ม 20" style="color:Black;"> 14</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_8" title="เต็ม 30" style="color:Black;"> 16</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_8" title="เต็ม100" style="color:Black;"> 78</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_8" style="color:Black;font-weight:bold;">3.5</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_8" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_8" style="color:Black;">3</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_8" style="color:Black;">3</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_8" style="color:Black;">ฐิติมา</span>
+                            </td>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_9" title="10" style="color:Black;">ท30227</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_9" style="color:Black;">ภาษาวิเคราะห์เชื่อมโยง</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_9" style="color:Black;">2</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_9" style="color:Black;">0.5</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_9" title="เต็ม 60" style="color:Black;"> 55</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_9" title="เต็ม 20" style="color:Black;"> 14</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_9" title="เต็ม 20" style="color:Black;"> 15</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_9" title="เต็ม100" style="color:Black;"> 84</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_9" style="color:Black;font-weight:bold;">4</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_9" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_9" style="color:Black;">3</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_9" style="color:Black;">3</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_9" style="color:Black;">ธีรพงษ์</span>
+                            </td>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_10" title="11" style="color:Black;">ค33203</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_10" style="color:Black;">คณิตศาสตร์เพื่อการศึกษาต่อ</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_10" style="color:Black;">2</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_10" style="color:Black;">0.5</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_10" title="เต็ม 50" style="color:Black;"> 37</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_10" title="เต็ม 20" style="color:Black;"> 15</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_10" title="เต็ม 30" style="color:Black;"> 29</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_10" title="เต็ม100" style="color:Black;"> 81</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_10" style="color:Black;font-weight:bold;">4</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_10" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_10" style="color:Black;">3</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_10" style="color:Black;">3</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_10" style="color:Black;">ศริญญา</span>
+                            </td>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_11" title="12" style="color:Black;">ส30261</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_11" style="color:Black;">โลกร่วมสมัย</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_11" style="color:Black;">2</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_11" style="color:Black;">1.0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_11" title="เต็ม 50" style="color:Black;"> 41</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_11" title="เต็ม 20" style="color:Black;"> 17</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_11" title="เต็ม 30" style="color:Black;"> 18</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_11" title="เต็ม100" style="color:Black;"> 76</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_11" style="color:Black;font-weight:bold;">3.5</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_11" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_11" style="color:Black;">2</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_11" style="color:Black;">2</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_11" style="color:Black;">สัญชัย</span>
+                            </td>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_12" title="13" style="color:Black;">ศ30282</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_12" style="color:Black;">ศิลปะสร้างสรรค์</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_12" style="color:Black;">2</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_12" style="color:Black;">0.5</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_12" title="เต็ม 60" style="color:Black;"> 60</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_12" title="เต็ม 20" style="color:Black;"> 18</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_12" title="เต็ม 20" style="color:Black;"> 19</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_12" title="เต็ม100" style="color:Black;"> 97</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_12" style="color:Black;font-weight:bold;">4</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_12" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_12" style="color:Black;">3</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_12" style="color:Black;">3</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_12" style="color:Black;">ภัคพล</span>
+                            </td>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_13" title="14" style="color:Black;">อ33205</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_13" style="color:Black;">ภาษาอังกฤษฟัง-พูด</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_13" style="color:Black;">2</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_13" style="color:Black;">0.5</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_13" title="เต็ม  0" style="color:Black;"> 48</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_13" title="เต็ม  0" style="color:Black;"> 14</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_13" title="เต็ม  0" style="color:Black;"> 25</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_13" title="เต็ม  0" style="color:Black;"> 87</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_13" style="color:Black;font-weight:bold;">4</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_13" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_13" style="color:Black;">3</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_13" style="color:Black;">3</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_13" style="color:Black;">Onur</span>
+                            </td>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_14" title="15" style="color:Black;">อ33207</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_14" style="color:Black;">ภาษาอังกฤษอ่านวิเคราะห์</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_14" style="color:Black;">2</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_14" style="color:Black;">1.0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_14" title="เต็ม 50" style="color:Black;"> 38</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_14" title="เต็ม 20" style="color:Black;"> 14</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_14" title="เต็ม 30" style="color:Black;"> 14</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_14" title="เต็ม100" style="color:Black;"> 66</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_14" style="color:Black;font-weight:bold;">2.5</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_14" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_14" style="color:Black;">3</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_14" style="color:Black;">3</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_14" style="color:Black;">จีระศักดิ์</span>
+                            </td>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_15" title="16" style="color:Black;">ก33931</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_15" style="color:Black;">กิจกรรมชมรม / ส่งเสริมศักยภาพ 5G</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_15" style="color:Black;">9</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_15" style="color:Black;">0.0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_15" title="เต็ม  0" style="color:Black;">  0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_15" title="เต็ม  0" style="color:Black;">  0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_15" title="เต็ม  0" style="color:Black;">  0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_15" title="เต็ม  0" style="color:Black;">100</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_15" style="color:Black;font-weight:bold;">ผ</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_15" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_15" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_15" style="color:Black;"></span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_15" style="color:Black;">จีระศักดิ์</span>
+                            </td>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_16" title="17" style="color:Black;">ก33921</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_16" style="color:Black;">แนะแนว</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_16" style="color:Black;">9</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_16" style="color:Black;">0.0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_16" title="เต็ม  0" style="color:Black;">  0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_16" title="เต็ม  0" style="color:Black;">  0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_16" title="เต็ม  0" style="color:Black;">  0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_16" title="เต็ม  0" style="color:Black;">100</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_16" style="color:Black;font-weight:bold;">ผ</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_16" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_16" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_16" style="color:Black;"></span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_16" style="color:Black;">ศิริกัลยา</span>
+                            </td>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_17" title="18" style="color:Black;">ก33911</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_17" style="color:Black;">เพื่อสังคมและสาธารณประโยชน์</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_17" style="color:Black;">9</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_17" style="color:Black;">0.0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_17" title="เต็ม  0" style="color:Black;">  0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_17" title="เต็ม  0" style="color:Black;">  0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_17" title="เต็ม  0" style="color:Black;">  0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_17" title="เต็ม  0" style="color:Black;">100</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_17" style="color:Black;font-weight:bold;">ผ</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_17" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_17" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_17" style="color:Black;"></span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_17" style="color:Black;">วัชระ</span>
+                            </td>
+		</tr><tr class="rowHover">
+			<td class="text-center">
+                                <span id="GridView0_Lbl1_18" title="19" style="color:Black;">I30903</span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl2_18" style="color:Black;">การนำองค์ความรู้ไปใช้บริการสังคม</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl3_18" style="color:Black;">9</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl4_18" style="color:Black;">0.0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_LblL5_18" title="เต็ม  0" style="color:Black;">  0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl6_18" title="เต็ม  0" style="color:Black;">  0</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl7_18" title="เต็ม100" style="color:Black;">100</span>
+                            </td><td class="text-right">
+                                <span id="GridView0_Lbl8_18" title="เต็ม100" style="color:Black;">100</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl9_18" style="color:Black;font-weight:bold;">ผ</span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl10_18" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl11_18" style="color:Black;"></span>
+                            </td><td class="text-center">
+                                <span id="GridView0_Lbl12_18" style="color:Black;"></span>
+                            </td><td class="text-left">
+                                <span id="GridView0_Lbl13_18" style="color:Black;">ลาวัณย์</span>
+                            </td>
+		</tr>
+	</tbody></table>
+</div>
+
+
+        </div>
+
+       
+
+    </div>
+    
+     <div class="row" id="RowIII">
+
+        <div class="col-md-6">
+              <h2 style="background-color: #666666; color: #FFFFFF" class="text-center">สรุปผลการเรียนที่เรียน</h2>
+              
+            <table style="width: 100%">
+                    
+                    <tbody><tr>
+                        <td align="left" width="70%" bgcolor="#FFFFFF" style="font-size: large">
+                            จำนวนหน่วยกิตวิชาพื้นฐานที่เรียน
+                        </td>
+                        <td width="30%" bgcolor="#FFFFFF" style="font-size: large">
+                <span id="Label4">  7.0</span>
+                        </td>
+                    </tr>
+
+                    
+                <tr>
+                        <td align="left" bgcolor="#FFFFFF" style="font-size: large">
+                            จำนวนหน่วยกิตวิชาเพิ่มเติมที่เรียน</td>
+                        <td bgcolor="#FFFFFF" style="font-size: large">
+                <span id="Label6">  4.5</span>
+                        </td>
+                    </tr> 
+                    
+                    
+                    <tr>
+                        <td align="left" bgcolor="#FFFFFF" style="font-size: large">
+                            รวมจำนวนหน่วยกิตที่เรียน</td>
+                        <td bgcolor="#FFFFFF" style="font-size: large">
+                <span id="Label8"> 11.5</span>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td align="left" bgcolor="#FFFFFF" style="font-size: large">
+                            ผลการเรียนเฉลี่ย GPA</td>
+                        <td bgcolor="#FFFFFF" style="font-size: large">
+                <span id="Label10" class="ft_text2">3.23</span>
+                        </td>
+                    </tr>
+                    
+                   
+                    
+              
+
+        <tr>
+            <td colspan="2" style="font-size: medium; color: #0066FF;" align="center" bgcolor="#FFFFFF">
+                
+                Semester Web Module from Secondary'63 Program Design By Amporn Chomdej [WeSchool Team]
+            </td>
+        </tr>
+
+                </tbody></table>
+
+       </div>
+
+ 
+      <div class="col-md-6">
+
+         <h2 style="background-color: #666666; color: #FFFFFF" class="text-center">สรุปผลการเรียนที่ได้</h2>
+
+             <table style="width: 100%">
+                    <tbody><tr>
+                        <td align="left" bgcolor="#FFFFFF" style="font-size: large">
+                            จำนวนหน่วยกิตวิชาพื้นฐานที่ได้</td>
+                        <td bgcolor="#FFFFFF" style="font-size: large">
+                <span id="Label5">  7.0</span>
+                        </td>
+                    </tr>
+
+                 <tr>
+                        <td align="left" bgcolor="#FFFFFF" style="font-size: large" class="auto-style1">
+                            จำนวนหน่วยกิตวิชาเพิ่มเติมที่ได้</td>
+                        <td bgcolor="#FFFFFF" style="font-size: large" class="auto-style1">
+                <span id="Label7">  4.5</span>
+                        </td>
+                    </tr>
+
+                 <tr>
+                
+                     <td align="left" bgcolor="#FFFFFF" style="font-size: large">
+                            รวมจำนวนหน่วยกิตที่ได้</td>
+                        <td bgcolor="#FFFFFF" style="font-size: large">
+                <span id="Label9"> 11.5</span>
+                        </td>
+                    </tr>
+
+                 <tr>
+                     <td colspan="2" align="center" bgcolor="#FFFFFF" style="font-size: large">
+                        <input type="submit" name="ButtonG" value="แสดงแผนภูมิพัฒนาการ" id="ButtonG" class="btn btn-primary btn-lg">
+                     </td>
+                 </tr>
+
+
+            </tbody></table>
+
+        </div>
+    </div>      
+
+
+
+
+</div>               
+
+
+    <hr>
+         <footer>
+                  <h2 class="text-center" style="background-color: #666666; color: #FFFFFF">
+                      <span id="LabelUpdate">ปรับปรุง 16:24 11/10/2569</span>
+                  </h2>
+
+ 
+
+                   <div class="col-lg-12 mx-auto bg-light text-center mb-2">
+
+
+
+                        <input type="submit" name="ButtonX1" value="ปี1ภาค1" id="ButtonX1" class="btn btn-primary btn-lg" style="width:100px;">
+                        <input type="submit" name="ButtonX2" value="ปี1ภาค2" id="ButtonX2" class="btn btn-info btn-lg" style="width:100px;">
+
+                         <input type="submit" name="ButtonX3" value="ปี2ภาค1" id="ButtonX3" class="btn btn-success btn-lg" style="width:100px;">
+                        <input type="submit" name="ButtonX4" value="ปี2ภาค2" id="ButtonX4" class="btn btn-danger btn-lg" style="width:100px;">
+
+                        <input type="submit" name="ButtonX5" value="ปี3ภาค1" id="ButtonX5" class="btn btn-warning btn-lg" style="width:100px;">
+                        <input type="submit" name="ButtonX6" value="ปี3ภาค2" id="ButtonX6" class="btn btn-info btn-lg" style="width:100px;">
+                        <input type="submit" name="ButtonX7" value="ปพ.1" id="ButtonX7" class="btn btn-primary btn-lg" style="width:100px;">
+                       </div>
+
+                       
+                    <h2 class="text-center" style="color: #FF0000; ">พิมพ์รายงาน</h2>
+                    <div class="col-lg-12 mx-auto bg-light text-center mb-2">
+
+                        <input type="submit" name="ButtonR1" value="ใบประจำตัว" id="ButtonR1" class="btn btn-primary btn-lg" style="width:150px;">
+                        <input type="submit" name="ButtonR2" value="ใบสอบแก้ตัว" id="ButtonR2" class="btn btn-warning btn-lg" style="width:150px;">
+                        <input type="submit" name="ButtonX0" value="Home" id="ButtonX0" class="btn btn-success btn-lg" style="width:150px;">
+
+                                           
+                        
+                       
+                </div>
+
+                    <p>© 2026- WeSchool License
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+                    
+                    
+                    
+                       
+                  </p>
+        </footer>
+
+
+    </div>                  
+ 
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/jquery.backstretch.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+     <script type="text/javascript">
+        $(function () {
+            $("[id*=GridView0] td").hover(function () {
+                $("td", $(this).closest("tr")).addClass("hover_row");
+            }, function () {
+                $("td", $(this).closest("tr")).removeClass("hover_row");
+            });
+        });
+    </script>
+
+     </form>
+
+
+
+                <script type="text/javascript" src="http://dograde.online/SUW/js/1.8.3/jquery.js"></script>
+                <script type="text/javascript" src="http://dograde.online/SUW/js/3.0.3/bootstrap.min.js"></script>
+            </body></html>
